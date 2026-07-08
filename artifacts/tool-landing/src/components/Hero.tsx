@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import logoImg from "@assets/ChatGPT_Image_8_jul_2026,_02_23_41_p.m._1783542231097.png";
 
@@ -11,67 +11,6 @@ function scrollTo(href: string) {
   if (el) el.scrollIntoView({ behavior: "smooth" });
 }
 
-function useCounter(target: number, duration: number, started: boolean) {
-  const [count, setCount] = useState(0);
-  useEffect(() => {
-    if (!started) return;
-    let startTime: number | null = null;
-    const step = (timestamp: number) => {
-      if (!startTime) startTime = timestamp;
-      const progress = Math.min((timestamp - startTime) / duration, 1);
-      const eased = 1 - Math.pow(1 - progress, 3);
-      setCount(Math.floor(eased * target));
-      if (progress < 1) requestAnimationFrame(step);
-    };
-    requestAnimationFrame(step);
-  }, [started, target, duration]);
-  return count;
-}
-
-function StatCounter({ value, suffix, label, delay }: { value: number; suffix: string; label: string; delay: number }) {
-  const [started, setStarted] = useState(false);
-  const ref = useRef<HTMLDivElement>(null);
-  const count = useCounter(value, 1800, started);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting) { setStarted(true); observer.disconnect(); }
-    }, { threshold: 0.4 });
-    if (ref.current) observer.observe(ref.current);
-    return () => observer.disconnect();
-  }, []);
-
-  return (
-    <motion.div
-      ref={ref}
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ delay, duration: 0.5 }}
-      style={{ textAlign: "center" }}
-    >
-      <div style={{
-        fontFamily: "Manrope, sans-serif",
-        fontWeight: 800,
-        fontSize: "clamp(2rem, 3.5vw, 2.75rem)",
-        color: NAVY,
-        lineHeight: 1,
-        marginBottom: 6,
-      }}>
-        {count}{suffix}
-      </div>
-      <div style={{
-        fontFamily: "Inter, sans-serif",
-        fontSize: 13,
-        color: `${NAVY}70`,
-        lineHeight: 1.4,
-        maxWidth: 120,
-        margin: "0 auto",
-      }}>
-        {label}
-      </div>
-    </motion.div>
-  );
-}
 
 function FlowDiagram() {
   return (
@@ -328,41 +267,10 @@ export default function Hero() {
         </div>
       </motion.div>
 
-      {/* Stats bar */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.7, duration: 0.6 }}
-        style={{
-          borderTop: "1px solid #E5E7EB",
-          background: "#FAFAFA",
-          padding: "32px 24px",
-        }}
-      >
-        <div style={{ maxWidth: 1200, margin: "0 auto" }}>
-          <div style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(4, 1fr)",
-            gap: 24,
-            alignItems: "center",
-          }} className="stats-bar">
-            <StatCounter value={40} suffix="%" label="Reducción promedio en reuniones improductivas" delay={0.8} />
-            <div style={{ width: 1, height: 48, background: "#E5E7EB", margin: "0 auto" }} className="stat-divider" />
-            <StatCounter value={3} suffix="x" label="Mayor visibilidad de operación en 90 días" delay={0.9} />
-            <div style={{ width: 1, height: 48, background: "#E5E7EB", margin: "0 auto" }} className="stat-divider" />
-            <StatCounter value={100} suffix="%" label="Proyectos con implementación acompañada" delay={1.0} />
-            <div style={{ width: 1, height: 48, background: "#E5E7EB", margin: "0 auto" }} className="stat-divider" />
-            <StatCounter value={30} suffix=" días" label="Para tener tu primer sistema operativo activo" delay={1.1} />
-          </div>
-        </div>
-      </motion.div>
-
       <style>{`
         @media (max-width: 768px) {
           .hero-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
           .hero-visual { height: 280px !important; }
-          .stats-bar { grid-template-columns: repeat(2, 1fr) !important; }
-          .stat-divider { display: none; }
         }
       `}</style>
     </section>
