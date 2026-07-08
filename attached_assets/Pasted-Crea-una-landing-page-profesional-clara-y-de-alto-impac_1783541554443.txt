@@ -1,0 +1,751 @@
+Crea una landing page profesional, clara y de alto impacto para **TOOL**, una consultoría boutique de estrategia, procesos y ejecución operativa.
+
+La landing debe sentirse como una marca moderna, estratégica, tecnológica y humana. TOOL no debe verse como una firma corporativa fría ni como una agencia creativa informal. Debe transmitir: claridad, método, innovación, liderazgo, ejecución y confianza.
+
+---
+
+# Identidad visual de TOOL
+
+## Logo
+
+La marca se llama:
+
+**TOOL**
+
+El logotipo tiene un estilo minimalista, moderno y redondeado. Las letras son gruesas, suaves y con personalidad. El símbolo central está construido a partir de las dos “O”, que funcionan como un monograma visual tipo conexión, ecosistema o infinito.
+
+La idea visual del logo comunica:
+
+* Conexión.
+* Ecosistema.
+* Flujo de trabajo.
+* Sistema operativo.
+* Pensamiento conectado.
+* Estrategia + ejecución.
+* Claridad y continuidad.
+
+El logotipo principal debe usarse como referencia para todo el sistema visual de la landing.
+
+No usar la palabra “Consulting” debajo del logo.
+
+---
+
+# Paleta de colores
+
+Usa una paleta sobria, moderna y premium basada en el sistema visual de TOOL:
+
+## Colores principales
+
+* Azul marino profundo: `#0A1D3D`
+* Verde acento: `#10B981`
+* Morado innovación: `#7C4DFF`
+* Negro: `#111111`
+* Gris claro: `#F1F3F6`
+* Blanco: `#FFFFFF`
+
+## Uso recomendado
+
+* El azul marino debe ser el color principal de autoridad, estrategia y confianza.
+* El verde debe usarse como acento para progreso, ejecución, claridad, mejora continua y acción.
+* El morado debe usarse de forma sutil para innovación, tecnología, transformación y diferenciación.
+* El blanco y gris claro deben crear una experiencia limpia, elegante y con mucho espacio visual.
+* Evitar saturar la landing con demasiados colores. La estética debe ser sobria, minimalista y premium.
+
+---
+
+# Look and feel
+
+La página debe verse como una consultoría boutique moderna con enfoque tech-B2B.
+
+Debe combinar:
+
+* Minimalismo.
+* Formas redondeadas.
+* Mucho espacio en blanco.
+* Tarjetas limpias.
+* Líneas delgadas.
+* Iconografía lineal.
+* Microinteracciones suaves.
+* Secciones bien respiradas.
+* Jerarquía visual clara.
+* Diseño ejecutivo pero con personalidad.
+
+Inspiración visual:
+
+* Consultoría boutique premium.
+* SaaS B2B moderno.
+* Marca tecnológica minimalista.
+* Estrategia empresarial contemporánea.
+* Ecosistema de trabajo conectado.
+
+Evitar:
+
+* Diseño genérico corporativo.
+* Gradientes exagerados.
+* Iconos infantiles.
+* Fondos saturados.
+* Demasiados efectos.
+* Textos largos sin jerarquía.
+* Apariencia de firma grande o institucional.
+
+---
+
+# Tipografía
+
+Usar tipografías modernas, redondeadas y legibles.
+
+Sugerencia:
+
+* Headings: `Manrope`, `Plus Jakarta Sans` o `Sora`.
+* Body: `Inter` o `Manrope`.
+
+El estilo tipográfico debe sentirse:
+
+* Ejecutivo.
+* Claro.
+* Cercano.
+* Moderno.
+* Tecnológico.
+* Fácil de leer.
+
+Los títulos deben tener peso visual fuerte, pero no verse agresivos. Usar tracking sutil en textos pequeños, especialmente en etiquetas como:
+
+* ESTRATEGIA
+* INNOVACIÓN
+* LIDERAZGO
+* TRANSFORMACIÓN
+
+---
+
+# Concepto visual rector
+
+La landing debe comunicar la idea de:
+
+## “Un sistema operativo para que las empresas ejecuten mejor.”
+
+El diseño debe apoyarse visualmente en elementos como:
+
+* Nodos conectados.
+* Líneas suaves.
+* Tarjetas modulares.
+* Flujos de proceso.
+* Círculos conectados.
+* Marcos redondeados.
+* Indicadores visuales.
+* Dashboards abstractos.
+* Sistemas de seguimiento.
+* Roadmaps y ciclos de mejora.
+
+El monograma de las dos “O” puede inspirar patrones visuales sutiles de conexión, loops, ecosistema o continuidad.
+
+---
+
+# Mensaje central
+
+TOOL ayuda a empresas en crecimiento a ordenar su operación, vender mejor, ejecutar con mayor claridad y convertir diagnósticos en sistemas de trabajo medibles.
+
+La landing debe dejar claro:
+
+No vendemos documentos.
+No vendemos teoría.
+No vendemos solo dashboards.
+
+Construimos sistemas de ejecución para que las empresas puedan vender mejor, operar con mayor claridad y tomar decisiones con datos.
+
+---
+
+# Contexto del negocio
+
+TOOL es una consultoría formada por dos perfiles complementarios:
+
+## Abraham Castillo Harris
+
+Perfil estratégico, comercial y de desarrollo de negocio.
+
+LinkedIn:
+https://www.linkedin.com/in/abraham-harris-7b91951b1/
+
+WhatsApp:
+55 5145 2047
+
+## Alonso Pérez Vázquez
+
+Perfil táctico-operativo, procesos, ejecución, tecnología, dashboards y seguimiento operativo.
+
+LinkedIn:
+https://www.linkedin.com/in/alonsoperezvazquez/
+
+WhatsApp:
+55 1198 1149
+
+TOOL ayuda a empresas en crecimiento a ordenar su operación, vender mejor, ejecutar con mayor claridad y convertir sus diagnósticos en sistemas de trabajo medibles.
+
+No somos una consultoría que solo entrega documentos. Ayudamos a instalar sistemas de ejecución: procesos, responsables, KPIs, cadencias, tableros, seguimiento y mejora continua.
+
+---
+
+# Enfoque metodológico
+
+La landing debe comunicar que trabajamos con una combinación práctica de:
+
+* Agile.
+* Scrum.
+* EOS.
+* Scaling Up.
+* Lean.
+* Reingeniería de procesos.
+* Mejora continua.
+* Gestión operativa.
+* Dashboards y sistemas de seguimiento.
+
+El mensaje debe ser claro:
+
+## No vendemos teoría. Instalamos sistemas prácticos para que los equipos ejecuten mejor.
+
+---
+
+# Objetivo de la landing
+
+Convertir visitantes en prospectos interesados en agendar una sesión de diagnóstico.
+
+La página debe estar orientada a:
+
+* Dueños de empresa.
+* Directores generales.
+* Gerentes comerciales.
+* Líderes de operación.
+* Equipos en crecimiento.
+* Empresas que sienten que su crecimiento está estancado por falta de proceso, seguimiento o estructura.
+
+---
+
+# Tono de comunicación
+
+El tono debe ser:
+
+* Ejecutivo.
+* Claro.
+* Humano.
+* Estratégico.
+* Directo.
+* Con autoridad.
+* Sin sonar corporativo vacío.
+* Sin exceso de buzzwords.
+* Cercano al dolor real del cliente.
+
+La comunicación debe conectar con empresas que viven problemas como:
+
+* Muchas juntas, pocas decisiones.
+* Equipos ocupados pero sin claridad.
+* Procesos que dependen de personas, no de sistemas.
+* CRM o herramientas subutilizadas.
+* Falta de seguimiento.
+* Ventas, marketing y operación desconectados.
+* Clientes que se pierden por falta de seguimiento.
+* Dirección sin visibilidad real.
+* Crecimiento que se vuelve desordenado.
+* Diagnósticos que se quedan en documentos y no se implementan.
+
+---
+
+# Estructura de la landing
+
+## 1. Navbar
+
+Crear una navegación simple, limpia y sticky.
+
+Debe incluir:
+
+* Logo TOOL.
+* Metodología.
+* Qué hacemos.
+* Proceso.
+* Para quién es.
+* Quiénes somos.
+* CTA: Agendar diagnóstico.
+
+El navbar debe usar fondo blanco o glassmorphism muy sutil con borde inferior gris claro.
+
+En mobile, usar menú compacto y un CTA sticky inferior.
+
+---
+
+## 2. Hero section
+
+Debe ser la sección más fuerte de la página.
+
+### Headline principal
+
+**Convertimos el esfuerzo de tu equipo en un sistema de ejecución medible.**
+
+### Subheadline
+
+**Diseñamos e implementamos modelos comerciales y operativos para que tu empresa venda mejor, opere con mayor claridad y deje de depender del seguimiento informal.**
+
+### Microcopy
+
+**Procesos + KPIs + cadencia + tableros + accountability.**
+
+### CTAs
+
+Botón principal:
+
+**Agenda una sesión de diagnóstico**
+
+Botón secundario:
+
+**Ver metodología**
+
+### Dirección visual del hero
+
+Crear un hero limpio, premium y moderno.
+
+Elementos visuales sugeridos:
+
+* Logo TOOL visible en la parte superior.
+* Fondo blanco o gris muy claro.
+* Formas suaves inspiradas en el monograma de las dos “O”.
+* Un gráfico abstracto de sistema operativo: nodos, flujo, tarjetas, indicadores o dashboard minimalista.
+* Usar azul marino como color dominante.
+* Usar verde para el CTA principal.
+* Usar morado solo como acento pequeño.
+
+El hero debe transmitir: claridad, orden, sistema, innovación y ejecución.
+
+---
+
+## 3. Sección de dolor / storyselling
+
+### Título
+
+**El problema no es que tu equipo no trabaje. El problema es que trabaja sin un sistema claro.**
+
+### Texto
+
+Muchas empresas crecen a base de esfuerzo, urgencia y talento individual. Al principio funciona. Pero conforme el negocio crece, aparecen los mismos síntomas: juntas sin seguimiento, pendientes que se pierden, clientes sin dueño claro, áreas desconectadas, CRM incompleto y decisiones tomadas con información parcial.
+
+El resultado no es solo desorden. Es pérdida de ventas, desgaste del equipo, clientes en riesgo y una dirección que no tiene visibilidad real de lo que está pasando.
+
+TOOL ayuda a convertir ese caos operativo en un sistema de gestión claro, medible y accionable.
+
+### Bullets visuales
+
+* Mucha actividad, poca trazabilidad.
+* Muchas juntas, pocas decisiones.
+* Muchos pendientes, pocos responsables claros.
+* Muchas herramientas, poca adopción.
+* Mucho esfuerzo, poca predictibilidad.
+
+Diseñar esta sección con tarjetas o statements tipo diagnóstico. Usar un tono directo, visual y fácil de escanear.
+
+---
+
+## 4. Sección de propuesta de valor
+
+### Título
+
+**No entregamos solo diagnósticos. Instalamos sistemas de ejecución.**
+
+### Texto
+
+Nuestro trabajo combina consultoría estratégica, reingeniería de procesos y acompañamiento táctico para que cada hallazgo se convierta en una acción con dueño, fecha, métrica y seguimiento.
+
+### Tarjetas de valor
+
+#### 1. Procesos claros
+
+Mapeamos cómo opera tu empresa hoy y diseñamos el flujo ideal para reducir fricción, duplicidad y retrabajo.
+
+#### 2. Accountability
+
+Definimos responsables, prioridades, fechas compromiso y reglas de seguimiento.
+
+#### 3. Cadencia de gestión
+
+Instalamos dailies, reuniones semanales, revisiones directivas y retrospectivas trimestrales.
+
+#### 4. KPIs y dashboards
+
+Convertimos la operación en indicadores visibles para tomar mejores decisiones.
+
+#### 5. Mejora continua
+
+Identificamos causas raíz, patrones recurrentes y acciones correctivas.
+
+#### 6. Herramientas operativas
+
+Integramos tableros y sistemas de seguimiento para que el modelo no dependa de memoria, Excel o WhatsApp.
+
+Diseñar las tarjetas con bordes suaves, iconos lineales y acentos verdes/morados muy sutiles.
+
+---
+
+## 5. Sección de metodología
+
+### Título
+
+**Nuestra metodología combina estrategia, procesos y ejecución ágil.**
+
+Crear cuatro bloques:
+
+### Agile & Scrum
+
+Para trabajar en ciclos cortos, priorizar mejor, revisar avances y adaptarse rápido.
+
+### EOS
+
+Para instalar accountability, reuniones efectivas, scorecards y claridad de responsabilidades.
+
+### Scaling Up
+
+Para alinear prioridades trimestrales, métricas, liderazgo y ejecución.
+
+### Lean / Mejora continua
+
+Para eliminar desperdicios, reducir retrabajo, detectar causa raíz y mejorar procesos.
+
+### Cierre de sección
+
+No usamos metodologías como teoría. Las adaptamos a la realidad de cada empresa para construir un sistema práctico, entendible y sostenible.
+
+Visualmente, representar la metodología como un sistema conectado, usando líneas o nodos inspirados en el monograma de TOOL.
+
+---
+
+## 6. Sección “Qué hacemos”
+
+### Título
+
+**Qué podemos construir contigo**
+
+Usar tarjetas:
+
+### 1. Diagnóstico comercial-operativo
+
+Identificamos dolores, causas raíz, cuellos de botella y oportunidades de mejora.
+
+### 2. Reingeniería de procesos
+
+Diseñamos procesos claros, responsables, SLAs, indicadores y reglas de escalamiento.
+
+### 3. Modelo de gestión operativa
+
+Creamos la cadencia de reuniones, seguimiento y toma de decisiones.
+
+### 4. CRM y tableros de seguimiento
+
+Ordenamos el uso de herramientas para que se conviertan en fuente única de verdad.
+
+### 5. Customer Success y retención
+
+Diseñamos procesos de onboarding, seguimiento, renovación y gestión de clientes en riesgo.
+
+### 6. Acompañamiento de implementación
+
+Acompañamos al equipo para que el plan no se quede en presentación.
+
+---
+
+## 7. Sección de proceso de trabajo
+
+### Título
+
+**De diagnóstico a sistema en tres etapas**
+
+Diseñar esta sección como un roadmap visual con tres etapas conectadas.
+
+### 1. Diagnóstico
+
+Entendemos la operación actual, entrevistamos áreas clave, identificamos dolores y causas raíz.
+
+Entregables:
+
+* Mapa de hallazgos.
+* Insights accionables.
+* Causas raíz.
+* Prioridades iniciales.
+
+### 2. Diseño del sistema
+
+Convertimos el diagnóstico en procesos, responsables, KPIs, cadencias y roadmap de implementación.
+
+Entregables:
+
+* Proceso actual vs proceso ideal.
+* Plan 30/60/90.
+* KPIs.
+* Gantt.
+* Cadencia de gestión.
+* Quick wins.
+
+### 3. Implementación y optimización
+
+Acompañamos la adopción del modelo, revisamos avances, medimos resultados y ajustamos el sistema.
+
+Entregables:
+
+* Reuniones de seguimiento.
+* Dashboard operativo.
+* Reportes ejecutivos.
+* Retrospectivas.
+* Mejora continua.
+
+---
+
+## 8. Sección “Para quién es”
+
+### Título
+
+**Esta consultoría es para empresas que quieren crecer sin operar en caos.**
+
+Bullets:
+
+* Empresas con equipos comerciales u operativos en crecimiento.
+* Negocios con CRM o herramientas subutilizadas.
+* Empresas donde la operación depende demasiado de ciertas personas.
+* Directores que necesitan visibilidad real.
+* Equipos con muchas juntas pero poco seguimiento.
+* Empresas que venden, pero pierden clientes por falta de estructura.
+* Organizaciones que quieren profesionalizar su operación.
+
+Diseñar esta sección con estilo sobrio y directo, usando checkmarks verdes y tarjetas limpias.
+
+---
+
+## 9. Sección “Síntomas que resolvemos”
+
+### Título
+
+**Señales de que necesitas ordenar tu sistema operativo**
+
+Incluir:
+
+* No sabes exactamente dónde se atoran las ventas.
+* El equipo comercial atiende demasiadas tareas postventa.
+* Las áreas trabajan desconectadas.
+* Los reportes llegan tarde o incompletos.
+* El CRM no refleja la realidad.
+* Las juntas no terminan en decisiones.
+* Hay clientes en riesgo que se detectan demasiado tarde.
+* Los pendientes se persiguen por WhatsApp.
+* Cada persona tiene su propia forma de trabajar.
+* La dirección no tiene información confiable para decidir.
+
+Diseñar esta sección como una matriz de síntomas con microinteracciones suaves.
+
+---
+
+## 10. Sección “Quiénes somos”
+
+### Título
+
+**Dos perfiles complementarios para ordenar estrategia y ejecución**
+
+### Abraham Castillo Harris
+
+Estrategia, desarrollo comercial y crecimiento de negocio.
+
+Abraham lidera la visión estratégica, la relación con stakeholders y la conexión entre el modelo operativo y los objetivos de crecimiento.
+
+LinkedIn:
+https://www.linkedin.com/in/abraham-harris-7b91951b1/
+
+WhatsApp:
+55 5145 2047
+
+### Alonso Pérez Vázquez
+
+Procesos, operación, herramientas, dashboards y ejecución.
+
+Alonso lidera el diseño del sistema operativo, el mapeo de procesos, la implementación de tableros, KPIs y modelos de seguimiento.
+
+LinkedIn:
+https://www.linkedin.com/in/alonsoperezvazquez/
+
+WhatsApp:
+55 1198 1149
+
+### Mensaje conjunto
+
+Combinamos visión estratégica y ejecución operativa para ayudar a que las empresas no solo sepan qué cambiar, sino cómo hacerlo realidad.
+
+Diseñar esta sección con dos cards equilibradas. No hacerlos ver como una firma grande; comunicar cercanía, involucramiento senior y ejecución directa.
+
+---
+
+## 11. Sección de casos de uso
+
+### Título
+
+**Dónde generamos impacto**
+
+Tarjetas:
+
+### Ventas
+
+Pipeline, CRM, seguimiento, conversión, cotizaciones y oportunidades atoradas.
+
+### Operaciones
+
+Procesos, responsables, incidencias, SLAs, bloqueos y capacidad operativa.
+
+### Customer Success
+
+Onboarding, satisfacción, renovaciones, clientes en riesgo y churn.
+
+### Dirección
+
+Scorecards, tableros, reuniones efectivas, prioridades y toma de decisiones.
+
+### Marketing + Ventas
+
+Calidad de leads, objeciones, campañas, mensajes y retroalimentación comercial.
+
+---
+
+## 12. Sección CTA final
+
+### Título
+
+**Tu empresa no necesita más juntas. Necesita mejores decisiones.**
+
+### Texto
+
+Agenda una sesión de diagnóstico para identificar dónde se está perdiendo foco, eficiencia y crecimiento dentro de tu operación.
+
+### CTA principal
+
+**Agendar diagnóstico**
+
+### Botones de contacto
+
+* WhatsApp Abraham: 55 5145 2047
+* WhatsApp Alonso: 55 1198 1149
+* LinkedIn Abraham
+* LinkedIn Alonso
+
+Diseñar esta sección con fondo azul marino profundo, texto blanco, CTA verde y acento morado sutil.
+
+---
+
+# Footer
+
+El footer debe incluir:
+
+* Logo TOOL.
+* Frase corta: “Estrategia, procesos y ejecución para empresas en crecimiento.”
+* Links a LinkedIn de Abraham y Alonso.
+* WhatsApps.
+* Navegación rápida.
+* Copyright.
+
+---
+
+# Requisitos técnicos
+
+Construir la landing page en:
+
+* React.
+* TypeScript.
+* Tailwind CSS.
+* Framer Motion.
+* Lucide React.
+
+Debe ser:
+
+* Responsive.
+* Excelente en desktop.
+* Excelente en mobile.
+* Optimizada para conversión.
+* Con scroll suave.
+* Con animaciones sutiles.
+* Con navbar sticky.
+* Con CTA sticky en mobile.
+* Con botones funcionales de WhatsApp.
+* Con links funcionales a LinkedIn.
+* Con estructura limpia de componentes.
+* Sin textos lorem ipsum.
+* Sin certificaciones inventadas.
+* Sin logos de clientes inventados.
+* Sin casos de éxito no proporcionados.
+
+---
+
+# Componentes sugeridos
+
+Crear componentes como:
+
+* `Navbar`
+* `Hero`
+* `PainSection`
+* `ValueProposition`
+* `Methodology`
+* `Services`
+* `Process`
+* `WhoIsFor`
+* `Symptoms`
+* `Founders`
+* `UseCases`
+* `FinalCTA`
+* `Footer`
+
+---
+
+# Dirección de UI
+
+Usar:
+
+* Cards con `rounded-2xl` o `rounded-3xl`.
+* Sombras suaves.
+* Bordes en gris claro.
+* Fondos alternados en blanco y `#F1F3F6`.
+* CTA verde `#10B981`.
+* Texto principal en `#0A1D3D`.
+* Acentos morados `#7C4DFF`.
+* Íconos lineales de Lucide.
+* Animaciones con Framer Motion: fade up, stagger, hover lift, subtle scale.
+
+---
+
+# Estilo de botones
+
+## Botón principal
+
+Fondo verde `#10B981`, texto blanco, borde redondeado, hover con ligera elevación.
+
+Texto:
+
+**Agenda una sesión de diagnóstico**
+
+## Botón secundario
+
+Fondo blanco, borde azul marino, texto azul marino.
+
+Texto:
+
+**Ver metodología**
+
+---
+
+# Microinteracciones
+
+Incluir:
+
+* Cards que suben ligeramente en hover.
+* Íconos que cambian a verde o morado en hover.
+* Transiciones suaves.
+* Aparición progresiva de secciones.
+* Scroll suave hacia anchors.
+* CTA mobile fijo en la parte inferior.
+
+---
+
+# Mensaje que debe sentirse en toda la experiencia
+
+TOOL no es una consultoría de PDFs.
+TOOL no llega a decirte solo qué está mal.
+TOOL ayuda a construir el sistema para que tu equipo ejecute mejor.
+
+La experiencia debe dejarle al visitante esta idea:
+
+**“Con TOOL puedo ordenar mi empresa, tener visibilidad y lograr que las cosas pasen.”**
