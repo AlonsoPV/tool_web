@@ -1,25 +1,10 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
+import logoImg from "@assets/ChatGPT_Image_8_jul_2026,_02_23_41_p.m._1783542231097.png";
 
 const NAVY = "#0A1D3D";
 const GREEN = "#10B981";
-
-function ToolLogo() {
-  return (
-    <svg width="80" height="32" viewBox="0 0 80 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <text x="0" y="25" fontFamily="Manrope, sans-serif" fontWeight="800" fontSize="26" fill={NAVY} letterSpacing="-1">
-        T
-      </text>
-      <circle cx="36" cy="16" r="11" stroke={NAVY} strokeWidth="3.5" fill="none"/>
-      <circle cx="54" cy="16" r="11" stroke={NAVY} strokeWidth="3.5" fill="none"/>
-      <circle cx="45" cy="16" r="4" fill={GREEN}/>
-      <text x="64" y="25" fontFamily="Manrope, sans-serif" fontWeight="800" fontSize="26" fill={NAVY} letterSpacing="-1">
-        L
-      </text>
-    </svg>
-  );
-}
 
 const navLinks = [
   { label: "Metodología", href: "#metodologia" },
@@ -64,7 +49,11 @@ export default function Navbar() {
       >
         <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 24px", display: "flex", alignItems: "center", justifyContent: "space-between", height: 68 }}>
           <button onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} style={{ background: "none", border: "none", cursor: "pointer", padding: 0 }}>
-            <ToolLogo />
+            <img
+              src={logoImg}
+              alt="TOOL"
+              style={{ height: 36, width: "auto", display: "block" }}
+            />
           </button>
 
           <div className="hidden md:flex" style={{ alignItems: "center", gap: 32 }}>

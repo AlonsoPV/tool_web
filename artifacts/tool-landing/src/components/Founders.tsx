@@ -8,24 +8,24 @@ const PURPLE = "#7C4DFF";
 
 const founders = [
   {
-    initials: "AC",
     name: "Abraham Castillo Harris",
-    role: "Estrategia, desarrollo comercial y crecimiento de negocio.",
-    bio: "Abraham lidera la visión estratégica, la relación con stakeholders y la conexión entre el modelo operativo y los objetivos de crecimiento.",
+    role: "Co-fundador · Estrategia Comercial y Procesos",
+    bio: "Especialista en diseñar y escalar sistemas comerciales para empresas en crecimiento. Ha liderado transformaciones en equipos de ventas, implementación de CRMs y construcción de playbooks de go-to-market para empresas de 10 a 200+ personas.",
+    highlights: ["Estrategia GTM", "Diseño comercial", "Implementación de CRM", "Equipos de ventas"],
     linkedin: "https://www.linkedin.com/in/abraham-harris-7b91951b1/",
     whatsapp: "https://wa.me/5255514520477",
-    color: NAVY,
     accent: GREEN,
+    avatar: "AH",
   },
   {
-    initials: "AP",
     name: "Alonso Pérez Vázquez",
-    role: "Procesos, operación, herramientas, dashboards y ejecución.",
-    bio: "Alonso lidera el diseño del sistema operativo, el mapeo de procesos, la implementación de tableros, KPIs y modelos de seguimiento.",
+    role: "Co-fundador · Operaciones y Ejecución",
+    bio: "Experto en operaciones, mejora de procesos y ejecución organizacional. Ha implementado sistemas de gestión basados en EOS, Lean y Scaling Up en empresas de consumo, tecnología y servicios profesionales.",
+    highlights: ["EOS / Scaling Up", "Lean Operations", "OKRs & KPIs", "Gestión del cambio"],
     linkedin: "https://www.linkedin.com/in/alonsoperezvazquez/",
     whatsapp: "https://wa.me/5255119811499",
-    color: NAVY,
     accent: PURPLE,
+    avatar: "AP",
   },
 ];
 
@@ -34,18 +34,19 @@ export default function Founders() {
   const inView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section id="fundadores" style={{ background: "#fff", padding: "96px 24px" }}>
-      <div style={{ maxWidth: 900, margin: "0 auto" }} ref={ref}>
+    <section id="fundadores" style={{ background: "#F7F9FC", padding: "96px 24px" }}>
+      <div style={{ maxWidth: 1000, margin: "0 auto" }} ref={ref}>
+
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          style={{ textAlign: "center", marginBottom: 56 }}
+          style={{ textAlign: "center", marginBottom: 64 }}
         >
           <span style={{
             display: "inline-block",
-            background: `${NAVY}10`,
-            color: NAVY,
+            background: `${GREEN}12`,
+            color: GREEN,
             borderRadius: 100,
             padding: "6px 16px",
             fontSize: 11,
@@ -60,181 +61,235 @@ export default function Founders() {
           <h2 style={{
             fontFamily: "Manrope, sans-serif",
             fontWeight: 800,
-            fontSize: "clamp(1.75rem, 3.5vw, 2.5rem)",
+            fontSize: "clamp(1.75rem, 3.5vw, 2.6rem)",
             color: NAVY,
-            lineHeight: 1.2,
+            lineHeight: 1.15,
             letterSpacing: "-0.02em",
-            maxWidth: 580,
+            maxWidth: 600,
+            margin: "0 auto 16px",
+          }}>
+            Dos operadores que han estado donde tú estás.
+          </h2>
+          <p style={{
+            fontFamily: "Inter, sans-serif",
+            fontSize: "1.05rem",
+            lineHeight: 1.75,
+            color: `${NAVY}70`,
+            maxWidth: 540,
             margin: "0 auto",
           }}>
-            Dos perfiles complementarios para ordenar estrategia y ejecución
-          </h2>
+            No somos consultores de diapositivas. Hemos implementado estos sistemas desde adentro, con equipos reales, en empresas como la tuya.
+          </p>
         </motion.div>
 
-        <motion.div
-          initial="hidden"
-          animate={inView ? "show" : "hidden"}
-          variants={{ hidden: {}, show: { transition: { staggerChildren: 0.15 } } }}
-          style={{
-            display: "grid",
-            gridTemplateColumns: "1fr 1fr",
-            gap: 24,
-          }}
-          className="founders-grid"
-        >
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 28 }} className="founders-grid">
           {founders.map((f, i) => (
             <motion.div
-              key={i}
-              variants={{ hidden: { opacity: 0, y: 28 }, show: { opacity: 1, y: 0, transition: { duration: 0.55 } } }}
-              whileHover={{ y: -4, boxShadow: "0 20px 48px rgba(10,29,61,0.12)" }}
+              key={f.name}
+              initial={{ opacity: 0, y: 32 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ delay: 0.2 + i * 0.15, duration: 0.6 }}
+              whileHover={{ y: -6, boxShadow: `0 32px 64px rgba(10,29,61,0.12)` }}
               data-testid={`founder-card-${i}`}
               style={{
                 background: "#fff",
                 borderRadius: 28,
-                padding: "36px 32px",
-                border: "1px solid #E5E7EB",
-                boxShadow: "0 2px 12px rgba(10,29,61,0.05)",
-                transition: "box-shadow 0.2s",
+                overflow: "hidden",
+                border: "1.5px solid #E8ECF0",
+                boxShadow: "0 4px 16px rgba(10,29,61,0.05)",
+                transition: "all 0.3s ease",
               }}
             >
+              {/* Top accent bar */}
               <div style={{
-                width: 72,
-                height: 72,
-                borderRadius: "50%",
-                background: `linear-gradient(135deg, ${f.accent}20, ${f.accent}40)`,
-                border: `2px solid ${f.accent}30`,
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                marginBottom: 24,
-              }}>
-                <span style={{
-                  fontFamily: "Manrope, sans-serif",
-                  fontWeight: 800,
-                  fontSize: 22,
-                  color: f.accent,
+                height: 5,
+                background: `linear-gradient(90deg, ${f.accent}, ${f.accent}60)`,
+              }} />
+
+              <div style={{ padding: "36px 32px" }}>
+                {/* Avatar + name */}
+                <div style={{ display: "flex", alignItems: "center", gap: 18, marginBottom: 24 }}>
+                  <motion.div
+                    whileHover={{ scale: 1.05 }}
+                    style={{
+                      width: 68,
+                      height: 68,
+                      borderRadius: "50%",
+                      background: `linear-gradient(135deg, ${f.accent}20, ${f.accent}40)`,
+                      border: `2.5px solid ${f.accent}35`,
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      fontFamily: "Manrope, sans-serif",
+                      fontWeight: 800,
+                      fontSize: 22,
+                      color: f.accent,
+                      flexShrink: 0,
+                    }}
+                  >
+                    {f.avatar}
+                  </motion.div>
+                  <div>
+                    <h3 style={{
+                      fontFamily: "Manrope, sans-serif",
+                      fontWeight: 800,
+                      fontSize: 16,
+                      color: NAVY,
+                      margin: "0 0 4px",
+                      lineHeight: 1.25,
+                    }}>
+                      {f.name}
+                    </h3>
+                    <p style={{
+                      fontFamily: "Inter, sans-serif",
+                      fontSize: 12,
+                      color: f.accent,
+                      margin: 0,
+                      fontWeight: 600,
+                      lineHeight: 1.4,
+                    }}>
+                      {f.role}
+                    </p>
+                  </div>
+                </div>
+
+                {/* Bio */}
+                <p style={{
+                  fontFamily: "Inter, sans-serif",
+                  fontSize: 14,
+                  lineHeight: 1.75,
+                  color: `${NAVY}75`,
+                  marginBottom: 24,
                 }}>
-                  {f.initials}
-                </span>
-              </div>
+                  {f.bio}
+                </p>
 
-              <h3 style={{
-                fontFamily: "Manrope, sans-serif",
-                fontWeight: 800,
-                fontSize: 20,
-                color: NAVY,
-                marginBottom: 6,
-              }}>
-                {f.name}
-              </h3>
+                {/* Highlights */}
+                <div style={{ display: "flex", flexWrap: "wrap", gap: 8, marginBottom: 28 }}>
+                  {f.highlights.map((h) => (
+                    <span key={h} style={{
+                      fontFamily: "Manrope, sans-serif",
+                      fontWeight: 700,
+                      fontSize: 11,
+                      color: f.accent,
+                      background: `${f.accent}10`,
+                      border: `1px solid ${f.accent}20`,
+                      borderRadius: 100,
+                      padding: "5px 12px",
+                      letterSpacing: "0.04em",
+                    }}>
+                      {h}
+                    </span>
+                  ))}
+                </div>
 
-              <p style={{
-                fontFamily: "Manrope, sans-serif",
-                fontWeight: 600,
-                fontSize: 12,
-                letterSpacing: "0.08em",
-                textTransform: "uppercase",
-                color: f.accent,
-                marginBottom: 16,
-              }}>
-                {f.role}
-              </p>
-
-              <p style={{
-                fontFamily: "Inter, sans-serif",
-                fontSize: 14.5,
-                lineHeight: 1.75,
-                color: `${NAVY}80`,
-                marginBottom: 28,
-              }}>
-                {f.bio}
-              </p>
-
-              <div style={{ display: "flex", gap: 10 }}>
-                <motion.a
-                  href={f.linkedin}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.97 }}
-                  data-testid={`founder-linkedin-${i}`}
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    gap: 8,
-                    background: `${NAVY}08`,
-                    color: NAVY,
-                    borderRadius: 100,
-                    padding: "9px 18px",
-                    fontFamily: "Manrope, sans-serif",
-                    fontWeight: 700,
-                    fontSize: 13,
-                    textDecoration: "none",
-                    border: `1px solid ${NAVY}15`,
-                  }}
-                >
-                  <Linkedin size={15} />
-                  LinkedIn
-                </motion.a>
-                <motion.a
-                  href={f.whatsapp}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.97 }}
-                  data-testid={`founder-whatsapp-${i}`}
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    gap: 8,
-                    background: `${GREEN}15`,
-                    color: GREEN,
-                    borderRadius: 100,
-                    padding: "9px 18px",
-                    fontFamily: "Manrope, sans-serif",
-                    fontWeight: 700,
-                    fontSize: 13,
-                    textDecoration: "none",
-                    border: `1px solid ${GREEN}25`,
-                  }}
-                >
-                  <MessageCircle size={15} />
-                  WhatsApp
-                </motion.a>
+                {/* CTA links */}
+                <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
+                  <motion.a
+                    href={f.linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    whileHover={{ scale: 1.04 }}
+                    whileTap={{ scale: 0.97 }}
+                    data-testid={`founder-linkedin-${i}`}
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      gap: 8,
+                      background: NAVY,
+                      color: "#fff",
+                      borderRadius: 100,
+                      padding: "10px 18px",
+                      textDecoration: "none",
+                      fontFamily: "Manrope, sans-serif",
+                      fontWeight: 700,
+                      fontSize: 13,
+                    }}
+                  >
+                    <Linkedin size={14} />
+                    LinkedIn
+                  </motion.a>
+                  <motion.a
+                    href={f.whatsapp}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    whileHover={{ scale: 1.04 }}
+                    whileTap={{ scale: 0.97 }}
+                    data-testid={`founder-whatsapp-${i}`}
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      gap: 8,
+                      background: `${f.accent}15`,
+                      color: f.accent,
+                      border: `1.5px solid ${f.accent}30`,
+                      borderRadius: 100,
+                      padding: "10px 18px",
+                      textDecoration: "none",
+                      fontFamily: "Manrope, sans-serif",
+                      fontWeight: 700,
+                      fontSize: 13,
+                    }}
+                  >
+                    <MessageCircle size={14} />
+                    WhatsApp
+                  </motion.a>
+                </div>
               </div>
             </motion.div>
           ))}
-        </motion.div>
+        </div>
 
+        {/* "Why trust us" strip */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ delay: 0.6, duration: 0.5 }}
+          transition={{ delay: 0.7, duration: 0.5 }}
           style={{
+            marginTop: 48,
+            background: `linear-gradient(135deg, ${NAVY}, #1a3563)`,
+            borderRadius: 24,
+            padding: "32px 40px",
+            display: "grid",
+            gridTemplateColumns: "repeat(3, 1fr)",
+            gap: 24,
             textAlign: "center",
-            marginTop: 40,
-            padding: "28px 32px",
-            background: "#F1F3F6",
-            borderRadius: 20,
-            border: "1px solid #E5E7EB",
           }}
+          className="trust-strip"
         >
-          <p style={{
-            fontFamily: "Manrope, sans-serif",
-            fontWeight: 600,
-            fontSize: "1rem",
-            color: NAVY,
-            margin: 0,
-            lineHeight: 1.7,
-          }}>
-            Combinamos visión estratégica y ejecución operativa para ayudar a que las empresas no solo sepan qué cambiar, sino cómo hacerlo realidad.
-          </p>
+          {[
+            { stat: "Boutique", label: "Trabajo directo con los fundadores. Sin juniors." },
+            { stat: "Implementación", label: "No reportes. Acompañamos hasta que funciona." },
+            { stat: "Sin plantillas", label: "Todo diseñado para tu empresa, no para la general." },
+          ].map((t, i) => (
+            <div key={i}>
+              <p style={{
+                fontFamily: "Manrope, sans-serif",
+                fontWeight: 800,
+                fontSize: 15,
+                color: i === 0 ? GREEN : i === 1 ? PURPLE : "#F59E0B",
+                margin: "0 0 6px",
+              }}>
+                {t.stat}
+              </p>
+              <p style={{
+                fontFamily: "Inter, sans-serif",
+                fontSize: 13,
+                color: "rgba(255,255,255,0.6)",
+                margin: 0,
+                lineHeight: 1.5,
+              }}>
+                {t.label}
+              </p>
+            </div>
+          ))}
         </motion.div>
       </div>
 
       <style>{`
-        @media (max-width: 640px) {
+        @media (max-width: 768px) {
           .founders-grid { grid-template-columns: 1fr !important; }
+          .trust-strip { grid-template-columns: 1fr !important; gap: 20px !important; }
         }
       `}</style>
     </section>

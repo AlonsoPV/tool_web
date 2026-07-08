@@ -1,20 +1,9 @@
 import { motion } from "framer-motion";
 import { Linkedin, MessageCircle } from "lucide-react";
+import logoImg from "@assets/ChatGPT_Image_8_jul_2026,_02_23_41_p.m._1783542231097.png";
 
 const NAVY = "#0A1D3D";
 const GREEN = "#10B981";
-
-function ToolLogoWhite() {
-  return (
-    <svg width="72" height="28" viewBox="0 0 80 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <text x="0" y="25" fontFamily="Manrope, sans-serif" fontWeight="800" fontSize="26" fill="white" letterSpacing="-1">T</text>
-      <circle cx="36" cy="16" r="11" stroke="white" strokeWidth="3.5" fill="none" strokeOpacity="0.9"/>
-      <circle cx="54" cy="16" r="11" stroke="white" strokeWidth="3.5" fill="none" strokeOpacity="0.9"/>
-      <circle cx="45" cy="16" r="4" fill={GREEN}/>
-      <text x="64" y="25" fontFamily="Manrope, sans-serif" fontWeight="800" fontSize="26" fill="white" letterSpacing="-1">L</text>
-    </svg>
-  );
-}
 
 const navLinks = [
   { label: "Metodología", href: "#metodologia" },
@@ -37,7 +26,11 @@ export default function Footer() {
         <div style={{ display: "grid", gridTemplateColumns: "1.5fr 1fr 1fr", gap: 48, marginBottom: 56 }} className="footer-grid">
           <div>
             <div style={{ marginBottom: 20 }}>
-              <ToolLogoWhite />
+              <img
+                src={logoImg}
+                alt="TOOL"
+                style={{ height: 40, width: "auto", display: "block", filter: "brightness(0) invert(1)" }}
+              />
             </div>
             <p style={{
               fontFamily: "Inter, sans-serif",

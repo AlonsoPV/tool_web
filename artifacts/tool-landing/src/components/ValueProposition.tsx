@@ -1,59 +1,48 @@
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import { GitBranch, Users, Calendar, BarChart2, RefreshCw, Settings } from "lucide-react";
 
 const NAVY = "#0A1D3D";
 const GREEN = "#10B981";
 const PURPLE = "#7C4DFF";
 
-const values = [
+const props = [
   {
-    icon: GitBranch,
-    title: "Procesos claros",
-    desc: "Mapeamos cómo opera tu empresa hoy y diseñamos el flujo ideal para reducir fricción, duplicidad y retrabajo.",
+    icon: "🗺",
+    title: "Estrategia que se convierte en acción",
+    body: "No planeamos para el archivo. Cada sesión termina con compromisos claros, responsables asignados y fechas definidas.",
     accent: GREEN,
   },
   {
-    icon: Users,
-    title: "Accountability",
-    desc: "Definimos responsables, prioridades, fechas compromiso y reglas de seguimiento claras.",
+    icon: "⚙️",
+    title: "Procesos que el equipo realmente adopta",
+    body: "Documentamos, entrenamos y acompañamos. Un proceso que vive solo en PDF no cuenta.",
     accent: PURPLE,
   },
   {
-    icon: Calendar,
-    title: "Cadencia de gestión",
-    desc: "Instalamos dailies, reuniones semanales, revisiones directivas y retrospectivas trimestrales.",
+    icon: "📐",
+    title: "KPIs que miden lo que importa",
+    body: "Definimos los indicadores correctos por área — sin métricas de vanidad ni tableros que nadie consulta.",
+    accent: "#F59E0B",
+  },
+  {
+    icon: "🔁",
+    title: "Cadencia que genera hábito",
+    body: "Instalamos ritmos de gestión: juntas con agenda, revisiones semanales, reportes que se leen.",
+    accent: "#EF4444",
+  },
+  {
+    icon: "👁",
+    title: "Visibilidad en tiempo real",
+    body: "Tableros operativos conectados a tus herramientas actuales para tomar decisiones con información, no con intuición.",
     accent: GREEN,
   },
   {
-    icon: BarChart2,
-    title: "KPIs y dashboards",
-    desc: "Convertimos la operación en indicadores visibles para tomar mejores decisiones.",
-    accent: PURPLE,
-  },
-  {
-    icon: RefreshCw,
-    title: "Mejora continua",
-    desc: "Identificamos causas raíz, patrones recurrentes y acciones correctivas sostenibles.",
-    accent: GREEN,
-  },
-  {
-    icon: Settings,
-    title: "Herramientas operativas",
-    desc: "Integramos tableros y sistemas para que el modelo no dependa de memoria, Excel o WhatsApp.",
+    icon: "🤝",
+    title: "Accountability sin micromanagement",
+    body: "El sistema hace el seguimiento, no el dueño. Tu equipo rinde cuentas porque el proceso lo exige.",
     accent: PURPLE,
   },
 ];
-
-const container = {
-  hidden: {},
-  show: { transition: { staggerChildren: 0.1 } },
-};
-
-const item = {
-  hidden: { opacity: 0, y: 28 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.5 } },
-};
 
 export default function ValueProposition() {
   const ref = useRef(null);
@@ -62,15 +51,16 @@ export default function ValueProposition() {
   return (
     <section id="propuesta" style={{ background: "#fff", padding: "96px 24px" }}>
       <div style={{ maxWidth: 1100, margin: "0 auto" }} ref={ref}>
+
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          style={{ textAlign: "center", marginBottom: 56 }}
+          style={{ textAlign: "center", marginBottom: 64 }}
         >
           <span style={{
             display: "inline-block",
-            background: `${GREEN}15`,
+            background: `${GREEN}12`,
             color: GREEN,
             borderRadius: 100,
             padding: "6px 16px",
@@ -81,93 +71,152 @@ export default function ValueProposition() {
             marginBottom: 20,
             fontFamily: "Manrope, sans-serif",
           }}>
-            Propuesta de valor
+            Lo que construimos contigo
           </span>
           <h2 style={{
             fontFamily: "Manrope, sans-serif",
             fontWeight: 800,
-            fontSize: "clamp(1.75rem, 3.5vw, 2.5rem)",
+            fontSize: "clamp(1.75rem, 3.5vw, 2.6rem)",
             color: NAVY,
-            lineHeight: 1.2,
+            lineHeight: 1.15,
             letterSpacing: "-0.02em",
-            maxWidth: 600,
-            margin: "0 auto 16px",
+            maxWidth: 640,
+            margin: "0 auto 20px",
           }}>
-            No entregamos solo diagnósticos. Instalamos sistemas de ejecución.
+            No estrategia en papel. Un sistema que opera solo.
           </h2>
           <p style={{
             fontFamily: "Inter, sans-serif",
             fontSize: "1.05rem",
-            lineHeight: 1.7,
-            color: `${NAVY}90`,
-            maxWidth: 600,
+            lineHeight: 1.75,
+            color: `${NAVY}70`,
+            maxWidth: 560,
             margin: "0 auto",
           }}>
-            Nuestro trabajo combina consultoría estratégica, reingeniería de procesos y acompañamiento táctico para que cada hallazgo se convierta en una acción con dueño, fecha, métrica y seguimiento.
+            Entregamos las piezas que hacen que la empresa funcione con claridad, sin depender de heroísmos individuales.
           </p>
         </motion.div>
 
         <motion.div
-          variants={container}
           initial="hidden"
           animate={inView ? "show" : "hidden"}
+          variants={{ hidden: {}, show: { transition: { staggerChildren: 0.1 } } }}
           style={{
             display: "grid",
             gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
             gap: 20,
           }}
         >
-          {values.map((v, i) => {
-            const Icon = v.icon;
-            return (
+          {props.map((p, i) => (
+            <motion.div
+              key={i}
+              variants={{
+                hidden: { opacity: 0, y: 24 },
+                show: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+              }}
+              whileHover={{
+                y: -6,
+                boxShadow: `0 24px 48px rgba(10,29,61,0.10)`,
+                borderColor: `${p.accent}40`,
+              }}
+              data-testid={`value-card-${i}`}
+              style={{
+                background: "#FAFAFA",
+                borderRadius: 24,
+                padding: "32px 28px",
+                border: "1.5px solid #E8ECF0",
+                boxShadow: "0 2px 8px rgba(10,29,61,0.04)",
+                transition: "all 0.25s ease",
+                cursor: "default",
+                position: "relative",
+                overflow: "hidden",
+              }}
+            >
               <motion.div
-                key={i}
-                variants={item}
-                whileHover={{ y: -4, boxShadow: "0 20px 48px rgba(10,29,61,0.12)" }}
-                data-testid={`value-card-${i}`}
+                initial={{ scaleX: 0 }}
+                animate={inView ? { scaleX: 1 } : {}}
+                transition={{ delay: 0.3 + i * 0.08, duration: 0.5 }}
                 style={{
-                  background: "#fff",
-                  borderRadius: 24,
-                  padding: "32px 28px",
-                  border: "1px solid #E5E7EB",
-                  boxShadow: "0 2px 8px rgba(10,29,61,0.04)",
-                  transition: "box-shadow 0.2s",
-                  cursor: "default",
+                  position: "absolute",
+                  top: 0,
+                  left: 0,
+                  right: 0,
+                  height: 3,
+                  background: p.accent,
+                  transformOrigin: "left",
                 }}
-              >
-                <div style={{
-                  width: 48,
-                  height: 48,
-                  borderRadius: 14,
-                  background: `${v.accent}15`,
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  marginBottom: 20,
-                }}>
-                  <Icon size={22} color={v.accent} strokeWidth={2} />
-                </div>
-                <h3 style={{
-                  fontFamily: "Manrope, sans-serif",
-                  fontWeight: 800,
-                  fontSize: 18,
-                  color: NAVY,
-                  marginBottom: 10,
-                }}>
-                  {v.title}
-                </h3>
-                <p style={{
-                  fontFamily: "Inter, sans-serif",
-                  fontSize: 14,
-                  lineHeight: 1.7,
-                  color: `${NAVY}80`,
-                  margin: 0,
-                }}>
-                  {v.desc}
-                </p>
-              </motion.div>
-            );
-          })}
+              />
+
+              <div style={{
+                width: 52,
+                height: 52,
+                borderRadius: 16,
+                background: `${p.accent}12`,
+                border: `1px solid ${p.accent}20`,
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                fontSize: 24,
+                marginBottom: 20,
+              }}>
+                {p.icon}
+              </div>
+
+              <h3 style={{
+                fontFamily: "Manrope, sans-serif",
+                fontWeight: 700,
+                fontSize: 16,
+                color: NAVY,
+                marginBottom: 10,
+                lineHeight: 1.35,
+              }}>
+                {p.title}
+              </h3>
+
+              <p style={{
+                fontFamily: "Inter, sans-serif",
+                fontSize: 14,
+                lineHeight: 1.7,
+                color: `${NAVY}70`,
+                margin: 0,
+              }}>
+                {p.body}
+              </p>
+            </motion.div>
+          ))}
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ delay: 0.8, duration: 0.5 }}
+          style={{
+            marginTop: 56,
+            textAlign: "center",
+            padding: "36px",
+            background: `linear-gradient(135deg, ${GREEN}08, ${PURPLE}08)`,
+            borderRadius: 24,
+            border: `1px solid ${GREEN}18`,
+          }}
+        >
+          <p style={{
+            fontFamily: "Manrope, sans-serif",
+            fontWeight: 700,
+            fontSize: "clamp(1rem, 2vw, 1.2rem)",
+            color: NAVY,
+            lineHeight: 1.6,
+            margin: "0 0 8px",
+          }}>
+            "La meta no es que el equipo trabaje más.<br />Es que trabaje en lo correcto, y lo sepa."
+          </p>
+          <p style={{
+            fontFamily: "Inter, sans-serif",
+            fontSize: 13,
+            color: `${NAVY}50`,
+            margin: 0,
+          }}>
+            — Principio TOOL
+          </p>
         </motion.div>
       </div>
     </section>

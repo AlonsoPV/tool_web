@@ -1,4 +1,6 @@
-import { motion } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
+import logoImg from "@assets/ChatGPT_Image_8_jul_2026,_02_23_41_p.m._1783542231097.png";
 
 const NAVY = "#0A1D3D";
 const GREEN = "#10B981";
@@ -9,228 +11,358 @@ function scrollTo(href: string) {
   if (el) el.scrollIntoView({ behavior: "smooth" });
 }
 
-function AbstractSystem() {
+function useCounter(target: number, duration: number, started: boolean) {
+  const [count, setCount] = useState(0);
+  useEffect(() => {
+    if (!started) return;
+    let startTime: number | null = null;
+    const step = (timestamp: number) => {
+      if (!startTime) startTime = timestamp;
+      const progress = Math.min((timestamp - startTime) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      setCount(Math.floor(eased * target));
+      if (progress < 1) requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+  }, [started, target, duration]);
+  return count;
+}
+
+function StatCounter({ value, suffix, label, delay }: { value: number; suffix: string; label: string; delay: number }) {
+  const [started, setStarted] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+  const count = useCounter(value, 1800, started);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) { setStarted(true); observer.disconnect(); }
+    }, { threshold: 0.4 });
+    if (ref.current) observer.observe(ref.current);
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <motion.svg
-      width="100%"
-      height="100%"
-      viewBox="0 0 480 400"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      animate={{ y: [0, -10, 0] }}
-      transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay, duration: 0.5 }}
+      style={{ textAlign: "center" }}
     >
-      <circle cx="240" cy="200" r="120" stroke={`${NAVY}15`} strokeWidth="1" fill="none"/>
-      <circle cx="240" cy="200" r="80" stroke={`${NAVY}10`} strokeWidth="1" fill="none"/>
+      <div style={{
+        fontFamily: "Manrope, sans-serif",
+        fontWeight: 800,
+        fontSize: "clamp(2rem, 3.5vw, 2.75rem)",
+        color: NAVY,
+        lineHeight: 1,
+        marginBottom: 6,
+      }}>
+        {count}{suffix}
+      </div>
+      <div style={{
+        fontFamily: "Inter, sans-serif",
+        fontSize: 13,
+        color: `${NAVY}70`,
+        lineHeight: 1.4,
+        maxWidth: 120,
+        margin: "0 auto",
+      }}>
+        {label}
+      </div>
+    </motion.div>
+  );
+}
 
-      <circle cx="240" cy="80" r="28" fill="#fff" stroke={`${NAVY}20`} strokeWidth="1.5"/>
-      <circle cx="240" cy="80" r="16" fill={`${GREEN}20`} stroke={GREEN} strokeWidth="1.5"/>
+function FlowDiagram() {
+  return (
+    <div style={{ position: "relative", width: "100%", height: "100%" }}>
+      <svg width="100%" height="100%" viewBox="0 0 460 400" fill="none" style={{ overflow: "visible" }}>
+        <defs>
+          <linearGradient id="lineGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stopColor={GREEN} stopOpacity="0.6" />
+            <stop offset="100%" stopColor={PURPLE} stopOpacity="0.6" />
+          </linearGradient>
+          <filter id="glow">
+            <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+            <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+          </filter>
+        </defs>
 
-      <circle cx="380" cy="200" r="28" fill="#fff" stroke={`${NAVY}20`} strokeWidth="1.5"/>
-      <circle cx="380" cy="200" r="16" fill={`${PURPLE}20`} stroke={PURPLE} strokeWidth="1.5"/>
+        {/* Outer orbit ring */}
+        <motion.circle cx="230" cy="195" r="140"
+          stroke={`${NAVY}08`} strokeWidth="1.5" fill="none" strokeDasharray="6 6"
+          animate={{ rotate: 360 }} transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
+          style={{ transformOrigin: "230px 195px" }}
+        />
+        <motion.circle cx="230" cy="195" r="95"
+          stroke={`${NAVY}06`} strokeWidth="1" fill="none" strokeDasharray="3 8"
+          animate={{ rotate: -360 }} transition={{ duration: 28, repeat: Infinity, ease: "linear" }}
+          style={{ transformOrigin: "230px 195px" }}
+        />
 
-      <circle cx="240" cy="320" r="28" fill="#fff" stroke={`${NAVY}20`} strokeWidth="1.5"/>
-      <circle cx="240" cy="320" r="16" fill={`${GREEN}20`} stroke={GREEN} strokeWidth="1.5"/>
+        {/* Connection lines with animated dash */}
+        {[
+          [230, 55, 370, 195], [230, 55, 90, 195], [370, 195, 230, 335],
+          [90, 195, 230, 335], [230, 55, 230, 195], [230, 195, 230, 335],
+          [90, 195, 370, 195],
+        ].map(([x1, y1, x2, y2], i) => (
+          <motion.line key={i} x1={x1} y1={y1} x2={x2} y2={y2}
+            stroke={i % 2 === 0 ? `${GREEN}35` : `${PURPLE}25`}
+            strokeWidth="1.5"
+            strokeDasharray="5 5"
+            animate={{ strokeDashoffset: [0, -20] }}
+            transition={{ duration: 2 + i * 0.3, repeat: Infinity, ease: "linear" }}
+          />
+        ))}
 
-      <circle cx="100" cy="200" r="28" fill="#fff" stroke={`${NAVY}20`} strokeWidth="1.5"/>
-      <circle cx="100" cy="200" r="16" fill={`${PURPLE}20`} stroke={PURPLE} strokeWidth="1.5"/>
+        {/* Top node - DIAGNÓSTICO */}
+        <motion.circle cx="230" cy="55" r="40" fill="white" stroke={GREEN} strokeWidth="2"
+          style={{ filter: "drop-shadow(0 4px 16px rgba(16,185,129,0.2))" }}
+          animate={{ y: [0, -5, 0] }} transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+        />
+        <circle cx="230" cy="55" r="26" fill={`${GREEN}15`} />
+        <circle cx="230" cy="55" r="10" fill={GREEN} filter="url(#glow)" />
+        <text x="230" y="105" textAnchor="middle" fill={NAVY} fontFamily="Manrope, sans-serif" fontWeight="700" fontSize="10" opacity="0.7">DIAGNÓSTICO</text>
 
-      <circle cx="320" cy="120" r="20" fill="#fff" stroke={`${NAVY}15`} strokeWidth="1.5"/>
-      <circle cx="320" cy="120" r="10" fill={`${NAVY}15`} stroke={`${NAVY}30`} strokeWidth="1.5"/>
+        {/* Right node - SISTEMA */}
+        <motion.circle cx="370" cy="195" r="36" fill="white" stroke={PURPLE} strokeWidth="2"
+          style={{ filter: "drop-shadow(0 4px 16px rgba(124,77,255,0.2))" }}
+          animate={{ y: [0, 5, 0] }} transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+        />
+        <circle cx="370" cy="195" r="22" fill={`${PURPLE}15`} />
+        <circle cx="370" cy="195" r="9" fill={PURPLE} filter="url(#glow)" />
+        <text x="370" y="242" textAnchor="middle" fill={NAVY} fontFamily="Manrope, sans-serif" fontWeight="700" fontSize="10" opacity="0.7">SISTEMA</text>
 
-      <circle cx="160" cy="120" r="20" fill="#fff" stroke={`${NAVY}15`} strokeWidth="1.5"/>
-      <circle cx="160" cy="120" r="10" fill={`${PURPLE}20`} stroke={`${PURPLE}50`} strokeWidth="1.5"/>
+        {/* Bottom node - EJECUCIÓN */}
+        <motion.circle cx="230" cy="335" r="40" fill="white" stroke={GREEN} strokeWidth="2"
+          style={{ filter: "drop-shadow(0 4px 16px rgba(16,185,129,0.2))" }}
+          animate={{ y: [0, 5, 0] }} transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+        />
+        <circle cx="230" cy="335" r="26" fill={`${GREEN}15`} />
+        <circle cx="230" cy="335" r="10" fill={GREEN} filter="url(#glow)" />
+        <text x="230" y="385" textAnchor="middle" fill={NAVY} fontFamily="Manrope, sans-serif" fontWeight="700" fontSize="10" opacity="0.7">EJECUCIÓN</text>
 
-      <circle cx="320" cy="280" r="20" fill="#fff" stroke={`${NAVY}15`} strokeWidth="1.5"/>
-      <circle cx="320" cy="280" r="10" fill={`${GREEN}20`} stroke={`${GREEN}50`} strokeWidth="1.5"/>
+        {/* Left node - ESTRATEGIA */}
+        <motion.circle cx="90" cy="195" r="36" fill="white" stroke={PURPLE} strokeWidth="2"
+          style={{ filter: "drop-shadow(0 4px 16px rgba(124,77,255,0.2))" }}
+          animate={{ y: [0, -5, 0] }} transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+        />
+        <circle cx="90" cy="195" r="22" fill={`${PURPLE}15`} />
+        <circle cx="90" cy="195" r="9" fill={PURPLE} filter="url(#glow)" />
+        <text x="90" y="242" textAnchor="middle" fill={NAVY} fontFamily="Manrope, sans-serif" fontWeight="700" fontSize="10" opacity="0.7">ESTRATEGIA</text>
 
-      <circle cx="160" cy="280" r="20" fill="#fff" stroke={`${NAVY}15`} strokeWidth="1.5"/>
-      <circle cx="160" cy="280" r="10" fill={`${NAVY}15`} stroke={`${NAVY}30`} strokeWidth="1.5"/>
+        {/* Center - TOOL logo concept */}
+        <circle cx="230" cy="195" r="44" fill="white" stroke={`${NAVY}15`} strokeWidth="2"
+          style={{ filter: "drop-shadow(0 8px 24px rgba(10,29,61,0.1))" }}
+        />
+        <circle cx="218" cy="195" r="16" fill="none" stroke={NAVY} strokeWidth="3" />
+        <circle cx="242" cy="195" r="16" fill="none" stroke={NAVY} strokeWidth="3" />
+        <circle cx="230" cy="195" r="5" fill={GREEN} filter="url(#glow)" />
 
-      <line x1="240" y1="108" x2="320" y2="120" stroke={`${NAVY}20`} strokeWidth="1.5"/>
-      <line x1="240" y1="108" x2="160" y2="120" stroke={`${NAVY}20`} strokeWidth="1.5"/>
-      <line x1="240" y1="292" x2="320" y2="280" stroke={`${NAVY}20`} strokeWidth="1.5"/>
-      <line x1="240" y1="292" x2="160" y2="280" stroke={`${NAVY}20`} strokeWidth="1.5"/>
-      <line x1="352" y1="200" x2="340" y2="120" stroke={`${NAVY}20`} strokeWidth="1.5"/>
-      <line x1="352" y1="200" x2="340" y2="280" stroke={`${NAVY}20`} strokeWidth="1.5"/>
-      <line x1="128" y1="200" x2="140" y2="120" stroke={`${NAVY}20`} strokeWidth="1.5"/>
-      <line x1="128" y1="200" x2="140" y2="280" stroke={`${NAVY}20`} strokeWidth="1.5"/>
-
-      <circle cx="240" cy="200" r="36" fill="#fff" stroke={`${NAVY}15`} strokeWidth="2"/>
-      <circle cx="240" cy="200" r="22" fill={`${NAVY}08`} stroke={NAVY} strokeWidth="2"/>
-      <circle cx="233" cy="200" r="10" fill={`${GREEN}30`} stroke={GREEN} strokeWidth="1.5"/>
-      <circle cx="247" cy="200" r="10" fill={`${PURPLE}30`} stroke={PURPLE} strokeWidth="1.5"/>
-
-      <motion.circle
-        cx="240"
-        cy="80"
-        r="5"
-        fill={GREEN}
-        animate={{ opacity: [0.4, 1, 0.4] }}
-        transition={{ duration: 2, repeat: Infinity, ease: "easeInOut", delay: 0 }}
-      />
-      <motion.circle
-        cx="380"
-        cy="200"
-        r="5"
-        fill={PURPLE}
-        animate={{ opacity: [0.4, 1, 0.4] }}
-        transition={{ duration: 2, repeat: Infinity, ease: "easeInOut", delay: 0.7 }}
-      />
-      <motion.circle
-        cx="240"
-        cy="320"
-        r="5"
-        fill={GREEN}
-        animate={{ opacity: [0.4, 1, 0.4] }}
-        transition={{ duration: 2, repeat: Infinity, ease: "easeInOut", delay: 1.4 }}
-      />
-      <motion.circle
-        cx="100"
-        cy="200"
-        r="5"
-        fill={PURPLE}
-        animate={{ opacity: [0.4, 1, 0.4] }}
-        transition={{ duration: 2, repeat: Infinity, ease: "easeInOut", delay: 2.1 }}
-      />
-    </motion.svg>
+        {/* Pulsing rings on center */}
+        <motion.circle cx="230" cy="195" r="58"
+          fill="none" stroke={GREEN} strokeWidth="1.5"
+          animate={{ opacity: [0.5, 0, 0.5], scale: [0.8, 1.3, 0.8] }}
+          transition={{ duration: 3, repeat: Infinity, ease: "easeOut" }}
+          style={{ transformOrigin: "230px 195px" }}
+        />
+      </svg>
+    </div>
   );
 }
 
 export default function Hero() {
+  const containerRef = useRef(null);
+  const { scrollYProgress } = useScroll({ target: containerRef, offset: ["start start", "end start"] });
+  const y = useTransform(scrollYProgress, [0, 1], [0, 80]);
+  const opacity = useTransform(scrollYProgress, [0, 0.6], [1, 0]);
+
   return (
-    <section
-      id="hero"
-      style={{
-        minHeight: "100vh",
-        background: "#fff",
-        display: "flex",
-        alignItems: "center",
-        paddingTop: 80,
-      }}
-    >
-      <div style={{ maxWidth: 1200, margin: "0 auto", padding: "60px 24px", width: "100%" }}>
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 64, alignItems: "center" }} className="hero-grid">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, ease: "easeOut" }}
-          >
-            <motion.span
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 }}
-              style={{
-                display: "inline-block",
-                background: `${GREEN}15`,
-                color: GREEN,
-                borderRadius: 100,
-                padding: "6px 16px",
-                fontSize: 11,
-                fontWeight: 700,
-                letterSpacing: "0.12em",
-                textTransform: "uppercase",
-                marginBottom: 24,
-                fontFamily: "Manrope, sans-serif",
-              }}
+    <section id="hero" ref={containerRef} style={{ minHeight: "100vh", background: "#fff", display: "flex", flexDirection: "column", position: "relative", overflow: "hidden" }}>
+      {/* Ambient background orbs */}
+      <div style={{ position: "absolute", top: -80, right: -80, width: 500, height: 500, borderRadius: "50%", background: `radial-gradient(circle, ${GREEN}06 0%, transparent 70%)`, pointerEvents: "none" }} />
+      <div style={{ position: "absolute", bottom: 60, left: -100, width: 400, height: 400, borderRadius: "50%", background: `radial-gradient(circle, ${PURPLE}05 0%, transparent 70%)`, pointerEvents: "none" }} />
+
+      <motion.div style={{ y, opacity, flex: 1, display: "flex", alignItems: "center", paddingTop: 80 }}>
+        <div style={{ maxWidth: 1200, margin: "0 auto", padding: "60px 24px 40px", width: "100%" }}>
+          <div className="hero-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 64, alignItems: "center" }}>
+
+            {/* Left — copy */}
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.7, ease: "easeOut" }}
             >
-              Consultoría Boutique · Estrategia + Ejecución
-            </motion.span>
-
-            <h1 style={{
-              fontFamily: "Manrope, sans-serif",
-              fontWeight: 800,
-              fontSize: "clamp(2rem, 4vw, 3.25rem)",
-              lineHeight: 1.1,
-              color: NAVY,
-              marginBottom: 24,
-              letterSpacing: "-0.02em",
-            }}>
-              Convertimos el esfuerzo de tu equipo en un sistema de ejecución medible.
-            </h1>
-
-            <p style={{
-              fontFamily: "Inter, sans-serif",
-              fontSize: "clamp(1rem, 1.5vw, 1.125rem)",
-              lineHeight: 1.7,
-              color: `${NAVY}b0`,
-              marginBottom: 16,
-            }}>
-              Diseñamos e implementamos modelos comerciales y operativos para que tu empresa venda mejor, opere con mayor claridad y deje de depender del seguimiento informal.
-            </p>
-
-            <p style={{
-              fontFamily: "Manrope, sans-serif",
-              fontWeight: 600,
-              fontSize: 13,
-              letterSpacing: "0.06em",
-              color: `${NAVY}70`,
-              marginBottom: 40,
-              textTransform: "uppercase",
-            }}>
-              Procesos · KPIs · Cadencia · Tableros · Accountability
-            </p>
-
-            <div style={{ display: "flex", gap: 16, flexWrap: "wrap" }}>
-              <motion.button
-                whileHover={{ scale: 1.03, boxShadow: "0 8px 24px rgba(16,185,129,0.4)" }}
-                whileTap={{ scale: 0.98 }}
-                onClick={() => window.open("https://wa.me/5255514520477", "_blank")}
-                data-testid="hero-primary-cta"
-                style={{
-                  background: GREEN,
-                  color: "#fff",
-                  border: "none",
-                  borderRadius: 100,
-                  padding: "14px 28px",
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.15 }}
+                style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 28 }}
+              >
+                <motion.div
+                  animate={{ scale: [1, 1.15, 1] }}
+                  transition={{ duration: 2, repeat: Infinity }}
+                  style={{ width: 8, height: 8, borderRadius: "50%", background: GREEN }}
+                />
+                <span style={{
                   fontFamily: "Manrope, sans-serif",
                   fontWeight: 700,
-                  fontSize: 15,
-                  cursor: "pointer",
-                  boxShadow: "0 4px 16px rgba(16,185,129,0.3)",
-                }}
-              >
-                Agenda una sesión de diagnóstico
-              </motion.button>
+                  fontSize: 12,
+                  letterSpacing: "0.12em",
+                  textTransform: "uppercase",
+                  color: `${NAVY}70`,
+                }}>
+                  Consultoría Boutique · Estrategia + Ejecución
+                </span>
+              </motion.div>
 
-              <motion.button
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                onClick={() => scrollTo("#metodologia")}
-                data-testid="hero-secondary-cta"
-                style={{
-                  background: "transparent",
-                  color: NAVY,
-                  border: `2px solid ${NAVY}`,
-                  borderRadius: 100,
-                  padding: "14px 28px",
-                  fontFamily: "Manrope, sans-serif",
-                  fontWeight: 700,
-                  fontSize: 15,
-                  cursor: "pointer",
-                }}
-              >
-                Ver metodología
-              </motion.button>
-            </div>
-          </motion.div>
+              <h1 style={{
+                fontFamily: "Manrope, sans-serif",
+                fontWeight: 800,
+                fontSize: "clamp(2.1rem, 4vw, 3.4rem)",
+                lineHeight: 1.08,
+                color: NAVY,
+                marginBottom: 24,
+                letterSpacing: "-0.025em",
+              }}>
+                Convertimos el esfuerzo de tu equipo en un{" "}
+                <span style={{
+                  background: `linear-gradient(135deg, ${GREEN}, ${PURPLE})`,
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                }}>
+                  sistema de ejecución medible.
+                </span>
+              </h1>
 
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
-            style={{ height: 400, display: "flex", alignItems: "center", justifyContent: "center" }}
-            className="hero-visual"
-          >
-            <AbstractSystem />
-          </motion.div>
+              <p style={{
+                fontFamily: "Inter, sans-serif",
+                fontSize: "clamp(0.95rem, 1.4vw, 1.1rem)",
+                lineHeight: 1.75,
+                color: `${NAVY}85`,
+                marginBottom: 14,
+              }}>
+                Diseñamos e implementamos modelos comerciales y operativos para que tu empresa venda mejor, opere con mayor claridad y deje de depender del seguimiento informal.
+              </p>
+
+              <div style={{
+                display: "flex",
+                gap: 8,
+                flexWrap: "wrap",
+                marginBottom: 40,
+              }}>
+                {["Procesos", "KPIs", "Cadencia", "Tableros", "Accountability"].map((tag) => (
+                  <span key={tag} style={{
+                    fontFamily: "Manrope, sans-serif",
+                    fontWeight: 700,
+                    fontSize: 11,
+                    letterSpacing: "0.07em",
+                    textTransform: "uppercase",
+                    color: `${NAVY}60`,
+                    background: `${NAVY}07`,
+                    borderRadius: 100,
+                    padding: "5px 12px",
+                    border: `1px solid ${NAVY}10`,
+                  }}>
+                    {tag}
+                  </span>
+                ))}
+              </div>
+
+              <div style={{ display: "flex", gap: 14, flexWrap: "wrap" }}>
+                <motion.button
+                  whileHover={{ scale: 1.03, boxShadow: "0 12px 32px rgba(16,185,129,0.45)" }}
+                  whileTap={{ scale: 0.97 }}
+                  onClick={() => window.open("https://wa.me/5255514520477", "_blank")}
+                  data-testid="hero-primary-cta"
+                  style={{
+                    background: GREEN,
+                    color: "#fff",
+                    border: "none",
+                    borderRadius: 100,
+                    padding: "15px 30px",
+                    fontFamily: "Manrope, sans-serif",
+                    fontWeight: 700,
+                    fontSize: 15,
+                    cursor: "pointer",
+                    boxShadow: "0 6px 20px rgba(16,185,129,0.35)",
+                  }}
+                >
+                  Agenda una sesión de diagnóstico
+                </motion.button>
+
+                <motion.button
+                  whileHover={{ scale: 1.02, background: `${NAVY}08` }}
+                  whileTap={{ scale: 0.98 }}
+                  onClick={() => scrollTo("#metodologia")}
+                  data-testid="hero-secondary-cta"
+                  style={{
+                    background: "transparent",
+                    color: NAVY,
+                    border: `2px solid ${NAVY}25`,
+                    borderRadius: 100,
+                    padding: "15px 30px",
+                    fontFamily: "Manrope, sans-serif",
+                    fontWeight: 700,
+                    fontSize: 15,
+                    cursor: "pointer",
+                    transition: "background 0.2s",
+                  }}
+                >
+                  Ver metodología
+                </motion.button>
+              </div>
+            </motion.div>
+
+            {/* Right — animated diagram */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.85 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.9, delay: 0.25, ease: "easeOut" }}
+              style={{ height: 420 }}
+              className="hero-visual"
+            >
+              <FlowDiagram />
+            </motion.div>
+          </div>
         </div>
-      </div>
+      </motion.div>
+
+      {/* Stats bar */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.7, duration: 0.6 }}
+        style={{
+          borderTop: "1px solid #E5E7EB",
+          background: "#FAFAFA",
+          padding: "32px 24px",
+        }}
+      >
+        <div style={{ maxWidth: 1200, margin: "0 auto" }}>
+          <div style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(4, 1fr)",
+            gap: 24,
+            alignItems: "center",
+          }} className="stats-bar">
+            <StatCounter value={40} suffix="%" label="Reducción promedio en reuniones improductivas" delay={0.8} />
+            <div style={{ width: 1, height: 48, background: "#E5E7EB", margin: "0 auto" }} className="stat-divider" />
+            <StatCounter value={3} suffix="x" label="Mayor visibilidad de operación en 90 días" delay={0.9} />
+            <div style={{ width: 1, height: 48, background: "#E5E7EB", margin: "0 auto" }} className="stat-divider" />
+            <StatCounter value={100} suffix="%" label="Proyectos con implementación acompañada" delay={1.0} />
+            <div style={{ width: 1, height: 48, background: "#E5E7EB", margin: "0 auto" }} className="stat-divider" />
+            <StatCounter value={30} suffix=" días" label="Para tener tu primer sistema operativo activo" delay={1.1} />
+          </div>
+        </div>
+      </motion.div>
 
       <style>{`
         @media (max-width: 768px) {
           .hero-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
-          .hero-visual { height: 260px !important; }
+          .hero-visual { height: 280px !important; }
+          .stats-bar { grid-template-columns: repeat(2, 1fr) !important; }
+          .stat-divider { display: none; }
         }
       `}</style>
     </section>
