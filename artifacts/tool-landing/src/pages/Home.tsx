@@ -6,7 +6,6 @@ import Methodology from "@/components/Methodology";
 import Services from "@/components/Services";
 import Process from "@/components/Process";
 import WhoIsFor from "@/components/WhoIsFor";
-import Symptoms from "@/components/Symptoms";
 import Founders from "@/components/Founders";
 import UseCases from "@/components/UseCases";
 import FinalCTA from "@/components/FinalCTA";
@@ -24,7 +23,6 @@ export default function Home() {
         <Services />
         <Process />
         <WhoIsFor />
-        <Symptoms />
         <Founders />
         <UseCases />
         <FinalCTA />
