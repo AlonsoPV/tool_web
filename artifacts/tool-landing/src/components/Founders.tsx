@@ -12,7 +12,7 @@ const founders = [
   {
     name: "Abraham Castillo Harris",
     role: "Co-fundador · Estrategia Comercial y Procesos",
-    bio: "Especialista en diseñar y escalar sistemas comerciales para empresas en crecimiento. Ha liderado transformaciones en equipos de ventas, implementación de CRMs y construcción de playbooks de go-to-market para empresas de 10 a 200+ personas.",
+    bio: "Managing Director en ZAIAH | Creando Abundancia Para Más Personas en Bienes Raíces | Desarrollando el potencial humano de más jóvenes",
     highlights: ["Estrategia GTM", "Diseño comercial", "Implementación de CRM", "Equipos de ventas"],
     linkedin: "https://www.linkedin.com/in/abraham-harris-7b91951b1/",
     whatsapp: "https://wa.me/5255514520477",
@@ -22,7 +22,7 @@ const founders = [
   {
     name: "Alonso Pérez Vázquez",
     role: "Co-fundador · Operaciones y Ejecución",
-    bio: "Experto en operaciones, mejora de procesos y ejecución organizacional. Ha implementado sistemas de gestión basados en EOS, Lean y Scaling Up en empresas de consumo, tecnología y servicios profesionales.",
+    bio: "Estrategia digital, procesos y tecnología para marcas que quieren crecer con claridad | Founder de eMotion Sites",
     highlights: ["EOS / Scaling Up", "Lean Operations", "OKRs & KPIs", "Gestión del cambio"],
     linkedin: "https://www.linkedin.com/in/alonsoperezvazquez/",
     whatsapp: "https://wa.me/5255119811499",
