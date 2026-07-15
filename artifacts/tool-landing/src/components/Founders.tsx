@@ -1,6 +1,8 @@
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { Linkedin, MessageCircle } from "lucide-react";
+import abrahamPhoto from "@assets/AbrahamCastillo_1784129559789.png";
+import alonsoPhoto from "@assets/AlonsoPerez_1784129559791.png";
 
 const NAVY = "#0A1D3D";
 const GREEN = "#10B981";
@@ -15,7 +17,7 @@ const founders = [
     linkedin: "https://www.linkedin.com/in/abraham-harris-7b91951b1/",
     whatsapp: "https://wa.me/5255514520477",
     accent: GREEN,
-    avatar: "AH",
+    photo: abrahamPhoto,
   },
   {
     name: "Alonso Pérez Vázquez",
@@ -25,7 +27,7 @@ const founders = [
     linkedin: "https://www.linkedin.com/in/alonsoperezvazquez/",
     whatsapp: "https://wa.me/5255119811499",
     accent: PURPLE,
-    avatar: "AP",
+    photo: alonsoPhoto,
   },
 ];
 
@@ -115,19 +117,16 @@ export default function Founders() {
                       width: 68,
                       height: 68,
                       borderRadius: "50%",
-                      background: `linear-gradient(135deg, ${f.accent}20, ${f.accent}40)`,
                       border: `2.5px solid ${f.accent}35`,
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      fontFamily: "Manrope, sans-serif",
-                      fontWeight: 800,
-                      fontSize: 22,
-                      color: f.accent,
                       flexShrink: 0,
+                      overflow: "hidden",
                     }}
                   >
-                    {f.avatar}
+                    <img
+                      src={f.photo}
+                      alt={f.name}
+                      style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "top center" }}
+                    />
                   </motion.div>
                   <div>
                     <h3 style={{
