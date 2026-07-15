@@ -130,7 +130,7 @@ export default function Methodology() {
                 }}
               >
                 <span>{f.icon}</span>
-                {f.label}
+                <span translate="no">{f.label}</span>
               </motion.button>
             ))}
           </div>
