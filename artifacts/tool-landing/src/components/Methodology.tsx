@@ -171,7 +171,7 @@ export default function Methodology() {
                     {frameworks[active].icon}
                   </div>
                   <div>
-                    <p style={{
+                    <p translate="no" style={{
                       fontFamily: "Manrope, sans-serif",
                       fontWeight: 700,
                       fontSize: 11,
