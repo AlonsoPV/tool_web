@@ -251,6 +251,22 @@
   h1, h2, h3, h4, h5, h6, .font-heading {
     font-family: 'Manrope', sans-serif;
   }
+
+  .landing-section {
+    padding: 96px 24px;
+  }
+
+  @media (max-width: 768px) {
+    .landing-section {
+      padding: 72px 20px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .landing-section {
+      padding: 56px 16px;
+    }
+  }
 }
 
 /**

@@ -6,18 +6,16 @@ import logoImg from "@assets/ChatGPT_Image_8_jul_2026,_02_23_41_p.m._17835422310
 const NAVY = "#0A1D3D";
 const GREEN = "#10B981";
 
-const navLinks = [
-  { label: "Metodología", href: "#metodologia" },
-  { label: "Qué hacemos", href: "#servicios" },
-  { label: "Proceso", href: "#proceso" },
-  { label: "Para quién", href: "#para-quien" },
-  { label: "Quiénes somos", href: "#fundadores" },
-];
+import { DEMO_URL, scrollTo } from "@/lib/landing-theme";
 
-function scrollTo(href: string) {
-  const el = document.querySelector(href);
-  if (el) el.scrollIntoView({ behavior: "smooth" });
-}
+const navLinks = [
+  { label: "Problema", href: "#problema" },
+  { label: "Transformación", href: "#transformacion" },
+  { label: "Playing to Win", href: "#playing-to-win" },
+  { label: "OKRs", href: "#okrs" },
+  { label: "Sistema", href: "#sistema" },
+  { label: "Impacto", href: "#impacto" },
+];
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -29,84 +27,70 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handler);
   }, []);
 
+  useEffect(() => {
+    if (!menuOpen) return;
+    const onResize = () => {
+      if (window.innerWidth >= 1024) setMenuOpen(false);
+    };
+    window.addEventListener("resize", onResize);
+    return () => window.removeEventListener("resize", onResize);
+  }, [menuOpen]);
+
   return (
     <>
       <motion.nav
         initial={{ y: -10, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.4 }}
+        className="site-nav"
         style={{
-          position: "fixed",
-          top: 0,
-          left: 0,
-          right: 0,
-          zIndex: 50,
           background: scrolled ? "rgba(255,255,255,0.97)" : "#fff",
           backdropFilter: scrolled ? "blur(12px)" : "none",
           borderBottom: scrolled ? "1px solid #E5E7EB" : "1px solid transparent",
-          transition: "all 0.3s ease",
         }}
       >
-        <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 24px", display: "flex", alignItems: "center", justifyContent: "space-between", height: 68 }}>
-          <button onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} style={{ background: "none", border: "none", cursor: "pointer", padding: 0 }}>
-            <img
-              src={logoImg}
-              alt="TOOL"
-              style={{ height: 36, width: "auto", display: "block" }}
-            />
+        <div className="site-nav-inner">
+          <button
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            className="site-nav-logo"
+            aria-label="TOOL — inicio"
+          >
+            <img src={logoImg} alt="TOOL" />
           </button>
 
-          <div className="hidden md:flex" style={{ alignItems: "center", gap: 32 }}>
-            {navLinks.map((link) => (
-              <button
-                key={link.href}
-                onClick={() => scrollTo(link.href)}
-                style={{
-                  background: "none",
-                  border: "none",
-                  cursor: "pointer",
-                  color: NAVY,
-                  fontSize: 14,
-                  fontWeight: 600,
-                  fontFamily: "Manrope, sans-serif",
-                  opacity: 0.75,
-                  transition: "opacity 0.2s",
-                  padding: 0,
-                }}
-                onMouseEnter={e => (e.currentTarget.style.opacity = "1")}
-                onMouseLeave={e => (e.currentTarget.style.opacity = "0.75")}
-                data-testid={`nav-link-${link.label.toLowerCase().replace(/\s/g, "-")}`}
-              >
-                {link.label}
-              </button>
-            ))}
-            <motion.button
+          <div className="site-nav-desktop">
+            <div className="site-nav-links">
+              {navLinks.map((link) => (
+                <button
+                  key={link.href}
+                  onClick={() => scrollTo(link.href)}
+                  className="site-nav-link"
+                  data-testid={`nav-link-${link.label.toLowerCase().replace(/\s/g, "-")}`}
+                >
+                  {link.label}
+                </button>
+              ))}
+            </div>
+            <motion.a
+              href={DEMO_URL}
+              target="_blank"
+              rel="noopener noreferrer"
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.98 }}
-              onClick={() => window.open("https://wa.me/5255514520477", "_blank")}
               data-testid="nav-cta-button"
-              style={{
-                background: GREEN,
-                color: "#fff",
-                border: "none",
-                borderRadius: 100,
-                padding: "10px 22px",
-                fontFamily: "Manrope, sans-serif",
-                fontWeight: 700,
-                fontSize: 14,
-                cursor: "pointer",
-                boxShadow: "0 4px 14px rgba(16,185,129,0.3)",
-              }}
+              className="site-nav-cta"
             >
-              Agendar diagnóstico
-            </motion.button>
+              Solicitar diagnóstico
+            </motion.a>
           </div>
 
           <button
-            className="md:hidden"
+            className="site-nav-burger"
             onClick={() => setMenuOpen(!menuOpen)}
-            style={{ background: "none", border: "none", cursor: "pointer", color: NAVY }}
+            style={{ color: NAVY }}
             data-testid="nav-mobile-menu-toggle"
+            aria-label={menuOpen ? "Cerrar menú" : "Abrir menú"}
+            aria-expanded={menuOpen}
           >
             {menuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
@@ -118,66 +102,193 @@ export default function Navbar() {
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
-              style={{ overflow: "hidden", background: "#fff", borderTop: "1px solid #E5E7EB" }}
+              className="site-nav-mobile"
             >
-              <div style={{ padding: "16px 24px", display: "flex", flexDirection: "column", gap: 4 }}>
+              <div className="site-nav-mobile-inner">
                 {navLinks.map((link) => (
                   <button
                     key={link.href}
                     onClick={() => { scrollTo(link.href); setMenuOpen(false); }}
-                    style={{
-                      background: "none",
-                      border: "none",
-                      cursor: "pointer",
-                      color: NAVY,
-                      fontSize: 15,
-                      fontWeight: 600,
-                      fontFamily: "Manrope, sans-serif",
-                      textAlign: "left",
-                      padding: "10px 0",
-                    }}
+                    className="site-nav-mobile-link"
                   >
                     {link.label}
                   </button>
                 ))}
+                <motion.a
+                  href={DEMO_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  whileTap={{ scale: 0.98 }}
+                  onClick={() => setMenuOpen(false)}
+                  data-testid="nav-cta-button-mobile"
+                  className="site-nav-cta site-nav-cta-mobile"
+                >
+                  Solicitar diagnóstico
+                </motion.a>
               </div>
             </motion.div>
           )}
         </AnimatePresence>
       </motion.nav>
 
-      <div
-        className="md:hidden"
-        style={{
-          position: "fixed",
-          bottom: 0,
-          left: 0,
-          right: 0,
-          zIndex: 50,
-          background: NAVY,
-          padding: "12px 24px",
-          paddingBottom: "max(12px, env(safe-area-inset-bottom))",
-        }}
-      >
-        <button
-          onClick={() => window.open("https://wa.me/5255514520477", "_blank")}
-          data-testid="mobile-sticky-cta"
-          style={{
-            width: "100%",
-            background: GREEN,
-            color: "#fff",
-            border: "none",
-            borderRadius: 100,
-            padding: "14px",
-            fontFamily: "Manrope, sans-serif",
-            fontWeight: 700,
-            fontSize: 15,
-            cursor: "pointer",
-          }}
-        >
-          Agendar diagnóstico
-        </button>
-      </div>
+      <style>{`
+        .site-nav {
+          position: fixed;
+          top: 0;
+          left: 0;
+          right: 0;
+          z-index: 50;
+          transition: background 0.3s ease, border-color 0.3s ease, backdrop-filter 0.3s ease;
+        }
+        .site-nav-inner {
+          max-width: 1200px;
+          margin: 0 auto;
+          padding: 0 24px;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          height: 68px;
+          gap: 24px;
+        }
+        .site-nav-logo {
+          background: none;
+          border: none;
+          cursor: pointer;
+          padding: 0;
+          flex-shrink: 0;
+        }
+        .site-nav-logo img {
+          height: 36px;
+          width: auto;
+          display: block;
+        }
+        .site-nav-desktop {
+          display: none;
+          align-items: center;
+          gap: 28px;
+          min-width: 0;
+        }
+        .site-nav-links {
+          display: flex;
+          align-items: center;
+          gap: 4px;
+          min-width: 0;
+        }
+        .site-nav-link {
+          background: none;
+          border: none;
+          cursor: pointer;
+          color: ${NAVY};
+          font-size: 13px;
+          font-weight: 600;
+          font-family: Manrope, sans-serif;
+          opacity: 0.72;
+          transition: opacity 0.2s, color 0.2s, background 0.2s;
+          padding: 8px 10px;
+          border-radius: 8px;
+          white-space: nowrap;
+          line-height: 1.2;
+        }
+        .site-nav-link:hover {
+          opacity: 1;
+          background: ${NAVY}08;
+        }
+        .site-nav-cta {
+          background: ${GREEN};
+          color: #fff;
+          border: none;
+          border-radius: 100px;
+          padding: 10px 18px;
+          font-family: Manrope, sans-serif;
+          font-weight: 700;
+          font-size: 13px;
+          cursor: pointer;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          text-decoration: none;
+          box-shadow: 0 4px 14px rgba(16,185,129,0.3);
+          white-space: nowrap;
+          flex-shrink: 0;
+        }
+        .site-nav-burger {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background: none;
+          border: none;
+          cursor: pointer;
+          padding: 6px;
+          margin-right: -6px;
+        }
+        .site-nav-mobile {
+          overflow: hidden;
+          background: #fff;
+          border-top: 1px solid #E5E7EB;
+        }
+        .site-nav-mobile-inner {
+          padding: 12px 24px 20px;
+          display: flex;
+          flex-direction: column;
+          gap: 2px;
+        }
+        .site-nav-mobile-link {
+          background: none;
+          border: none;
+          cursor: pointer;
+          color: ${NAVY};
+          font-size: 15px;
+          font-weight: 600;
+          font-family: Manrope, sans-serif;
+          text-align: left;
+          padding: 12px 0;
+        }
+        .site-nav-cta-mobile {
+          margin-top: 12px;
+          width: 100%;
+          padding: 12px 22px;
+          font-size: 14px;
+        }
+
+        @media (min-width: 1024px) {
+          .site-nav-desktop {
+            display: flex;
+          }
+          .site-nav-burger {
+            display: none;
+          }
+        }
+
+        @media (min-width: 1200px) {
+          .site-nav-desktop {
+            gap: 36px;
+          }
+          .site-nav-links {
+            gap: 2px;
+          }
+          .site-nav-link {
+            font-size: 14px;
+            padding: 8px 12px;
+          }
+          .site-nav-cta {
+            padding: 10px 22px;
+            font-size: 14px;
+          }
+        }
+
+        @media (max-width: 480px) {
+          .site-nav-inner {
+            padding: 0 16px;
+            height: 60px;
+          }
+          .site-nav-logo img {
+            height: 32px;
+          }
+          .site-nav-mobile-inner {
+            padding: 8px 16px 16px;
+          }
+        }
+      `}</style>
     </>
   );
 }

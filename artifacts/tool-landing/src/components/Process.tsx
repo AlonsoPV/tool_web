@@ -62,14 +62,15 @@ export default function Process() {
   const [active, setActive] = useState(0);
 
   return (
-    <section id="proceso" style={{ background: "#fff", padding: "96px 24px" }}>
+    <section id="proceso" className="process-section" style={{ background: "#fff" }}>
       <div style={{ maxWidth: 1100, margin: "0 auto" }} ref={ref}>
 
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          style={{ textAlign: "center", marginBottom: 56 }}
+          className="process-header"
+          style={{ textAlign: "center" }}
         >
           <span style={{
             display: "inline-block",
@@ -89,7 +90,7 @@ export default function Process() {
           <h2 style={{
             fontFamily: "Manrope, sans-serif",
             fontWeight: 800,
-            fontSize: "clamp(1.75rem, 3.5vw, 2.6rem)",
+            fontSize: "clamp(1.5rem, 4.5vw, 2.6rem)",
             color: NAVY,
             lineHeight: 1.15,
             letterSpacing: "-0.02em",
@@ -100,7 +101,7 @@ export default function Process() {
           </h2>
           <p style={{
             fontFamily: "Inter, sans-serif",
-            fontSize: "1.05rem",
+            fontSize: "clamp(0.95rem, 2.5vw, 1.05rem)",
             lineHeight: 1.75,
             color: `${NAVY}70`,
             maxWidth: 540,
@@ -110,41 +111,21 @@ export default function Process() {
           </p>
         </motion.div>
 
-        {/* Step selector */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ delay: 0.25 }}
         >
-          {/* Timeline connector */}
-          <div style={{ position: "relative", marginBottom: 32 }}>
-            <div style={{
-              display: "grid",
-              gridTemplateColumns: "1fr 1fr 1fr",
-              gap: 16,
-              position: "relative",
-            }} className="process-tabs">
-              {/* Connecting line */}
-              <div style={{
-                position: "absolute",
-                top: 28,
-                left: "16%",
-                right: "16%",
-                height: 2,
-                background: "#E5E7EB",
-                zIndex: 0,
-              }} />
+          <div className="process-tabs-wrap">
+            <div className="process-tabs">
+              <div className="process-tabs-line" aria-hidden="true" />
               <motion.div
-                style={{
-                  position: "absolute",
-                  top: 28,
-                  left: "16%",
-                  height: 2,
-                  background: `linear-gradient(90deg, ${GREEN}, ${PURPLE})`,
-                  zIndex: 1,
-                }}
+                className="process-tabs-progress"
                 animate={{ width: `${(active / 2) * 68}%` }}
                 transition={{ duration: 0.5, ease: "easeOut" }}
+                style={{
+                  background: `linear-gradient(90deg, ${GREEN}, ${PURPLE})`,
+                }}
               />
 
               {steps.map((s, i) => (
@@ -152,65 +133,31 @@ export default function Process() {
                   key={s.number}
                   onClick={() => setActive(i)}
                   data-testid={`process-step-${i}`}
-                  style={{
-                    background: "none",
-                    border: "none",
-                    cursor: "pointer",
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
-                    gap: 10,
-                    position: "relative",
-                    zIndex: 2,
-                    padding: "0 8px",
-                  }}
+                  className="process-tab"
                 >
                   <motion.div
+                    className="process-tab-dot"
                     animate={{
                       background: active >= i ? s.color : "#E5E7EB",
-                      scale: active === i ? 1.15 : 1,
+                      scale: active === i ? 1.1 : 1,
                       boxShadow: active === i ? `0 4px 16px ${s.color}40` : "none",
                     }}
                     transition={{ duration: 0.3 }}
                     style={{
-                      width: 56,
-                      height: 56,
-                      borderRadius: "50%",
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      fontSize: 22,
-                      color: "#fff",
                       border: `3px solid ${active >= i ? s.color : "#E5E7EB"}`,
                     }}
                   >
                     {active > i ? (
-                      <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                      <svg width="18" height="18" viewBox="0 0 20 20" fill="none">
                         <path d="M4 10l4 4 8-8" stroke="#fff" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
                       </svg>
                     ) : s.icon}
                   </motion.div>
                   <div style={{ textAlign: "center" }}>
-                    <p style={{
-                      fontFamily: "Manrope, sans-serif",
-                      fontWeight: 700,
-                      fontSize: 12,
-                      color: active >= i ? s.color : `${NAVY}40`,
-                      margin: "0 0 2px",
-                      transition: "color 0.3s",
-                      textTransform: "uppercase",
-                      letterSpacing: "0.08em",
-                    }}>
+                    <p className="process-tab-num" style={{ color: active >= i ? s.color : `${NAVY}40` }}>
                       {s.number}
                     </p>
-                    <p style={{
-                      fontFamily: "Manrope, sans-serif",
-                      fontWeight: 700,
-                      fontSize: 13,
-                      color: active === i ? NAVY : `${NAVY}55`,
-                      margin: 0,
-                      transition: "color 0.3s",
-                    }}>
+                    <p className="process-tab-label" style={{ color: active === i ? NAVY : `${NAVY}55` }}>
                       {s.label}
                     </p>
                   </div>
@@ -226,21 +173,15 @@ export default function Process() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.4 }}
+              className="process-panel"
               style={{
                 background: "#F7F9FC",
-                borderRadius: 28,
-                overflow: "hidden",
                 border: `2px solid ${steps[active].color}20`,
               }}
             >
-              <div style={{
-                display: "grid",
-                gridTemplateColumns: "1fr 1fr",
-                gap: 0,
-              }} className="process-content">
-                {/* Left */}
-                <div style={{ padding: "40px", borderRight: "1px solid #E5E7EB" }}>
-                  <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 20 }}>
+              <div className="process-content">
+                <div className="process-content-main">
+                  <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 16 }}>
                     <span style={{
                       display: "inline-block",
                       background: `${steps[active].color}15`,
@@ -259,19 +200,19 @@ export default function Process() {
                   <h3 style={{
                     fontFamily: "Manrope, sans-serif",
                     fontWeight: 800,
-                    fontSize: "clamp(1.1rem, 2vw, 1.35rem)",
+                    fontSize: "clamp(1.05rem, 3.2vw, 1.35rem)",
                     color: NAVY,
-                    marginBottom: 16,
+                    marginBottom: 14,
                     lineHeight: 1.3,
                   }}>
                     {steps[active].tagline}
                   </h3>
                   <p style={{
                     fontFamily: "Inter, sans-serif",
-                    fontSize: 15,
-                    lineHeight: 1.75,
+                    fontSize: "clamp(14px, 2.8vw, 15px)",
+                    lineHeight: 1.7,
                     color: `${NAVY}75`,
-                    marginBottom: 24,
+                    marginBottom: 20,
                   }}>
                     {steps[active].body}
                   </p>
@@ -279,7 +220,7 @@ export default function Process() {
                     background: `${steps[active].color}10`,
                     borderLeft: `3px solid ${steps[active].color}`,
                     borderRadius: "0 12px 12px 0",
-                    padding: "16px 20px",
+                    padding: "14px 16px",
                   }}>
                     <p style={{
                       fontFamily: "Manrope, sans-serif",
@@ -294,8 +235,7 @@ export default function Process() {
                   </div>
                 </div>
 
-                {/* Right — deliverables */}
-                <div style={{ padding: "40px" }}>
+                <div className="process-content-side">
                   <p style={{
                     fontFamily: "Manrope, sans-serif",
                     fontWeight: 700,
@@ -303,27 +243,18 @@ export default function Process() {
                     letterSpacing: "0.12em",
                     textTransform: "uppercase",
                     color: `${NAVY}50`,
-                    marginBottom: 20,
+                    marginBottom: 16,
                   }}>
                     Entregables
                   </p>
-                  <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+                  <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
                     {steps[active].deliverables.map((d, i) => (
                       <motion.div
                         key={d}
                         initial={{ opacity: 0, x: 20 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: i * 0.08 }}
-                        style={{
-                          display: "flex",
-                          alignItems: "center",
-                          gap: 14,
-                          background: "#fff",
-                          borderRadius: 14,
-                          padding: "16px 18px",
-                          border: "1px solid #E8ECF0",
-                          boxShadow: "0 2px 8px rgba(10,29,61,0.04)",
-                        }}
+                        className="process-deliverable"
                       >
                         <div style={{
                           width: 28,
@@ -357,26 +288,14 @@ export default function Process() {
                 </div>
               </div>
 
-              {/* Navigation */}
-              <div style={{
-                borderTop: "1px solid #E5E7EB",
-                padding: "20px 40px",
-                display: "flex",
-                justifyContent: "space-between",
-                alignItems: "center",
-                background: "#fff",
-              }}>
+              <div className="process-nav">
                 <button
                   onClick={() => setActive(Math.max(0, active - 1))}
                   disabled={active === 0}
+                  className="process-nav-btn"
                   style={{
                     background: "none",
                     border: "1px solid #E5E7EB",
-                    borderRadius: 100,
-                    padding: "8px 20px",
-                    fontFamily: "Manrope, sans-serif",
-                    fontWeight: 700,
-                    fontSize: 13,
                     color: active === 0 ? `${NAVY}30` : NAVY,
                     cursor: active === 0 ? "default" : "pointer",
                   }}
@@ -397,14 +316,10 @@ export default function Process() {
                 <button
                   onClick={() => setActive(Math.min(steps.length - 1, active + 1))}
                   disabled={active === steps.length - 1}
+                  className="process-nav-btn"
                   style={{
                     background: active < steps.length - 1 ? steps[active].color : "#E5E7EB",
                     border: "none",
-                    borderRadius: 100,
-                    padding: "8px 20px",
-                    fontFamily: "Manrope, sans-serif",
-                    fontWeight: 700,
-                    fontSize: 13,
                     color: "#fff",
                     cursor: active === steps.length - 1 ? "default" : "pointer",
                   }}
@@ -418,10 +333,200 @@ export default function Process() {
       </div>
 
       <style>{`
+        .process-section {
+          padding: 96px 24px;
+        }
+        .process-header {
+          margin-bottom: 56px;
+        }
+        .process-tabs-wrap {
+          position: relative;
+          margin-bottom: 28px;
+        }
+        .process-tabs {
+          display: grid;
+          grid-template-columns: 1fr 1fr 1fr;
+          gap: 12px;
+          position: relative;
+        }
+        .process-tabs-line {
+          position: absolute;
+          top: 24px;
+          left: 16%;
+          right: 16%;
+          height: 2px;
+          background: #E5E7EB;
+          z-index: 0;
+        }
+        .process-tabs-progress {
+          position: absolute;
+          top: 24px;
+          left: 16%;
+          height: 2px;
+          z-index: 1;
+        }
+        .process-tab {
+          background: none;
+          border: none;
+          cursor: pointer;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 8px;
+          position: relative;
+          z-index: 2;
+          padding: 0 4px;
+          min-width: 0;
+        }
+        .process-tab-dot {
+          width: 48px;
+          height: 48px;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 20px;
+          color: #fff;
+        }
+        .process-tab-num {
+          font-family: Manrope, sans-serif;
+          font-weight: 700;
+          font-size: 11px;
+          margin: 0 0 2px;
+          text-transform: uppercase;
+          letter-spacing: 0.08em;
+          transition: color 0.3s;
+        }
+        .process-tab-label {
+          font-family: Manrope, sans-serif;
+          font-weight: 700;
+          font-size: 12px;
+          margin: 0;
+          line-height: 1.25;
+          transition: color 0.3s;
+        }
+        .process-panel {
+          border-radius: 28px;
+          overflow: hidden;
+        }
+        .process-content {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 0;
+        }
+        .process-content-main {
+          padding: 40px;
+          border-right: 1px solid #E5E7EB;
+          min-width: 0;
+        }
+        .process-content-side {
+          padding: 40px;
+          min-width: 0;
+        }
+        .process-deliverable {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+          background: #fff;
+          border-radius: 14px;
+          padding: 14px 16px;
+          border: 1px solid #E8ECF0;
+          box-shadow: 0 2px 8px rgba(10,29,61,0.04);
+        }
+        .process-nav {
+          border-top: 1px solid #E5E7EB;
+          padding: 16px 40px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          background: #fff;
+          gap: 12px;
+        }
+        .process-nav-btn {
+          border-radius: 100px;
+          padding: 8px 18px;
+          font-family: Manrope, sans-serif;
+          font-weight: 700;
+          font-size: 13px;
+          white-space: nowrap;
+        }
+
+        @media (max-width: 900px) {
+          .process-content-main,
+          .process-content-side {
+            padding: 28px 24px;
+          }
+          .process-nav {
+            padding: 14px 24px;
+          }
+        }
+
         @media (max-width: 768px) {
-          .process-content { grid-template-columns: 1fr !important; }
-          .process-content > div:first-child { border-right: none !important; border-bottom: 1px solid #E5E7EB; }
-          .process-tabs > div:nth-child(2) { display: none; }
+          .process-section {
+            padding: 72px 20px;
+          }
+          .process-header {
+            margin-bottom: 40px;
+          }
+          .process-tabs-line,
+          .process-tabs-progress {
+            display: none;
+          }
+          .process-tab-dot {
+            width: 42px;
+            height: 42px;
+            font-size: 18px;
+          }
+          .process-tab-label {
+            font-size: 11px;
+          }
+          .process-content {
+            grid-template-columns: 1fr;
+          }
+          .process-content-main {
+            border-right: none;
+            border-bottom: 1px solid #E5E7EB;
+            padding: 24px 20px;
+          }
+          .process-content-side {
+            padding: 24px 20px;
+          }
+          .process-panel {
+            border-radius: 20px;
+          }
+          .process-nav {
+            padding: 14px 16px;
+          }
+          .process-nav-btn {
+            padding: 8px 14px;
+            font-size: 12px;
+          }
+        }
+
+        @media (max-width: 480px) {
+          .process-section {
+            padding: 56px 16px;
+          }
+          .process-header {
+            margin-bottom: 28px;
+          }
+          .process-tabs {
+            gap: 4px;
+          }
+          .process-tab-dot {
+            width: 38px;
+            height: 38px;
+            font-size: 16px;
+            border-width: 2px;
+          }
+          .process-content-main,
+          .process-content-side {
+            padding: 20px 16px;
+          }
+          .process-deliverable {
+            padding: 12px 14px;
+            border-radius: 12px;
+          }
         }
       `}</style>
     </section>

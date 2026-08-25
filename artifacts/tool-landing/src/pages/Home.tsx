@@ -1,13 +1,14 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
-import PainSection from "@/components/PainSection";
-import ValueProposition from "@/components/ValueProposition";
-import Methodology from "@/components/Methodology";
-import Services from "@/components/Services";
-import Process from "@/components/Process";
-import WhoIsFor from "@/components/WhoIsFor";
-import Founders from "@/components/Founders";
-import UseCases from "@/components/UseCases";
+import ProblemSection from "@/components/landing/ProblemSection";
+import TensionSection from "@/components/landing/TensionSection";
+import TransformationStory from "@/components/landing/TransformationStory";
+import PlayingToWin from "@/components/landing/PlayingToWin";
+import StrategyToOKRs from "@/components/landing/StrategyToOKRs";
+import CommercialSystem from "@/components/landing/CommercialSystem";
+import CultureChange from "@/components/landing/CultureChange";
+import PlatformModules from "@/components/landing/PlatformModules";
+import ImpactSection from "@/components/landing/ImpactSection";
 import FinalCTA from "@/components/FinalCTA";
 import Footer from "@/components/Footer";
 
@@ -17,14 +18,15 @@ export default function Home() {
       <Navbar />
       <main>
         <Hero />
-        <PainSection />
-        <ValueProposition />
-        <Methodology />
-        <Services />
-        <Process />
-        <WhoIsFor />
-        <Founders />
-        <UseCases />
+        <ProblemSection />
+        <TensionSection />
+        <TransformationStory />
+        <PlayingToWin />
+        <StrategyToOKRs />
+        <CommercialSystem />
+        <CultureChange />
+        <PlatformModules />
+        <ImpactSection />
         <FinalCTA />
       </main>
       <Footer />
