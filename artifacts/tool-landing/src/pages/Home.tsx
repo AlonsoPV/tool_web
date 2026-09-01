@@ -1,32 +1,32 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import ProblemSection from "@/components/landing/ProblemSection";
-import TensionSection from "@/components/landing/TensionSection";
-import TransformationStory from "@/components/landing/TransformationStory";
+import MissionSection from "@/components/landing/MissionSection";
 import PlayingToWin from "@/components/landing/PlayingToWin";
-import StrategyToOKRs from "@/components/landing/StrategyToOKRs";
-import CommercialSystem from "@/components/landing/CommercialSystem";
-import CultureChange from "@/components/landing/CultureChange";
-import PlatformModules from "@/components/landing/PlatformModules";
-import ImpactSection from "@/components/landing/ImpactSection";
+import MethodSection from "@/components/landing/MethodSection";
+import SolutionsSection from "@/components/landing/SolutionsSection";
+import SystemEcosystem from "@/components/landing/SystemEcosystem";
+import WhoIsFor from "@/components/WhoIsFor";
+import Founders from "@/components/Founders";
 import FinalCTA from "@/components/FinalCTA";
 import Footer from "@/components/Footer";
+import "@/styles/tool-redesign.css";
 
 export default function Home() {
   return (
-    <div style={{ fontFamily: "Manrope, Inter, sans-serif" }}>
+    <div className="tool-site">
+      <a className="skip-link" href="#main-content">Saltar al contenido</a>
       <Navbar />
-      <main>
+      <main id="main-content">
         <Hero />
         <ProblemSection />
-        <TensionSection />
-        <TransformationStory />
+        <MissionSection />
         <PlayingToWin />
-        <StrategyToOKRs />
-        <CommercialSystem />
-        <CultureChange />
-        <PlatformModules />
-        <ImpactSection />
+        <MethodSection />
+        <SolutionsSection />
+        <SystemEcosystem />
+        <WhoIsFor />
+        <Founders />
         <FinalCTA />
       </main>
       <Footer />

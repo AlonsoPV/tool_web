@@ -1,294 +1,114 @@
-import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { useEffect, useState } from "react";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { ChevronDown, Menu, X } from "lucide-react";
+import { useLocation } from "wouter";
 import logoImg from "@assets/ChatGPT_Image_8_jul_2026,_02_23_41_p.m._1783542231097.png";
-
-const NAVY = "#0A1D3D";
-const GREEN = "#10B981";
-
-import { DEMO_URL, scrollTo } from "@/lib/landing-theme";
-
-const navLinks = [
-  { label: "Problema", href: "#problema" },
-  { label: "Transformación", href: "#transformacion" },
-  { label: "Playing to Win", href: "#playing-to-win" },
-  { label: "OKRs", href: "#okrs" },
-  { label: "Sistema", href: "#sistema" },
-  { label: "Impacto", href: "#impacto" },
-];
+import { NAV_LINKS, scrollTo } from "@/lib/landing-theme";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false);
+  const [open, setOpen] = useState(false);
+  const [desktopMenu, setDesktopMenu] = useState<string | null>(null);
+  const [mobileMenu, setMobileMenu] = useState<string | null>(null);
+  const reduceMotion = useReducedMotion();
+  const [location, navigate] = useLocation();
 
   useEffect(() => {
-    const handler = () => setScrolled(window.scrollY > 20);
-    window.addEventListener("scroll", handler);
-    return () => window.removeEventListener("scroll", handler);
+    const onScroll = () => setScrolled(window.scrollY > 16);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   useEffect(() => {
-    if (!menuOpen) return;
-    const onResize = () => {
-      if (window.innerWidth >= 1024) setMenuOpen(false);
-    };
+    const onResize = () => window.innerWidth >= 1024 && setOpen(false);
     window.addEventListener("resize", onResize);
     return () => window.removeEventListener("resize", onResize);
-  }, [menuOpen]);
+  }, []);
+
+  useEffect(() => {
+    setDesktopMenu(null);
+    setMobileMenu(null);
+  }, [location]);
+
+  const goTo = (href: string) => {
+    const [path, hash] = href.split("#");
+    const targetPath = path || location;
+
+    if (targetPath !== location) {
+      navigate(href);
+      if (hash) window.setTimeout(() => scrollTo(`#${hash}`), 120);
+      else window.scrollTo({ top: 0, behavior: "smooth" });
+    } else if (hash) {
+      scrollTo(`#${hash}`);
+    } else {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    setOpen(false);
+    setDesktopMenu(null);
+    setMobileMenu(null);
+  };
+
+  const isActive = (href: string) => location === href.split("#")[0];
 
   return (
-    <>
-      <motion.nav
-        initial={{ y: -10, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.4 }}
-        className="site-nav"
-        style={{
-          background: scrolled ? "rgba(255,255,255,0.97)" : "#fff",
-          backdropFilter: scrolled ? "blur(12px)" : "none",
-          borderBottom: scrolled ? "1px solid #E5E7EB" : "1px solid transparent",
-        }}
-      >
-        <div className="site-nav-inner">
-          <button
-            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            className="site-nav-logo"
-            aria-label="TOOL — inicio"
-          >
-            <img src={logoImg} alt="TOOL" />
-          </button>
+    <nav className={`tool-nav${scrolled ? " is-scrolled" : ""}`} aria-label="Navegación principal">
+      <div className="tool-nav-inner">
+        <button className="tool-nav-logo" onClick={() => goTo("/")} aria-label="TOOL — inicio">
+          <img src={logoImg} alt="TOOL" />
+        </button>
 
-          <div className="site-nav-desktop">
-            <div className="site-nav-links">
-              {navLinks.map((link) => (
-                <button
-                  key={link.href}
-                  onClick={() => scrollTo(link.href)}
-                  className="site-nav-link"
-                  data-testid={`nav-link-${link.label.toLowerCase().replace(/\s/g, "-")}`}
-                >
-                  {link.label}
-                </button>
-              ))}
-            </div>
-            <motion.a
-              href={DEMO_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              whileHover={{ scale: 1.03 }}
-              whileTap={{ scale: 0.98 }}
-              data-testid="nav-cta-button"
-              className="site-nav-cta"
-            >
-              Solicitar diagnóstico
-            </motion.a>
+        <div className="tool-nav-desktop">
+          <div className="tool-nav-links">
+            {NAV_LINKS.map((link) => {
+              const hasChildren = "children" in link;
+              return (
+                <div className="tool-nav-item" key={link.href} onMouseEnter={() => hasChildren && setDesktopMenu(link.href)} onMouseLeave={() => setDesktopMenu(null)}>
+                  <button className={isActive(link.href) ? "is-active" : ""} onClick={() => goTo(link.href)} onFocus={() => hasChildren && setDesktopMenu(link.href)} aria-current={isActive(link.href) ? "page" : undefined} aria-expanded={hasChildren ? desktopMenu === link.href : undefined}>
+                    {link.label}{hasChildren && <ChevronDown size={13} />}
+                  </button>
+                  {hasChildren && (
+                    <AnimatePresence>
+                      {desktopMenu === link.href && (
+                        <motion.div className="tool-nav-dropdown" initial={reduceMotion ? false : { opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 4 }} transition={{ duration: .16 }}>
+                          <div className="tool-nav-dropdown-intro"><span>{link.label}</span><p>{link.intro}</p></div>
+                          {link.children.map((child, index) => <button key={child.href} onClick={() => goTo(child.href)}><span className="tool-nav-dropdown-number">0{index + 1}</span><span className="tool-nav-dropdown-copy"><strong>{child.label}</strong><small>{child.description}</small></span><span className="tool-nav-dropdown-arrow">→</span></button>)}
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  )}
+                </div>
+              );
+            })}
           </div>
-
-          <button
-            className="site-nav-burger"
-            onClick={() => setMenuOpen(!menuOpen)}
-            style={{ color: NAVY }}
-            data-testid="nav-mobile-menu-toggle"
-            aria-label={menuOpen ? "Cerrar menú" : "Abrir menú"}
-            aria-expanded={menuOpen}
-          >
-            {menuOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
+          <button className="tool-nav-cta" onClick={() => goTo("/contacto")} data-testid="nav-cta-button">Agendar diagnóstico</button>
         </div>
 
-        <AnimatePresence>
-          {menuOpen && (
-            <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: "auto" }}
-              exit={{ opacity: 0, height: 0 }}
-              className="site-nav-mobile"
-            >
-              <div className="site-nav-mobile-inner">
-                {navLinks.map((link) => (
-                  <button
-                    key={link.href}
-                    onClick={() => { scrollTo(link.href); setMenuOpen(false); }}
-                    className="site-nav-mobile-link"
-                  >
-                    {link.label}
-                  </button>
-                ))}
-                <motion.a
-                  href={DEMO_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  whileTap={{ scale: 0.98 }}
-                  onClick={() => setMenuOpen(false)}
-                  data-testid="nav-cta-button-mobile"
-                  className="site-nav-cta site-nav-cta-mobile"
-                >
-                  Solicitar diagnóstico
-                </motion.a>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </motion.nav>
+        <button className="tool-nav-toggle" onClick={() => setOpen((value) => !value)} aria-label={open ? "Cerrar menú" : "Abrir menú"} aria-expanded={open} aria-controls="mobile-navigation">
+          {open ? <X size={22} /> : <Menu size={22} />}
+        </button>
+      </div>
 
-      <style>{`
-        .site-nav {
-          position: fixed;
-          top: 0;
-          left: 0;
-          right: 0;
-          z-index: 50;
-          transition: background 0.3s ease, border-color 0.3s ease, backdrop-filter 0.3s ease;
-        }
-        .site-nav-inner {
-          max-width: 1200px;
-          margin: 0 auto;
-          padding: 0 24px;
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          height: 68px;
-          gap: 24px;
-        }
-        .site-nav-logo {
-          background: none;
-          border: none;
-          cursor: pointer;
-          padding: 0;
-          flex-shrink: 0;
-        }
-        .site-nav-logo img {
-          height: 36px;
-          width: auto;
-          display: block;
-        }
-        .site-nav-desktop {
-          display: none;
-          align-items: center;
-          gap: 28px;
-          min-width: 0;
-        }
-        .site-nav-links {
-          display: flex;
-          align-items: center;
-          gap: 4px;
-          min-width: 0;
-        }
-        .site-nav-link {
-          background: none;
-          border: none;
-          cursor: pointer;
-          color: ${NAVY};
-          font-size: 13px;
-          font-weight: 600;
-          font-family: Manrope, sans-serif;
-          opacity: 0.72;
-          transition: opacity 0.2s, color 0.2s, background 0.2s;
-          padding: 8px 10px;
-          border-radius: 8px;
-          white-space: nowrap;
-          line-height: 1.2;
-        }
-        .site-nav-link:hover {
-          opacity: 1;
-          background: ${NAVY}08;
-        }
-        .site-nav-cta {
-          background: ${GREEN};
-          color: #fff;
-          border: none;
-          border-radius: 100px;
-          padding: 10px 18px;
-          font-family: Manrope, sans-serif;
-          font-weight: 700;
-          font-size: 13px;
-          cursor: pointer;
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          text-decoration: none;
-          box-shadow: 0 4px 14px rgba(16,185,129,0.3);
-          white-space: nowrap;
-          flex-shrink: 0;
-        }
-        .site-nav-burger {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          background: none;
-          border: none;
-          cursor: pointer;
-          padding: 6px;
-          margin-right: -6px;
-        }
-        .site-nav-mobile {
-          overflow: hidden;
-          background: #fff;
-          border-top: 1px solid #E5E7EB;
-        }
-        .site-nav-mobile-inner {
-          padding: 12px 24px 20px;
-          display: flex;
-          flex-direction: column;
-          gap: 2px;
-        }
-        .site-nav-mobile-link {
-          background: none;
-          border: none;
-          cursor: pointer;
-          color: ${NAVY};
-          font-size: 15px;
-          font-weight: 600;
-          font-family: Manrope, sans-serif;
-          text-align: left;
-          padding: 12px 0;
-        }
-        .site-nav-cta-mobile {
-          margin-top: 12px;
-          width: 100%;
-          padding: 12px 22px;
-          font-size: 14px;
-        }
-
-        @media (min-width: 1024px) {
-          .site-nav-desktop {
-            display: flex;
-          }
-          .site-nav-burger {
-            display: none;
-          }
-        }
-
-        @media (min-width: 1200px) {
-          .site-nav-desktop {
-            gap: 36px;
-          }
-          .site-nav-links {
-            gap: 2px;
-          }
-          .site-nav-link {
-            font-size: 14px;
-            padding: 8px 12px;
-          }
-          .site-nav-cta {
-            padding: 10px 22px;
-            font-size: 14px;
-          }
-        }
-
-        @media (max-width: 480px) {
-          .site-nav-inner {
-            padding: 0 16px;
-            height: 60px;
-          }
-          .site-nav-logo img {
-            height: 32px;
-          }
-          .site-nav-mobile-inner {
-            padding: 8px 16px 16px;
-          }
-        }
-      `}</style>
-    </>
+      <AnimatePresence>
+        {open && (
+          <motion.div id="mobile-navigation" className="tool-nav-mobile" initial={reduceMotion ? false : { opacity: 0, height: 0 }} animate={{ opacity: 1, height: "auto" }} exit={{ opacity: 0, height: 0 }}>
+            {NAV_LINKS.map((link) => {
+              const hasChildren = "children" in link;
+              const expanded = mobileMenu === link.href;
+              return (
+                <div className="tool-nav-mobile-group" key={link.href}>
+                  <div className="tool-nav-mobile-row">
+                    <button className={isActive(link.href) ? "is-active" : ""} onClick={() => goTo(link.href)} aria-current={isActive(link.href) ? "page" : undefined}>{link.label}</button>
+                    {hasChildren && <button className="tool-nav-mobile-expand" onClick={() => setMobileMenu(expanded ? null : link.href)} aria-label={`${expanded ? "Cerrar" : "Abrir"} opciones de ${link.label}`} aria-expanded={expanded}><ChevronDown size={16} /></button>}
+                  </div>
+                  {hasChildren && expanded && <div className="tool-nav-mobile-children"><p>{link.intro}</p>{link.children.map((child) => <button key={child.href} onClick={() => goTo(child.href)}><strong>{child.label}</strong><small>{child.description}</small></button>)}</div>}
+                </div>
+              );
+            })}
+            <button className="tool-nav-mobile-cta" onClick={() => goTo("/contacto")} data-testid="nav-cta-button-mobile">Agendar diagnóstico</button>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </nav>
   );
 }

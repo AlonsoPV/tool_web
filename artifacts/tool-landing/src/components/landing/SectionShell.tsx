@@ -1,6 +1,6 @@
 import type { CSSProperties, ReactNode } from "react";
 import { useRef } from "react";
-import { motion, useInView } from "framer-motion";
+import { motion, useInView, useReducedMotion } from "framer-motion";
 import { fadeUp } from "@/lib/landing-theme";
 
 type SectionShellProps = {
@@ -22,6 +22,7 @@ export default function SectionShell({
 }: SectionShellProps) {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
+  const reduceMotion = useReducedMotion();
 
   return (
     <section
@@ -34,7 +35,7 @@ export default function SectionShell({
     >
       <motion.div
         ref={ref}
-        initial="hidden"
+        initial={reduceMotion ? false : "hidden"}
         animate={inView ? "show" : "hidden"}
         variants={fadeUp}
         style={{ maxWidth, margin: "0 auto" }}
