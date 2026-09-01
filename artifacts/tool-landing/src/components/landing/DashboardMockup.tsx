@@ -90,7 +90,7 @@ export default function DashboardMockup() {
               <div className="hero-stage-modal-head">
                 <div className="hero-stage-modal-identity">
                   <span><activeNode.icon size={20} /></span>
-                  <div><small>Ciclo TOOL</small><strong>{activeNode.number} / 04</strong></div>
+                  <strong>{activeNode.number} / 04</strong>
                 </div>
                 <div className="hero-stage-modal-progress" aria-label={`Etapa ${activeNode.number} de 04`}>
                   {nodes.map((node) => <span key={node.number} className={node.number === activeNode.number ? "is-active" : ""} />)}
@@ -99,17 +99,16 @@ export default function DashboardMockup() {
 
               <div className="hero-stage-modal-grid">
                 <div className="hero-stage-modal-narrative">
-                  <small className="hero-stage-modal-kicker">{activeNode.detail}</small>
                   <Dialog.Title>{activeNode.label}</Dialog.Title>
                   <Dialog.Description>{activeNode.description}</Dialog.Description>
                   <div className="hero-stage-modal-result">
-                    <span>Valor que permanece</span>
+                    <span>Resultado esperado</span>
                     <strong>{activeNode.result}</strong>
                   </div>
                 </div>
 
                 <div className="hero-stage-modal-deliverables">
-                  <span>Lo hacemos tangible en</span>
+                  <span>Qué construimos</span>
                   <ul>
                     {activeNode.deliverables.map((item) => <li key={item}><span><Check size={13} /></span>{item}</li>)}
                   </ul>
