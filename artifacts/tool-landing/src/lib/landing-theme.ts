@@ -26,6 +26,8 @@ export const NAV_LINKS = [
     intro: "Construimos las capacidades que convierten estrategia en ejecución.",
     children: [
       { label: "Lo que desarrollamos", description: "Las capacidades que deben funcionar juntas.", href: "/que-hacemos#capacidades" },
+      { label: "Cómo definimos el rumbo", description: "Pilares, Estrella Polar, objetivos y OKRs conectados.", href: "/que-hacemos#pilares-y-objetivos" },
+      { label: "Cómo ganamos tracción", description: "La intención EOS aplicada al sistema operativo.", href: "/que-hacemos#disciplina-operativa" },
       { label: "Dónde podemos empezar", description: "Una necesidad concreta, una visión completa.", href: "/que-hacemos#soluciones" },
       { label: "Cómo lo construimos", description: "Del diagnóstico a la mejora continua.", href: "/que-hacemos#proceso" },
     ],

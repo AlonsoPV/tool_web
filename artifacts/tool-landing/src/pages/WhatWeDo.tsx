@@ -1,5 +1,5 @@
 import { Link } from "wouter";
-import { ArrowRight, BarChart3, Bot, Check, Compass, Gauge, Layers3, MonitorCog, Route, Users, Workflow } from "lucide-react";
+import { ArrowRight, BarChart3, Bot, Check, CircleAlert, Compass, Flag, Gauge, Layers3, MonitorCog, Network, Route, Target, TrendingUp, Users, Workflow } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import FinalCTA from "@/components/FinalCTA";
@@ -15,7 +15,7 @@ const capabilities = [
     number: "01",
     title: "Estrategia y foco",
     copy: "Convertimos ambición en elecciones: dónde jugar, cómo ganar y qué capacidades priorizar.",
-    items: ["Playing to Win", "Propuesta de valor", "Prioridades", "OKRs"],
+    items: ["Playing to Win", "Pilares", "North Star", "OKRs"],
   },
   {
     className: "wwd-module-operations",
@@ -52,7 +52,7 @@ const capabilities = [
 ];
 
 const solutions = [
-  { icon: Route, title: "Estrategia y diagnóstico", copy: "Para alinear decisiones y saber qué mover primero.", detail: "Cascada de elecciones, brechas operativas y roadmap 30/60/90." },
+  { icon: Route, title: "Estrategia y diagnóstico", copy: "Para alinear decisiones y saber qué mover primero.", detail: "Cascada de elecciones, pilares estratégicos, North Star, objetivos y roadmap 30/60/90." },
   { icon: Workflow, title: "Sistema operativo interno", copy: "Para equipos que necesitan claridad y menos fricción.", detail: "Procesos, responsables, reuniones, KPIs y tableros de seguimiento." },
   { icon: Layers3, title: "Sistema comercial digital", copy: "Para recuperar seguimiento y visibilidad comercial.", detail: "Propuesta de valor, pipeline, CRM, WhatsApp y automatizaciones." },
   { icon: Bot, title: "IA y capacidades digitales", copy: "Para llevar tecnología útil al trabajo cotidiano.", detail: "Talleres, prompts, agentes, automatizaciones y playbooks de adopción." },
@@ -63,6 +63,46 @@ const process = [
   { number: "02", title: "Diseño", copy: "Definimos el sistema objetivo, las prioridades y el roadmap viable." },
   { number: "03", title: "Implementación", copy: "Construimos con el equipo, probamos y ajustamos en la operación real." },
   { number: "04", title: "Optimización", copy: "Medimos adopción y resultados para sostener la mejora continua." },
+];
+
+const strategicObjectivePath = [
+  {
+    number: "01",
+    icon: Flag,
+    title: "Pilares estratégicos",
+    copy: "Definen los temas que orientan decisiones y prioridades.",
+    label: "Dirección",
+  },
+  {
+    number: "02",
+    icon: Target,
+    title: "Estrella Polar",
+    copy: "Concentra a la empresa en el valor que debe hacer crecer.",
+    label: "Foco común",
+  },
+  {
+    number: "03",
+    icon: Network,
+    title: "Objetivos y OKRs",
+    copy: "Traduce la dirección en resultados claros para cada equipo.",
+    label: "Alineación",
+  },
+  {
+    number: "04",
+    icon: TrendingUp,
+    title: "Sistema de medición",
+    copy: "Conecta métricas, responsables y revisiones para corregir a tiempo.",
+    label: "Progreso visible",
+  },
+];
+
+const eosComponents = [
+  { icon: Compass, title: "Visión" },
+  { icon: Users, title: "Personas" },
+  { icon: BarChart3, title: "Datos" },
+  { icon: CircleAlert, title: "Problemas" },
+  { icon: Workflow, title: "Procesos" },
+  { icon: Gauge, title: "Tracción" },
 ];
 
 export default function WhatWeDo() {
@@ -93,8 +133,8 @@ export default function WhatWeDo() {
 
         <SectionShell id="capacidades" className="wwd-capabilities-section">
           <div className="wwd-section-intro">
-            <div><span className="tool-eyebrow">Capacidades conectadas</span><h2>No ofrecemos piezas aisladas. Diseñamos cómo deben funcionar juntas.</h2></div>
-            <p>Intervenimos desde la estrategia hasta la adopción para que cada mejora tenga contexto, responsable y continuidad.</p>
+            <div><span className="tool-eyebrow">Capacidades conectadas</span><h2>Conectamos lo que la estrategia necesita para avanzar.</h2></div>
+            <p>Estrategia, operación, tecnología y adopción trabajando como un solo sistema.</p>
           </div>
           <div className="wwd-modules">
             {capabilities.map(({ className, icon: Icon, number, title, copy, items }) => (
@@ -107,13 +147,50 @@ export default function WhatWeDo() {
           </div>
         </SectionShell>
 
+        <SectionShell id="pilares-y-objetivos" className="wwd-objectives-section">
+          <div className="wwd-objectives-intro">
+            <div>
+              <span className="tool-eyebrow">Dirección y objetivos</span>
+              <h2>Primero, una dirección común.</h2>
+            </div>
+            <div>
+              <p>Definimos pilares y una Estrella Polar antes de convertirlos en objetivos, OKRs y métricas.</p>
+              <strong>Así, cada equipo sabe qué priorizar y cómo medir avance.</strong>
+            </div>
+          </div>
+
+          <div className="wwd-objective-path">
+            {strategicObjectivePath.map(({ number, icon: Icon, title, copy, label }) => (
+              <article key={title}>
+                <div className="wwd-objective-card-top"><span><Icon size={18} /></span><small>{number}</small></div>
+                <div><span className="wwd-objective-label">{label}</span><h3>{title}</h3><p>{copy}</p></div>
+              </article>
+            ))}
+          </div>
+
+        </SectionShell>
+
         <section className="wwd-logic-section">
           <div className="wwd-logic-inner">
             <span className="tool-eyebrow tool-eyebrow-dark">Nuestra lógica</span>
-            <h2>Primero elegimos. Después optimizamos. Luego habilitamos. Finalmente, acompañamos la adopción.</h2>
-            <p>La tecnología acelera un sistema bien diseñado. La capacitación consigue que ese sistema sobreviva al proyecto.</p>
+            <h2>Elegimos. Optimizamos. Habilitamos. Acompañamos la adopción.</h2>
+            <p>Un ritmo claro para convertir decisiones en una forma sostenible de operar.</p>
             <div className="wwd-logic-flow">
               {["Estrategia", "Optimización", "Tecnología", "Adopción"].map((item, index) => <div key={item}><span>0{index + 1}</span><strong>{item}</strong></div>)}
+            </div>
+
+            <div className="wwd-eos-intent" id="disciplina-operativa">
+              <div className="wwd-eos-copy">
+                <span className="wwd-eos-label">Intención EOS®</span>
+                <h3>La tracción se construye con disciplina.</h3>
+                <p>EOS pone el foco en seis frentes que deben funcionar juntos.</p>
+                <strong>En TOOL los adaptamos a la realidad y madurez de cada empresa.</strong>
+              </div>
+              <div className="wwd-eos-components">
+                {eosComponents.map(({ icon: Icon, title }) => (
+                  <article key={title}><span><Icon size={16} /></span><h4>{title}</h4></article>
+                ))}
+              </div>
             </div>
           </div>
         </section>

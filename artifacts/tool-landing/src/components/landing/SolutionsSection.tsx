@@ -8,7 +8,7 @@ const solutions = [
     kicker: "Para elegir qué mover primero",
     title: "Estrategia y diagnóstico",
     copy: "Alineamos dónde jugar y cómo ganar con las capacidades que la operación necesita desarrollar.",
-    items: ["Playing to Win", "Brechas", "Quick wins", "Roadmap"],
+    items: ["Pilares", "North Star", "OKRs", "Roadmap"],
     cta: "Alinear estrategia",
   },
   {
