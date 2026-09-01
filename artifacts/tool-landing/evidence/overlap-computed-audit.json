@@ -1,0 +1,629 @@
+{
+  "generatedAt": "2026-09-01T06:34:57.078Z",
+  "note": "Auditoría read-only equivalente a Computed Styles; el navegador integrado no expone la interfaz visual de Chrome DevTools.",
+  "checks": {
+    "stickyOrFixed": "none in either scoped boundary",
+    "gsapOrScrollTrigger": "not present; 0 pin-spacer elements",
+    "negativeMargins": "none in either scoped boundary",
+    "zIndexConflict": "none; decorative backgrounds remain inside overflow-hidden hero containers"
+  },
+  "home": {
+    "defaultViewport": {
+      "boundary": {
+        "gap": 0,
+        "heroBottom": 641.6000366210938,
+        "nextTop": 641.6000366210938,
+        "overlapPx": 0
+      },
+      "gsap": {
+        "global": false,
+        "pinSpacers": 0,
+        "scrollTrigger": false
+      },
+      "negativeMargins": [],
+      "nodes": [
+        {
+          "className": "tool-hero",
+          "rect": {
+            "bottom": 641.6000366210938,
+            "height": 641.6000366210938,
+            "left": 0,
+            "right": 874.4000244140625,
+            "top": 0,
+            "width": 874.4000244140625
+          },
+          "selector": "#hero",
+          "styles": {
+            "bottom": "0px",
+            "display": "block",
+            "height": "641.6px",
+            "marginBottom": "0px",
+            "marginTop": "0px",
+            "minHeight": "641.6px",
+            "overflow": "hidden",
+            "position": "relative",
+            "top": "0px",
+            "transform": "none",
+            "zIndex": "auto"
+          },
+          "tag": "SECTION"
+        },
+        {
+          "className": "tool-grid-bg",
+          "rect": {
+            "bottom": 641.6000366210938,
+            "height": 641.6000366210938,
+            "left": 0,
+            "right": 874.4000244140625,
+            "top": 0,
+            "width": 874.4000244140625
+          },
+          "selector": "#hero .tool-grid-bg",
+          "styles": {
+            "bottom": "0px",
+            "display": "block",
+            "height": "641.6px",
+            "marginBottom": "0px",
+            "marginTop": "0px",
+            "minHeight": "0px",
+            "overflow": "visible",
+            "position": "absolute",
+            "top": "0px",
+            "transform": "none",
+            "zIndex": "auto"
+          },
+          "tag": "DIV"
+        },
+        {
+          "className": "tool-hero-inner",
+          "rect": {
+            "bottom": 641.6000366210938,
+            "height": 641.6000366210938,
+            "left": 0,
+            "right": 874.4000244140625,
+            "top": 0,
+            "width": 874.4000244140625
+          },
+          "selector": "#hero .tool-hero-inner",
+          "styles": {
+            "bottom": "0px",
+            "display": "grid",
+            "height": "641.6px",
+            "marginBottom": "0px",
+            "marginTop": "0px",
+            "minHeight": "641.6px",
+            "overflow": "visible",
+            "position": "relative",
+            "top": "0px",
+            "transform": "none",
+            "zIndex": "auto"
+          },
+          "tag": "DIV"
+        },
+        {
+          "className": "hero-map",
+          "rect": {
+            "bottom": 534.8000030517578,
+            "height": 380,
+            "left": 407.125,
+            "right": 846.3999938964844,
+            "top": 154.8000030517578,
+            "width": 439.2749938964844
+          },
+          "selector": "#hero .hero-map",
+          "styles": {
+            "bottom": "0px",
+            "display": "block",
+            "height": "380px",
+            "marginBottom": "0px",
+            "marginTop": "0px",
+            "minHeight": "0px",
+            "overflow": "visible",
+            "position": "relative",
+            "top": "0px",
+            "transform": "none",
+            "zIndex": "auto"
+          },
+          "tag": "DIV"
+        },
+        {
+          "missing": true,
+          "selector": "#hero .hero-map-node.node-bottom"
+        },
+        {
+          "className": "landing-section problem-section",
+          "rect": {
+            "bottom": 1383.987548828125,
+            "height": 742.3875122070312,
+            "left": 0,
+            "right": 874.4000244140625,
+            "top": 641.6000366210938,
+            "width": 874.4000244140625
+          },
+          "selector": "#que-resolvemos",
+          "styles": {
+            "bottom": "auto",
+            "display": "block",
+            "height": "742.388px",
+            "marginBottom": "0px",
+            "marginTop": "0px",
+            "minHeight": "0px",
+            "overflow": "visible",
+            "position": "static",
+            "top": "auto",
+            "transform": "none",
+            "zIndex": "auto"
+          },
+          "tag": "SECTION"
+        }
+      ],
+      "stickyFixed": [],
+      "url": "http://localhost:4173/",
+      "viewport": {
+        "height": 642,
+        "width": 890
+      }
+    },
+    "widthSweep": [
+      {
+        "heroNextOverlap": 0,
+        "mapOverflowBottom": 10.000030517578123,
+        "nodeCenterOverlaps": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "pairOverlaps": [],
+        "w": 360
+      },
+      {
+        "heroNextOverlap": 0,
+        "mapOverflowBottom": 9.999969482421877,
+        "nodeCenterOverlaps": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "pairOverlaps": [],
+        "w": 390
+      },
+      {
+        "heroNextOverlap": 0,
+        "mapOverflowBottom": 10,
+        "nodeCenterOverlaps": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "pairOverlaps": [],
+        "w": 480
+      },
+      {
+        "heroNextOverlap": 0,
+        "mapOverflowBottom": 0,
+        "nodeCenterOverlaps": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "pairOverlaps": [],
+        "w": 640
+      },
+      {
+        "heroNextOverlap": 0,
+        "mapOverflowBottom": 0,
+        "nodeCenterOverlaps": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "pairOverlaps": [],
+        "w": 680
+      },
+      {
+        "heroNextOverlap": 0,
+        "mapOverflowBottom": 0,
+        "nodeCenterOverlaps": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "pairOverlaps": [],
+        "w": 700
+      },
+      {
+        "heroNextOverlap": 0,
+        "mapOverflowBottom": 0,
+        "nodeCenterOverlaps": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "pairOverlaps": [],
+        "w": 768
+      },
+      {
+        "heroNextOverlap": 0,
+        "mapOverflowBottom": 0.00000762939453125,
+        "nodeCenterOverlaps": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "pairOverlaps": [],
+        "w": 770
+      },
+      {
+        "heroNextOverlap": 0,
+        "mapOverflowBottom": 0.00000762939453125,
+        "nodeCenterOverlaps": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "pairOverlaps": [],
+        "w": 800
+      },
+      {
+        "heroNextOverlap": 0,
+        "mapOverflowBottom": 0.00000762939453125,
+        "nodeCenterOverlaps": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "pairOverlaps": [],
+        "w": 890
+      },
+      {
+        "heroNextOverlap": 0,
+        "mapOverflowBottom": 0.00000762939453125,
+        "nodeCenterOverlaps": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "pairOverlaps": [],
+        "w": 1024
+      },
+      {
+        "heroNextOverlap": 0,
+        "mapOverflowBottom": 0,
+        "nodeCenterOverlaps": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "pairOverlaps": [],
+        "w": 1026
+      },
+      {
+        "heroNextOverlap": 0,
+        "mapOverflowBottom": 0,
+        "nodeCenterOverlaps": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "pairOverlaps": [],
+        "w": 1200
+      },
+      {
+        "heroNextOverlap": 0,
+        "mapOverflowBottom": 0,
+        "nodeCenterOverlaps": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "pairOverlaps": [],
+        "w": 1440
+      }
+    ]
+  },
+  "whatWeDo": {
+    "desktop": {
+      "boundary": {
+        "gap": 0,
+        "heroBottom": 900,
+        "nextTop": 900,
+        "overlapPx": 0
+      },
+      "gsap": {
+        "global": false,
+        "pinSpacers": 0,
+        "scrollTrigger": false
+      },
+      "negativeMargins": [],
+      "nodes": [
+        {
+          "className": "wwd-hero",
+          "rect": {
+            "bottom": 900,
+            "height": 900,
+            "left": 0,
+            "right": 1424.800048828125,
+            "top": 0,
+            "width": 1424.800048828125
+          },
+          "selector": ".wwd-hero",
+          "styles": {
+            "bottom": "0px",
+            "display": "grid",
+            "height": "900px",
+            "marginBottom": "0px",
+            "marginTop": "0px",
+            "minHeight": "900px",
+            "overflow": "hidden",
+            "position": "relative",
+            "top": "0px",
+            "transform": "none",
+            "zIndex": "auto"
+          }
+        },
+        {
+          "className": "wwd-hero-glow",
+          "rect": {
+            "bottom": 900,
+            "height": 900,
+            "left": 0,
+            "right": 1424.800048828125,
+            "top": 0,
+            "width": 1424.800048828125
+          },
+          "selector": ".wwd-hero-glow",
+          "styles": {
+            "bottom": "0px",
+            "display": "block",
+            "height": "900px",
+            "marginBottom": "0px",
+            "marginTop": "0px",
+            "minHeight": "0px",
+            "overflow": "visible",
+            "position": "absolute",
+            "top": "0px",
+            "transform": "none",
+            "zIndex": "auto"
+          }
+        },
+        {
+          "className": "wwd-hero-inner",
+          "rect": {
+            "bottom": 601.1875,
+            "height": 465.125,
+            "left": 257.3999938964844,
+            "right": 1167.3999938964844,
+            "top": 136.0625,
+            "width": 910
+          },
+          "selector": ".wwd-hero-inner",
+          "styles": {
+            "bottom": "0px",
+            "display": "block",
+            "height": "465.125px",
+            "marginBottom": "58px",
+            "marginTop": "0px",
+            "minHeight": "auto",
+            "overflow": "visible",
+            "position": "relative",
+            "top": "0px",
+            "transform": "none",
+            "zIndex": "1"
+          }
+        },
+        {
+          "className": "wwd-hero-system",
+          "rect": {
+            "bottom": 803.9250183105469,
+            "height": 136.60000610351562,
+            "left": 237.40000915527344,
+            "right": 1187.4000091552734,
+            "top": 667.3250122070312,
+            "width": 950
+          },
+          "selector": ".wwd-hero-system",
+          "styles": {
+            "bottom": "0px",
+            "display": "grid",
+            "height": "136.6px",
+            "marginBottom": "0px",
+            "marginTop": "0px",
+            "minHeight": "auto",
+            "overflow": "visible",
+            "position": "relative",
+            "top": "0px",
+            "transform": "none",
+            "zIndex": "2"
+          }
+        },
+        {
+          "className": "landing-section wwd-capabilities-section",
+          "rect": {
+            "bottom": 2040.9000244140625,
+            "height": 1140.9000244140625,
+            "left": 0,
+            "right": 1424.800048828125,
+            "top": 900,
+            "width": 1424.800048828125
+          },
+          "selector": "#capacidades",
+          "styles": {
+            "bottom": "auto",
+            "display": "block",
+            "height": "1140.9px",
+            "marginBottom": "0px",
+            "marginTop": "0px",
+            "minHeight": "0px",
+            "overflow": "visible",
+            "position": "static",
+            "top": "auto",
+            "transform": "none",
+            "zIndex": "auto"
+          }
+        }
+      ],
+      "stickyFixed": [],
+      "url": "http://localhost:4173/que-hacemos",
+      "viewport": {
+        "height": 900,
+        "width": 1440
+      }
+    },
+    "widthSweep": [
+      {
+        "heroBottom": 1202.9124755859375,
+        "heroNextOverlap": 0,
+        "nextContentOverlap": 0,
+        "nextTop": 1202.9124755859375,
+        "stepperBottom": 1132.9125061035156,
+        "stepperNextGap": 69.99996948242188,
+        "stepperNextOverlap": 0,
+        "w": 360
+      },
+      {
+        "heroBottom": 1194.2249755859375,
+        "heroNextOverlap": 0,
+        "nextContentOverlap": 0,
+        "nextTop": 1194.2249755859375,
+        "stepperBottom": 1124.2250061035156,
+        "stepperNextGap": 69.99996948242188,
+        "stepperNextOverlap": 0,
+        "w": 390
+      },
+      {
+        "heroBottom": 1251.3499755859375,
+        "heroNextOverlap": 0,
+        "nextContentOverlap": 0,
+        "nextTop": 1251.3499755859375,
+        "stepperBottom": 1181.3500061035156,
+        "stepperNextGap": 69.99996948242188,
+        "stepperNextOverlap": 0,
+        "w": 480
+      },
+      {
+        "heroBottom": 1102.4500732421875,
+        "heroNextOverlap": 0,
+        "nextContentOverlap": 0,
+        "nextTop": 1102.4500732421875,
+        "stepperBottom": 1032.4500427246094,
+        "stepperNextGap": 70.00003051757812,
+        "stepperNextOverlap": 0,
+        "w": 640
+      },
+      {
+        "heroBottom": 1102.4500732421875,
+        "heroNextOverlap": 0,
+        "nextContentOverlap": 0,
+        "nextTop": 1102.4500732421875,
+        "stepperBottom": 1032.4500427246094,
+        "stepperNextGap": 70.00003051757812,
+        "stepperNextOverlap": 0,
+        "w": 680
+      },
+      {
+        "heroBottom": 762.6500244140625,
+        "heroNextOverlap": 0,
+        "nextContentOverlap": 0,
+        "nextTop": 762.6500244140625,
+        "stepperBottom": 670.6500396728516,
+        "stepperNextGap": 91.99998474121094,
+        "stepperNextOverlap": 0,
+        "w": 700
+      },
+      {
+        "heroBottom": 776.0375366210938,
+        "heroNextOverlap": 0,
+        "nextContentOverlap": 0,
+        "nextTop": 776.0375366210938,
+        "stepperBottom": 684.0374908447266,
+        "stepperNextGap": 92.0000457763672,
+        "stepperNextOverlap": 0,
+        "w": 768
+      },
+      {
+        "heroBottom": 776.375,
+        "heroNextOverlap": 0,
+        "nextContentOverlap": 0,
+        "nextTop": 776.375,
+        "stepperBottom": 684.3750152587891,
+        "stepperNextGap": 91.99998474121094,
+        "stepperNextOverlap": 0,
+        "w": 770
+      },
+      {
+        "heroBottom": 773.1749877929688,
+        "heroNextOverlap": 0,
+        "nextContentOverlap": 0,
+        "nextTop": 773.1749877929688,
+        "stepperBottom": 681.1750183105469,
+        "stepperNextGap": 91.99996948242188,
+        "stepperNextOverlap": 0,
+        "w": 800
+      },
+      {
+        "heroBottom": 790.9874877929688,
+        "heroNextOverlap": 0,
+        "nextContentOverlap": 0,
+        "nextTop": 790.9874877929688,
+        "stepperBottom": 698.9875183105469,
+        "stepperNextGap": 91.99996948242188,
+        "stepperNextOverlap": 0,
+        "w": 890
+      },
+      {
+        "heroBottom": 817.3125,
+        "heroNextOverlap": 0,
+        "nextContentOverlap": 0,
+        "nextTop": 817.3125,
+        "stepperBottom": 725.3125305175781,
+        "stepperNextGap": 91.99996948242188,
+        "stepperNextOverlap": 0,
+        "w": 1024
+      },
+      {
+        "heroBottom": 817.6124877929688,
+        "heroNextOverlap": 0,
+        "nextContentOverlap": 0,
+        "nextTop": 817.6124877929688,
+        "stepperBottom": 725.6125183105469,
+        "stepperNextGap": 91.99996948242188,
+        "stepperNextOverlap": 0,
+        "w": 1026
+      },
+      {
+        "heroBottom": 851.9625244140625,
+        "heroNextOverlap": 0,
+        "nextContentOverlap": 0,
+        "nextTop": 851.9625244140625,
+        "stepperBottom": 759.9624938964844,
+        "stepperNextGap": 92.00003051757812,
+        "stepperNextOverlap": 0,
+        "w": 1200
+      },
+      {
+        "heroBottom": 883.7250366210938,
+        "heroNextOverlap": 0,
+        "nextContentOverlap": 0,
+        "nextTop": 883.7250366210938,
+        "stepperBottom": 791.7250061035156,
+        "stepperNextGap": 92.00003051757812,
+        "stepperNextOverlap": 0,
+        "w": 1440
+      }
+    ]
+  }
+}

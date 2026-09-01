@@ -2,10 +2,10 @@ import { motion, useReducedMotion } from "framer-motion";
 import { Compass, Gauge, MonitorCog, Users } from "lucide-react";
 
 const nodes = [
-  { number: "01", label: "Estrategia", detail: "Elegir dónde y cómo ganar", icon: Compass },
-  { number: "02", label: "Optimización", detail: "Simplificar cómo se trabaja", icon: Gauge },
-  { number: "03", label: "Tecnología", detail: "Habilitar procesos y datos", icon: MonitorCog },
-  { number: "04", label: "Adopción", detail: "Convertir el cambio en hábito", icon: Users },
+  { number: "01", label: "Estrategia", detail: "Definimos la estrategia: dónde jugar y cómo ganar", icon: Compass },
+  { number: "02", label: "Optimización", detail: "Optimizamos la operación para reducir fricción", icon: Gauge },
+  { number: "03", label: "Tecnología", detail: "Habilitamos con tecnología que tiene sentido", icon: MonitorCog },
+  { number: "04", label: "Adopción", detail: "Acompañamos la adopción hasta que se vuelve hábito", icon: Users },
 ];
 
 export default function DashboardMockup() {

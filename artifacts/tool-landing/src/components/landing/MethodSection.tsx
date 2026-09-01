@@ -5,25 +5,25 @@ const steps = [
   {
     icon: Compass,
     title: "Definir la estrategia",
-    copy: "Aclaramos la aspiración, dónde jugar, cómo ganar y qué capacidades harán posible la elección.",
+    copy: "Definimos la estrategia: dónde jugar y cómo ganar",
     outputs: ["Playing to Win", "Prioridades", "Apuestas", "Foco"],
   },
   {
     icon: Gauge,
     title: "Optimizar la operación",
-    copy: "Mapeamos el trabajo, eliminamos fricción y rediseñamos procesos, roles y decisiones críticas.",
+    copy: "Optimizamos la operación para reducir fricción",
     outputs: ["Procesos", "Roles", "Quick wins", "Flujo ideal"],
   },
   {
     icon: MonitorCog,
     title: "Habilitar con tecnología",
-    copy: "Elegimos y configuramos herramientas, automatizaciones y tableros alrededor del proceso diseñado.",
+    copy: "Habilitamos con tecnología que tiene sentido",
     outputs: ["Herramientas", "Automatización", "KPIs", "Datos"],
   },
   {
     icon: Users,
-    title: "Instalar la ejecución",
-    copy: "Capacitamos al equipo e instalamos cadencias de seguimiento para sostener, aprender y mejorar.",
+    title: "Acompañar la adopción",
+    copy: "Acompañamos la adopción hasta que se vuelve hábito",
     outputs: ["Adopción", "Cadencias", "Seguimiento", "Mejora"],
   },
 ];

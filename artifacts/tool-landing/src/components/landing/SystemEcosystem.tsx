@@ -6,7 +6,7 @@ const nodes = [
   { label: "Responsables", icon: UserRoundCheck },
   { label: "Tecnología", icon: Settings2 },
   { label: "KPIs", icon: BarChart3 },
-  { label: "Capacitación", icon: Users },
+  { label: "Adopción", icon: Users },
   { label: "Automatización", icon: Bot },
   { label: "Seguimiento", icon: Route },
   { label: "Mejora continua", icon: RefreshCw },

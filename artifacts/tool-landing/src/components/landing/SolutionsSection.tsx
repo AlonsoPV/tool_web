@@ -12,14 +12,6 @@ const solutions = [
     cta: "Alinear estrategia",
   },
   {
-    icon: ShoppingBag,
-    kicker: "Para recuperar seguimiento comercial",
-    title: "Sistema comercial digital",
-    copy: "Conectamos captación, pipeline, WhatsApp, CRM y visibilidad en un flujo simple.",
-    items: ["Landing page", "CRM simple", "Automatización", "Dashboard"],
-    cta: "Ordenar ventas",
-  },
-  {
     icon: Gauge,
     kicker: "Para simplificar y operar con claridad",
     title: "Sistema operativo interno",
@@ -28,9 +20,17 @@ const solutions = [
     cta: "Ordenar operación",
   },
   {
+    icon: ShoppingBag,
+    kicker: "Para recuperar seguimiento comercial",
+    title: "Sistema comercial digital",
+    copy: "Conectamos captación, pipeline, WhatsApp, CRM y visibilidad en un flujo simple.",
+    items: ["Landing page", "CRM simple", "Automatización", "Dashboard"],
+    cta: "Ordenar ventas",
+  },
+  {
     icon: Bot,
     kicker: "Para adoptar tecnología de verdad",
-    title: "Capacitación e IA práctica",
+    title: "IA y capacidades digitales",
     copy: "Llevamos herramientas, automatización e IA al trabajo diario con adopción guiada.",
     items: ["Talleres", "Playbooks", "Agentes", "Adopción"],
     cta: "Capacitar equipo",

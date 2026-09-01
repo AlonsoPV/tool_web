@@ -110,7 +110,7 @@ export default function WhatWeDo() {
         <section className="wwd-logic-section">
           <div className="wwd-logic-inner">
             <span className="tool-eyebrow tool-eyebrow-dark">Nuestra lógica</span>
-            <h2>Primero elegimos. Después optimizamos. Luego habilitamos. Finalmente instalamos.</h2>
+            <h2>Primero elegimos. Después optimizamos. Luego habilitamos. Finalmente, acompañamos la adopción.</h2>
             <p>La tecnología acelera un sistema bien diseñado. La capacitación consigue que ese sistema sobreviva al proyecto.</p>
             <div className="wwd-logic-flow">
               {["Estrategia", "Optimización", "Tecnología", "Adopción"].map((item, index) => <div key={item}><span>0{index + 1}</span><strong>{item}</strong></div>)}
