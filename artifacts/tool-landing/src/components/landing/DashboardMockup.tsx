@@ -1,6 +1,6 @@
 import * as Dialog from "@radix-ui/react-dialog";
 import { motion, useReducedMotion } from "framer-motion";
-import { ArrowRight, Compass, Gauge, Maximize2, MonitorCog, Users, X } from "lucide-react";
+import { ArrowRight, Check, ChevronLeft, ChevronRight, Compass, Gauge, Maximize2, MonitorCog, Users, X } from "lucide-react";
 import { useState } from "react";
 
 const nodes = [
@@ -45,6 +45,12 @@ const nodes = [
 export default function DashboardMockup() {
   const reduceMotion = useReducedMotion();
   const [activeNode, setActiveNode] = useState<(typeof nodes)[number] | null>(null);
+  const activeIndex = activeNode ? nodes.findIndex((node) => node.number === activeNode.number) : -1;
+
+  const moveToNode = (direction: -1 | 1) => {
+    const nextIndex = (activeIndex + direction + nodes.length) % nodes.length;
+    setActiveNode(nodes[nextIndex]);
+  };
 
   return (
     <Dialog.Root open={activeNode !== null} onOpenChange={(open) => !open && setActiveNode(null)}>
@@ -78,21 +84,46 @@ export default function DashboardMockup() {
 
       <Dialog.Portal>
         <Dialog.Overlay className="hero-stage-modal-overlay" />
-        <Dialog.Content className="hero-stage-modal-content">
+        <Dialog.Content className="hero-stage-modal-content" data-stage={activeNode?.number}>
           {activeNode && (
             <>
               <div className="hero-stage-modal-head">
-                <span><activeNode.icon size={20} /></span>
-                <small>Ciclo TOOL · {activeNode.number}</small>
+                <div className="hero-stage-modal-identity">
+                  <span><activeNode.icon size={20} /></span>
+                  <div><small>Ciclo TOOL</small><strong>{activeNode.number} / 04</strong></div>
+                </div>
+                <div className="hero-stage-modal-progress" aria-label={`Etapa ${activeNode.number} de 04`}>
+                  {nodes.map((node) => <span key={node.number} className={node.number === activeNode.number ? "is-active" : ""} />)}
+                </div>
               </div>
-              <Dialog.Title>{activeNode.label}</Dialog.Title>
-              <Dialog.Description>{activeNode.description}</Dialog.Description>
-              <div className="hero-stage-modal-result"><span>Valor que deja</span><strong>{activeNode.result}</strong></div>
-              <div className="hero-stage-modal-deliverables">
-                <span>Qué construimos</span>
-                <ul>{activeNode.deliverables.map((item) => <li key={item}>{item}</li>)}</ul>
+
+              <div className="hero-stage-modal-grid">
+                <div className="hero-stage-modal-narrative">
+                  <small className="hero-stage-modal-kicker">{activeNode.detail}</small>
+                  <Dialog.Title>{activeNode.label}</Dialog.Title>
+                  <Dialog.Description>{activeNode.description}</Dialog.Description>
+                  <div className="hero-stage-modal-result">
+                    <span>Valor que permanece</span>
+                    <strong>{activeNode.result}</strong>
+                  </div>
+                </div>
+
+                <div className="hero-stage-modal-deliverables">
+                  <span>Lo hacemos tangible en</span>
+                  <ul>
+                    {activeNode.deliverables.map((item) => <li key={item}><span><Check size={13} /></span>{item}</li>)}
+                  </ul>
+                </div>
               </div>
-              <a className="hero-stage-modal-link" href="/que-hacemos">Ver qué hacemos <ArrowRight size={15} /></a>
+
+              <div className="hero-stage-modal-footer">
+                <a className="hero-stage-modal-link" href="/que-hacemos">Explorar el servicio <ArrowRight size={15} /></a>
+                <div className="hero-stage-modal-nav">
+                  <button type="button" onClick={() => moveToNode(-1)} aria-label="Ver etapa anterior"><ChevronLeft size={16} /></button>
+                  <span>{activeNode.number} <small>de</small> 04</span>
+                  <button type="button" onClick={() => moveToNode(1)} aria-label="Ver etapa siguiente"><ChevronRight size={16} /></button>
+                </div>
+              </div>
             </>
           )}
           <Dialog.Close className="hero-stage-modal-close" aria-label="Cerrar detalle"><X size={18} /></Dialog.Close>
