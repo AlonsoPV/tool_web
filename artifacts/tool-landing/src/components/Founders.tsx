@@ -2,7 +2,7 @@ import { Linkedin, MessageCircle } from "lucide-react";
 import { ADVISOR_URL, DEMO_URL } from "@/lib/landing-theme";
 import SectionShell from "@/components/landing/SectionShell";
 import abrahamPhoto from "@assets/AbrahamCastillo_1784129559789.png";
-import alonsoPhoto from "@assets/AlonsoPerez_1784129559791.png";
+import alonsoPhoto from "@assets/AlonsoPerez (1).png";
 
 const founders = [
   {

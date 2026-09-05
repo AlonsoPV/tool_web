@@ -1,4 +1,4 @@
-import { ArrowUpRight, Bot, Gauge, Route, ShoppingBag } from "lucide-react";
+import { ArrowUpRight, Bot, Gamepad2, Gauge, Route, ShoppingBag } from "lucide-react";
 import SectionShell from "@/components/landing/SectionShell";
 import { DEMO_URL } from "@/lib/landing-theme";
 
@@ -44,6 +44,11 @@ export default function SolutionsSection() {
         <span className="tool-eyebrow">Puntos de entrada</span>
         <h2>Puedes entrar por una necesidad concreta<span className="tool-heading-rest">sin perder la visión completa.</span></h2>
         <p>Cada solución resuelve una fricción inmediata y deja capacidades que fortalecen el sistema de ejecución.</p>
+      </div>
+      <div className="solutions-belonging">
+        <span><Gamepad2 size={20} /></span>
+        <div><small>Adopción y pertenencia</small><strong>El cambio también se diseña para que el equipo quiera hacerlo suyo.</strong></div>
+        <p>Usamos ludificación —retos, progreso visible y reconocimiento— para reforzar hábitos y generar sentido de pertenencia.</p>
       </div>
       <div className="solutions-grid">
         {solutions.map(({ icon: Icon, kicker, title, copy, items, cta }, index) => (

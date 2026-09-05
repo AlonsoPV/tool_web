@@ -20,12 +20,12 @@ export default function Home() {
       <main id="main-content">
         <Hero />
         <ProblemSection />
+        <WhoIsFor />
         <MissionSection />
         <PlayingToWin />
         <MethodSection />
         <SolutionsSection />
         <SystemEcosystem />
-        <WhoIsFor />
         <Founders />
         <FinalCTA />
       </main>

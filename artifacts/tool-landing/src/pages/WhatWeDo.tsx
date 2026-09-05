@@ -4,6 +4,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import FinalCTA from "@/components/FinalCTA";
 import SectionShell from "@/components/landing/SectionShell";
+import SuccessStories from "@/components/landing/SuccessStories";
 import { DEMO_URL } from "@/lib/landing-theme";
 import "@/styles/tool-redesign.css";
 import "@/styles/what-we-do.css";
@@ -211,6 +212,8 @@ export default function WhatWeDo() {
             ))}
           </div>
         </SectionShell>
+
+        <SuccessStories />
 
         <SectionShell id="proceso" className="wwd-process-section">
           <div className="wwd-section-intro">
