@@ -12,24 +12,22 @@ export const NAV_LINKS = [
   {
     label: "Inicio",
     href: "/",
-    intro: "De una elección estratégica a una operación capaz de ejecutarla.",
+    intro: "De la desconexión a una forma de trabajar que permanece.",
     children: [
       { label: "El problema", description: "Cuando la estrategia no baja a la operación.", href: "/#que-resolvemos" },
-      { label: "El enfoque", description: "Elegir dónde jugar y cómo ganar.", href: "/#playing-to-win" },
-      { label: "La ruta", description: "Estrategia, optimización, tecnología y adopción.", href: "/#como-trabajamos" },
-      { label: "Los puntos de entrada", description: "Proyectos concretos conectados al sistema.", href: "/#soluciones" },
+      { label: "La propuesta", description: "Cuatro capacidades que trabajan como un sistema.", href: "/#propuesta" },
+      { label: "Puntos de entrada", description: "Comenzar por la necesidad más urgente.", href: "/#soluciones" },
+      { label: "Evidencia", description: "Tres cambios reales construidos con cada equipo.", href: "/#casos-de-exito" },
     ],
   },
   {
     label: "Qué hacemos",
     href: "/que-hacemos",
-    intro: "Construimos las capacidades que convierten estrategia en ejecución.",
+    intro: "Qué transformamos, cómo intervenimos y qué resultados producimos.",
     children: [
-      { label: "Lo que desarrollamos", description: "Las capacidades que deben funcionar juntas.", href: "/que-hacemos#capacidades" },
-      { label: "Cómo definimos el rumbo", description: "Pilares, Estrella Polar, objetivos y OKRs conectados.", href: "/que-hacemos#pilares-y-objetivos" },
-      { label: "Cómo ganamos tracción", description: "La intención EOS aplicada al sistema operativo.", href: "/que-hacemos#disciplina-operativa" },
-      { label: "Dónde podemos empezar", description: "Una necesidad concreta, una visión completa.", href: "/que-hacemos#soluciones" },
-      { label: "Cómo lo construimos", description: "Del diagnóstico a la mejora continua.", href: "/que-hacemos#proceso" },
+      { label: "Qué transformamos", description: "Cuatro capacidades que funcionan juntas.", href: "/que-hacemos#capacidades" },
+      { label: "Cómo intervenimos", description: "Del diagnóstico a la medición y mejora.", href: "/que-hacemos#proceso" },
+      { label: "Resultados", description: "Evidencia y casos reales.", href: "/que-hacemos#casos-de-exito" },
     ],
   },
   {

@@ -4,13 +4,14 @@ import Founders from "@/components/Founders";
 import FinalCTA from "@/components/FinalCTA";
 import Footer from "@/components/Footer";
 import SectionShell from "@/components/landing/SectionShell";
+import PageMeta from "@/components/PageMeta";
 import { DEMO_URL } from "@/lib/landing-theme";
 import "@/styles/tool-redesign.css";
 import "@/styles/inner-pages.css";
 
 const principles = [
   { icon: Eye, title: "Claridad antes que complejidad", copy: "Si el equipo no puede entender el sistema, difícilmente podrá sostenerlo." },
-  { icon: Layers3, title: "El sistema completo", copy: "Estrategia, procesos, tecnología y personas deben diseñarse como partes conectadas." },
+  { icon: Layers3, title: "El sistema completo", copy: "Estrategia, cambio, cultura y tecnología deben diseñarse como partes conectadas." },
   { icon: Handshake, title: "Construir con el equipo", copy: "La adopción empieza cuando las personas participan y entienden el porqué del cambio." },
   { icon: MoveUpRight, title: "Avance que puede verse", copy: "Cada intervención debe traducirse en decisiones, responsables y progreso observable." },
 ];
@@ -18,6 +19,7 @@ const principles = [
 export default function About() {
   return (
     <div className="tool-site inner-page about-page">
+      <PageMeta title="Quiénes somos | TOOL" description="Conoce por qué existe TOOL, cómo pensamos y quién acompaña a empresas en crecimiento a convertir su estrategia en una forma sostenible de trabajar." />
       <a className="skip-link" href="#main-content">Saltar al contenido</a>
       <Navbar />
       <main id="main-content">
@@ -26,7 +28,7 @@ export default function About() {
           <div className="inner-hero-content">
             <span className="tool-eyebrow">Quiénes somos</span>
             <h1>TOOL empieza con una pregunta: <span>¿por qué crecer tiene que sentirse como perder el control?</span></h1>
-            <p>Somos un equipo que conecta estrategia y ejecución para ayudar a empresas en crecimiento a operar con más claridad, autonomía y capacidad de decidir.</p>
+            <p>Ayudamos a empresas en crecimiento a convertir estrategia en una forma de trabajar que su equipo pueda sostener.</p>
           </div>
         </section>
 

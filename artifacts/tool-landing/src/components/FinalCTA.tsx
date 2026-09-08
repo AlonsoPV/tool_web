@@ -1,13 +1,6 @@
 import { motion, useReducedMotion } from "framer-motion";
-import { ArrowRight, Check, MessageCircle } from "lucide-react";
+import { ArrowRight, MessageCircle } from "lucide-react";
 import { ADVISOR_URL, DEMO_URL } from "@/lib/landing-theme";
-
-const promises = [
-  "Entendemos tu operación actual.",
-  "Identificamos fugas y cuellos de botella.",
-  "Priorizamos quick wins.",
-  "Proponemos una ruta 30/60/90.",
-];
 
 export default function FinalCTA() {
   const reduceMotion = useReducedMotion();
@@ -33,15 +26,7 @@ export default function FinalCTA() {
               <MessageCircle size={17} /> Enviar WhatsApp
             </a>
           </div>
-          <small>Sin compromiso. Primero entendemos tu operación. Después proponemos el camino.</small>
-        </div>
-        <div className="tool-final-card">
-          <span className="tool-final-card-label">Qué pasa en el diagnóstico</span>
-          <h3>Primero entendemos la realidad.</h3>
-          <ul>
-            {promises.map((item) => <li key={item}><Check size={15} />{item}</li>)}
-          </ul>
-          <p>Sin compromiso · conversación directa · una ruta clara</p>
+          <small>Sin compromiso. Primero entendemos el contexto.</small>
         </div>
       </motion.div>
     </section>

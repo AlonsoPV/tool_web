@@ -29,7 +29,7 @@ export default function Founders() {
       <div className="founders-layout">
         <div className="tool-section-heading tool-section-heading-left">
           <span className="tool-eyebrow">Equipo</span>
-          <h2>Estrategia y ejecución, trabajando juntas.</h2>
+          <h2>Dos perspectivas. Un mismo sistema.</h2>
           <p>TOOL nace de combinar visión comercial, procesos, tecnología e implementación operativa.</p>
           <p className="founders-note">No somos una firma que desaparece después del diagnóstico. Construimos contigo.</p>
         </div>

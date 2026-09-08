@@ -3,6 +3,7 @@ import { ArrowRight, Check, Linkedin, MessageCircle } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { ADVISOR_URL, DEMO_URL } from "@/lib/landing-theme";
+import PageMeta from "@/components/PageMeta";
 import "@/styles/tool-redesign.css";
 import "@/styles/inner-pages.css";
 
@@ -19,6 +20,7 @@ export default function Contact() {
 
   return (
     <div className="tool-site inner-page contact-page">
+      <PageMeta title="Contacto | TOOL" description="Agenda un diagnóstico con TOOL para identificar qué decisión, proceso o capacidad está frenando el avance de tu empresa." />
       <a className="skip-link" href="#main-content">Saltar al contenido</a>
       <Navbar />
       <main id="main-content">

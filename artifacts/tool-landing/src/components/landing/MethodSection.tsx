@@ -1,12 +1,11 @@
-import { ArrowRight, Compass, Gauge, MonitorCog, Users } from "lucide-react";
-import { Link } from "wouter";
+import { BarChart3, Blocks, Search, Sparkles } from "lucide-react";
 import SectionShell from "@/components/landing/SectionShell";
 
 const steps = [
-  { icon: Compass, title: "Estrategia", copy: "Elegimos dónde jugar y cómo ganar." },
-  { icon: Gauge, title: "Optimización", copy: "Reducimos la fricción que frena el avance." },
-  { icon: MonitorCog, title: "Tecnología", copy: "Habilitamos el trabajo con herramientas útiles." },
-  { icon: Users, title: "Adopción", copy: "Acompañamos al equipo hasta volverlo hábito." },
+  { icon: Search, title: "Entender", copy: "Comprendemos el sistema actual, sus restricciones y prioridades." },
+  { icon: Blocks, title: "Diseñar", copy: "Definimos el cambio, los procesos y capacidades necesarias." },
+  { icon: Sparkles, title: "Activar", copy: "Implementamos junto al equipo, combinando personas, procesos y tecnología." },
+  { icon: BarChart3, title: "Medir", copy: "Observamos resultados, aprendemos y ajustamos." },
 ];
 
 export default function MethodSection() {
@@ -14,16 +13,15 @@ export default function MethodSection() {
     <SectionShell id="como-trabajamos" className="method-section method-bridge-section">
       <div className="method-bridge-intro">
         <div>
-          <span className="tool-eyebrow">Después, construir</span>
-          <h2>La estrategia cobra valor cuando cambia<span className="tool-heading-rest">la forma de operar.</span></h2>
+          <span className="tool-eyebrow">Cómo trabajamos</span>
+          <h2>La estrategia cobra valor cuando cambia{" "}<span className="tool-heading-rest">la forma de operar.</span></h2>
         </div>
         <div>
-          <p>Conectamos elecciones, procesos, tecnología y hábitos en una ruta que el equipo puede ejecutar y mejorar.</p>
-          <Link className="tool-inline-link" href="/que-hacemos#proceso">Conocer el proceso consultivo <ArrowRight size={15} /></Link>
+          <p>Avanzamos con una secuencia simple y visible, siempre junto al equipo.</p>
         </div>
       </div>
 
-      <div className="method-bridge-flow" aria-label="De la estrategia a la adopción">
+      <div className="method-bridge-flow" aria-label="Entender, diseñar, activar y medir">
         {steps.map(({ icon: Icon, title, copy }, index) => (
           <article key={title}>
             <div><span>0{index + 1}</span><Icon size={19} /></div>

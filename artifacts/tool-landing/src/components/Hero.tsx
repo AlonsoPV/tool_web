@@ -2,7 +2,7 @@ import { motion, useReducedMotion } from "framer-motion";
 import { ArrowRight, Pause, Play } from "lucide-react";
 import { useEffect, useState } from "react";
 import DashboardMockup from "@/components/landing/DashboardMockup";
-import { DEMO_URL, scrollTo } from "@/lib/landing-theme";
+import { DEMO_URL } from "@/lib/landing-theme";
 
 const heroMessages = [
   { lead: "Elegir es estrategia.", outcome: "Ejecutar es sistema." },
@@ -36,17 +36,17 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.55 }}
         >
-          <div className="tool-hero-message-window">
+          <div className="tool-hero-message-window" aria-live="polite">
             <motion.h1
               key={message.lead}
               initial={reduceMotion ? false : { opacity: 0, y: 20, filter: "blur(5px)" }}
               animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
               transition={{ duration: .42, ease: [0.22, 1, 0.36, 1] }}
             >
-              {message.lead}<span className="tool-heading-rest">{message.outcome}</span>
+              {message.lead}{" "}<span className="tool-heading-rest">{message.outcome}</span>
             </motion.h1>
           </div>
-          <div className="tool-hero-message-controls" aria-label="Mensajes clave de TOOL">
+          <div className="tool-hero-message-controls" aria-label="Declaraciones clave de TOOL">
             <div>
               {heroMessages.map((item, index) => (
                 <button
@@ -54,7 +54,7 @@ export default function Hero() {
                   key={item.lead}
                   className={index === messageIndex ? "is-active" : ""}
                   onClick={() => setMessageIndex(index)}
-                  aria-label={`Mostrar mensaje ${index + 1}`}
+                  aria-label={`Mostrar declaración ${index + 1}: ${item.lead} ${item.outcome}`}
                   aria-current={index === messageIndex ? "true" : undefined}
                 />
               ))}
@@ -63,7 +63,7 @@ export default function Hero() {
               type="button"
               className="tool-hero-pause"
               onClick={() => setIsPaused((current) => !current)}
-              aria-label={isPaused ? "Reanudar mensajes" : "Pausar mensajes"}
+              aria-label={isPaused ? "Reanudar declaraciones" : "Pausar declaraciones"}
             >
               {isPaused ? <Play size={12} /> : <Pause size={12} />}
             </button>
@@ -79,13 +79,13 @@ export default function Hero() {
             >
               Agendar diagnóstico <ArrowRight size={17} />
             </motion.a>
-            <button
+            <a
               className="tool-hero-text-link"
-              onClick={() => scrollTo("#playing-to-win")}
+              href="/que-hacemos#proceso"
               data-testid="hero-secondary-cta"
             >
-              Ver cómo funciona <ArrowRight size={15} />
-            </button>
+              Cómo trabajamos <ArrowRight size={15} />
+            </a>
           </div>
         </motion.div>
 

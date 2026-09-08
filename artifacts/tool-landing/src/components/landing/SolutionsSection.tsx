@@ -1,71 +1,61 @@
-import { ArrowUpRight, Bot, Gamepad2, Gauge, Route, ShoppingBag } from "lucide-react";
+import { ArrowRight, ArrowUpRight } from "lucide-react";
 import SectionShell from "@/components/landing/SectionShell";
-import { DEMO_URL } from "@/lib/landing-theme";
 
-const solutions = [
+const entryPoints = [
   {
-    icon: Route,
-    kicker: "Para elegir qué mover primero",
-    title: "Estrategia y diagnóstico",
-    copy: "Alineamos dónde jugar y cómo ganar con las capacidades que la operación necesita desarrollar.",
-    items: ["Pilares", "North Star", "OKRs", "Roadmap"],
-    cta: "Alinear estrategia",
+    problem: "Muchas prioridades, poca dirección.",
+    change: "Decidir con claridad.",
+    capability: "Estrategia y alineación",
+    href: "/que-hacemos#estrategia",
+    description: "Convertimos prioridades dispersas en una dirección compartida, objetivos claros y métricas que ayudan a decidir.",
   },
   {
-    icon: Gauge,
-    kicker: "Para simplificar y operar con claridad",
-    title: "Sistema operativo interno",
-    copy: "Optimizamos procesos, decisiones, tableros y rutinas para convertir acuerdos en avance.",
-    items: ["Procesos", "Responsables", "KPIs", "Reportes"],
-    cta: "Ordenar operación",
+    problem: "Procesos que dependen de personas.",
+    change: "Construir una operación repetible.",
+    capability: "Cambio operativo",
+    href: "/que-hacemos#cambio",
+    description: "Rediseñamos roles, procesos y formas de coordinación para reducir dependencias y aumentar consistencia.",
   },
   {
-    icon: ShoppingBag,
-    kicker: "Para recuperar seguimiento comercial",
-    title: "Sistema comercial digital",
-    copy: "Conectamos captación, pipeline, WhatsApp, CRM y visibilidad en un flujo simple.",
-    items: ["Landing page", "CRM simple", "Automatización", "Dashboard"],
-    cta: "Ordenar ventas",
+    problem: "Cambios que pierden fuerza con el tiempo.",
+    change: "Convertir el cambio en hábitos.",
+    capability: "Cultura y adopción",
+    href: "/que-hacemos#cultura",
+    description: "Diseñamos hábitos y dinámicas de participación. Incluimos ludificación cuando ayuda a hacer visible el progreso y reforzar comportamientos.",
   },
   {
-    icon: Bot,
-    kicker: "Para adoptar tecnología de verdad",
-    title: "IA y capacidades digitales",
-    copy: "Llevamos herramientas, automatización e IA al trabajo diario con adopción guiada.",
-    items: ["Talleres", "Playbooks", "Agentes", "Adopción"],
-    cta: "Capacitar equipo",
+    problem: "Trabajo manual y sistemas desconectados.",
+    change: "Escalar lo que funciona.",
+    capability: "Tecnología, datos e IA",
+    href: "/que-hacemos#tecnologia",
+    description: "Conectamos herramientas, automatizamos trabajo repetitivo y hacemos que la información sirva para tomar mejores decisiones.",
   },
 ];
 
 export default function SolutionsSection() {
   return (
-    <SectionShell id="soluciones" className="solutions-section">
+    <SectionShell id="soluciones" className="solutions-section entry-points-section">
       <div className="tool-section-heading tool-section-heading-left">
         <span className="tool-eyebrow">Puntos de entrada</span>
-        <h2>Puedes entrar por una necesidad concreta<span className="tool-heading-rest">sin perder la visión completa.</span></h2>
-        <p>Cada solución resuelve una fricción inmediata y deja capacidades que fortalecen el sistema de ejecución.</p>
+        <h2>¿Dónde se está frenando tu empresa?</h2>
+        <p>El problema visible rara vez está aislado. Entramos por el bloqueo más importante sin perder de vista el sistema completo.</p>
       </div>
-      <div className="solutions-belonging">
-        <span><Gamepad2 size={20} /></span>
-        <div><small>Adopción y pertenencia</small><strong>El cambio también se diseña para que el equipo quiera hacerlo suyo.</strong></div>
-        <p>Usamos ludificación —retos, progreso visible y reconocimiento— para reforzar hábitos y generar sentido de pertenencia.</p>
-      </div>
-      <div className="solutions-grid">
-        {solutions.map(({ icon: Icon, kicker, title, copy, items, cta }, index) => (
-          <article className="solution-card" key={title}>
-            <div className="solution-top">
-              <span className="solution-icon"><Icon size={20} /></span>
-              <span className="solution-index">0{index + 1}</span>
-            </div>
-            <span className="solution-kicker">{kicker}</span>
-            <h3>{title}</h3>
-            <p>{copy}</p>
-            <ul>{items.map((item) => <li key={item}>{item}</li>)}</ul>
-            <a href={DEMO_URL} target="_blank" rel="noopener noreferrer">
-              {cta} <ArrowUpRight size={15} />
-            </a>
-          </article>
-        ))}
+
+      <div className="entry-points-list">
+        {entryPoints.map(({ problem, change, capability, description, href }, index) => (
+            <article className="entry-point" key={problem}>
+              <a className="entry-point-link" href={href} aria-label={`${problem} ${change} Conocer ${capability}`}>
+                <span className="entry-point-number">0{index + 1}</span>
+                <span className="entry-point-problem">{problem}</span>
+                <span className="entry-point-change"><ArrowRight size={17} aria-hidden="true" /><strong>{change}</strong></span>
+                <span className="entry-point-capability">{capability}</span>
+                <ArrowUpRight className="entry-point-toggle" size={17} aria-hidden="true" />
+              </a>
+              <div className="entry-point-description">
+                <p>{description}</p>
+              </div>
+            </article>
+          ))}
       </div>
     </SectionShell>
   );

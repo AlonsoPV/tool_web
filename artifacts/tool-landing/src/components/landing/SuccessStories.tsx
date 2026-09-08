@@ -1,5 +1,5 @@
 import { motion, useReducedMotion } from "framer-motion";
-import { Building2, Code2, Database, HeartPulse, Sparkles, TrendingUp } from "lucide-react";
+import { ArrowRight, Building2, Code2, Database, HeartPulse, Sparkles, TrendingUp } from "lucide-react";
 
 const stories = [
   {
@@ -70,8 +70,15 @@ const stories = [
   },
 ];
 
-export default function SuccessStories() {
+type SuccessStoriesProps = {
+  mode?: "preview" | "full";
+};
+
+export default function SuccessStories({ mode = "full" }: SuccessStoriesProps) {
   const reduceMotion = useReducedMotion();
+  const visibleStories = mode === "preview"
+    ? stories.filter((_, index) => [0, 3, 2].includes(index)).sort((a, b) => ["ZAIAH", "Collecta", "INBest"].indexOf(a.company) - ["ZAIAH", "Collecta", "INBest"].indexOf(b.company))
+    : stories;
 
   return (
     <section id="casos-de-exito" className="landing-section success-stories-section">
@@ -83,21 +90,21 @@ export default function SuccessStories() {
           viewport={{ once: true, margin: "-70px" }}
           transition={{ duration: .5 }}
         >
-          <span className="tool-eyebrow">Casos de éxito</span>
+          <span className="tool-eyebrow">Resultados reales</span>
           <div>
-            <h2>El valor se ve cuando el cambio permanece.</h2>
-            <p>Distintas empresas. Un mismo principio: convertir decisiones estratégicas en sistemas y capacidades que el equipo puede sostener.</p>
+            <h2>{mode === "preview" ? "El cambio se vuelve real cuando puede verse." : "Los resultados aparecen cuando el equipo puede repetir lo que funciona."}</h2>
+            <p>{mode === "preview" ? "Tres retos distintos. Una misma capacidad para convertir decisiones en resultados." : "Contextos distintos y cambios construidos con cada equipo."}</p>
           </div>
         </motion.header>
 
         <motion.div
-          className="success-stories-grid"
+          className={`success-stories-grid${mode === "preview" ? " is-preview" : ""}`}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-60px" }}
           variants={{ hidden: {}, visible: { transition: { staggerChildren: .08 } } }}
         >
-          {stories.map((story, index) => {
+          {visibleStories.map((story, index) => {
             const Icon = story.icon;
             return (
               <motion.article
@@ -126,18 +133,13 @@ export default function SuccessStories() {
           })}
         </motion.div>
 
-        <motion.div
-          className="success-stories-value"
-          initial={reduceMotion ? false : { opacity: 0, y: 14 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-        >
-          <span>El patrón común</span>
-          <p>No dejamos únicamente una recomendación. Dejamos una forma más clara de decidir, operar y seguir mejorando.</p>
-          <a href="/contacto">Conversemos sobre tu reto <span aria-hidden="true">→</span></a>
-        </motion.div>
-
-        <small className="success-stories-note">El alcance y los resultados dependen de cada proyecto. Las sucursales y líneas de producto describen la escala actual de las empresas, no resultados atribuibles a TOOL.</small>
+        {mode === "preview" ? (
+          <div className="success-stories-preview-link">
+            <a href="/que-hacemos#casos-de-exito">Ver resultados y cómo los construimos <ArrowRight size={15} /></a>
+          </div>
+        ) : (
+          <small className="success-stories-note">El alcance y los resultados dependen de cada proyecto. Las sucursales y líneas de producto describen la escala actual de las empresas, no resultados atribuibles a TOOL.</small>
+        )}
       </div>
     </section>
   );
