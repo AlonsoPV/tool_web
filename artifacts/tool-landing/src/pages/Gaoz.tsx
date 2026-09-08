@@ -30,11 +30,58 @@ const businessValue = [
   ['04','Dirige con visibilidad.','Roles + scorecard + Weekly Comercial','Responsables claros, metas y una revisión comercial semanal.','Intervenir donde hace falta y dar autonomía al equipo.'],
 ];
 function CTA({children='Conversemos sobre el arranque'}:{children?:React.ReactNode}) { return <a className="gz-button" href={contact} target="_blank" rel="noopener noreferrer">{children}<ArrowUpRight size={19}/></a>; }
-function ProofAndInvestment(){return <>
-  <section className="gz-section" id="casos"><div className="gz-section-head"><div><div className="gz-eyebrow">EXPERIENCIA DE TOOL</div><h2>Retos distintos.<br/><span>Intervenciones concretas.</span></h2></div><p>Adquisición, liderazgo, retención y expansión: experiencia aplicada a cada negocio.</p></div><div className="gz-evidence-grid">{stories.filter(s=>['ZAIAH','INBest','Collecta','DermaMX','Kyrie México'].includes(s.company)).map(s=><article key={s.company}><span>{s.company} · {s.industry}</span><h3>{s.metric}<br/>{s.metricLabel}</h3><div className="gz-case-detail"><strong>Qué hicimos</strong><p>{s.actions}</p></div><div className="gz-case-detail"><strong>Valor aportado</strong><p>{s.value}</p></div></article>)}</div><p className="gz-evidence-note">Cada proyecto tiene su propio alcance, plazo y resultados.</p></section>
+function ProofAndInvestment(){
+  const caseStories = stories.filter((s) => ['ZAIAH', 'INBest', 'Collecta', 'DermaMX', 'Kyrie México'].includes(s.company));
+  return <>
+  <section className="gz-section gz-cases" id="casos">
+    <div className="gz-section-head">
+      <div>
+        <div className="gz-eyebrow">EXPERIENCIA DE TOOL</div>
+        <h2>Retos distintos.<br/><span>Intervenciones concretas.</span></h2>
+      </div>
+      <p>Adquisición, liderazgo, retención y expansión: experiencia aplicada a cada negocio.</p>
+    </div>
+    <div className="gz-evidence-grid" aria-label="Casos de intervención de TOOL">
+      {caseStories.map((s, index) => {
+        const Icon = s.icon;
+        return (
+          <article className="gz-case-card" data-tone={s.tone} key={s.company}>
+            <div className="gz-case-top">
+              <div className="gz-case-company">
+                <span aria-hidden="true"><Icon size={16} /></span>
+                <div>
+                  <strong>{s.company}</strong>
+                  <small>{s.industry}</small>
+                </div>
+              </div>
+              <span className="gz-case-index">0{index + 1}</span>
+            </div>
+            <div className="gz-case-metric">
+              <strong>{s.metric}</strong>
+              <span>{s.metricLabel}</span>
+            </div>
+            <h3>{s.headline}</h3>
+            <div className="gz-case-panels">
+              <div className="gz-case-detail">
+                <strong>Qué hicimos</strong>
+                <p>{s.actions}</p>
+              </div>
+              <div className="gz-case-detail">
+                <strong>Valor aportado</strong>
+                <p>{s.value}</p>
+              </div>
+            </div>
+            <footer>{s.focus}</footer>
+          </article>
+        );
+      })}
+    </div>
+    <p className="gz-evidence-note">Cada proyecto tiene su propio alcance, plazo y resultados.</p>
+  </section>
   <section className="gz-section gz-investment" id="inversion"><div><div className="gz-eyebrow">INVERSIÓN Y ALCANCE</div><h2>Empieza con foco.<br/><span>Quédate con un sistema.</span></h2><p>10 sesiones con tu equipo para activar oportunidades y construir una forma común de vender.</p><div className="gz-investment-outcomes"><div><strong>Desde la primera semana</strong><p>Top 20 oportunidades y estrategia de salida para 5 equipos.</p></div><div><strong>Al terminar</strong><p>Método, responsables, seguimiento y un plan para los siguientes 60 días.</p></div></div></div><div className="gz-investment-card"><span className="gz-eyebrow">TOOL SALES LAB · GAOZ</span><div className="gz-price"><strong className="gz-price-amount">$60,000</strong><p className="gz-price-terms">MXN + IVA · pago único</p></div><h3>5 semanas · 10 sesiones</h3><p>Trabajo enfocado en quick wins, con un alcance definido desde el inicio.</p><ul><li><strong>Foco:</strong> diagnóstico, cartera y Top 20.</li><li><strong>Ejecución:</strong> roles, proceso y scorecard comercial.</li><li><strong>Negociación:</strong> Deal Lab y playbook de objeciones.</li><li><strong>Continuidad:</strong> CRM Blueprint y roadmap de 60 días.</li></ul><CTA>Definamos la fecha de arranque</CTA><p className="gz-investment-note">Trabajamos con los clientes, oportunidades e inventario de GAOZ. El acompañamiento posterior se acuerda por separado.</p></div></section>
   <section className="gz-section gz-faq"><div className="gz-eyebrow">ANTES DE EMPEZAR</div><h2>Antes de empezar.</h2><div className="gz-evidence-grid"><article><h3>¿Qué necesita aportar GAOZ?</h3><p>Participación del equipo y datos de cartera, oportunidades e inventario.</p></article><article><h3>¿Qué contempla el CRM?</h3><p>El diseño de etapas, campos y seguimiento. Licencias e integraciones adicionales se precisan en la propuesta.</p></article><article><h3>¿Qué pasa al terminar?</h3><p>Te quedas con el sistema v1 y un plan de 60 días. El acompañamiento posterior se acuerda por separado.</p></article></div></section>
  </>}
+
 export default function Gaoz(){return <div className="gz">
   <PageMeta title="TOOL Sales Lab · GAOZ | Sistema comercial en 5 semanas" description="Convierte 27 años de experiencia de GAOZ en un sistema comercial enfocado, medible y repetible. 5 semanas, 10 sesiones y oportunidades reales desde el inicio."/>
   <a className="gz-skip" href="#gaoz-main">Saltar al contenido</a>

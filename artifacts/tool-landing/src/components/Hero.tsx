@@ -3,7 +3,6 @@ import { ArrowRight, Pause, Play } from "lucide-react";
 import { useEffect, useState } from "react";
 import DashboardMockup from "@/components/landing/DashboardMockup";
 import { DEMO_URL } from "@/lib/landing-theme";
-import '@/styles/gaoz-entry.css';
 
 const heroMessages = [
   { lead: "Elegir es estrategia.", outcome: "Ejecutar es sistema." },
@@ -37,10 +36,6 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.55 }}
         >
-          <a className="tool-gaoz-entry" href="/gaoz/">
-            <span><strong>Sales Lab · GAOZ</strong><small>5 semanas para construir el sistema comercial</small></span>
-            <span className="tool-gaoz-entry-action">Ver programa <ArrowRight size={18} /></span>
-          </a>
           <div className="tool-hero-message-window" aria-live="polite">
             <motion.h1
               key={message.lead}
