@@ -1,7 +1,7 @@
 import { motion, useReducedMotion } from "framer-motion";
 import { ArrowRight, Building2, Code2, Database, HeartPulse, Sparkles, TrendingUp } from "lucide-react";
 
-const stories = [
+export const stories = [
   {
     company: "ZAIAH",
     industry: "Desarrollo inmobiliario",
