@@ -4,6 +4,8 @@ import { ArrowRight, Building2, Code2, Database, HeartPulse, Sparkles, TrendingU
 export const stories = [
   {
     company: "ZAIAH",
+    actions: "Diseñamos el sistema de adquisición y venta y alineamos prioridades y responsabilidades.",
+    value: "Conectamos la estrategia de crecimiento con la ejecución comercial. La empresa levantó $14 MDP en ocho meses.",
     industry: "Desarrollo inmobiliario",
     metric: "$14 MDP",
     metricLabel: "capital levantado",
@@ -15,6 +17,8 @@ export const stories = [
   },
   {
     company: "Blue Pixel",
+    actions: "Estructuramos la operación de ventas y un esquema de compensación ligado a las metas del negocio.",
+    value: "Alineamos la forma de vender y los incentivos del equipo con los objetivos de la empresa.",
     industry: "Desarrollo de software",
     metric: "Sistema",
     metricLabel: "comercial",
@@ -26,6 +30,8 @@ export const stories = [
   },
   {
     company: "INBest",
+    actions: "Maduramos la operación comercial y desarrollamos al vendedor con mejor desempeño hasta asumir la Dirección Comercial.",
+    value: "Instalamos liderazgo dentro del equipo para que la venta dejara de depender del CEO.",
     industry: "Desarrollo de software",
     metric: "Sucesión",
     metricLabel: "comercial",
@@ -37,6 +43,8 @@ export const stories = [
   },
   {
     company: "Collecta",
+    actions: "Diseñamos la experiencia del cliente y una estrategia de venta cruzada y ampliación de servicios.",
+    value: "Trabajamos el crecimiento sobre la cartera existente: churn de 30% a 0% en un año y 10% más valor de cartera.",
     industry: "Cobranza privada y tecnología",
     metric: "30% → 0%",
     metricLabel: "churn en un año",
@@ -48,23 +56,27 @@ export const stories = [
   },
   {
     company: "DermaMX",
+    actions: "Optimizamos la recepción de solicitudes, los tiempos de respuesta y el uso de la plataforma de atención.",
+    value: "Conectamos captación y seguimiento en un mismo proceso, mejorando la atención y la retención de clientes.",
     industry: "Salud y cuidado de la piel",
-    metric: "2 sucursales",
-    metricLabel: "operación actual",
-    headline: "Procesos comerciales más claros para una expansión estructurada.",
-    description: "Ayudamos a mejorar sus procesos comerciales y a estructurar su expansión. Una operación alineada con su esencia: cuidar la salud y el aspecto de la piel con ciencia médica, tecnología especializada y ética profesional.",
-    focus: "Procesos comerciales + expansión",
+    metric: "Mejor atención",
+    metricLabel: "captación y retención",
+    headline: "Una atención más ordenada, de la solicitud al seguimiento.",
+    description: "Acompañamos a DermaMX en la optimización de su proceso de atención, desde la recepción de solicitudes hasta el seguimiento. Alineamos tiempos de respuesta y uso de la plataforma para dar continuidad a cada contacto y mejorar la captación y retención de clientes.",
+    focus: "Atención al cliente + captación + retención",
     icon: HeartPulse,
     tone: "green",
   },
   {
     company: "Kyrie México",
+    actions: "Mejoramos y estandarizamos el proceso comercial para gestionar la incorporación de nuevas líneas y productos.",
+    value: "Dimos una base común a la venta para ampliar la oferta con una operación más ordenada.",
     industry: "Distribución de cosméticos",
-    metric: "3 líneas",
-    metricLabel: "portafolio actual",
-    headline: "Cosmética francesa para el mercado mexicano.",
-    description: "Kyrie México se especializa en distribuir líneas de cosméticos francesas en México. Actualmente maneja un portafolio de tres líneas.",
-    focus: "Perfil de la empresa",
+    metric: "Proceso comercial",
+    metricLabel: "estandarizado para crecer",
+    headline: "Una forma común de vender para ampliar la oferta.",
+    description: "Acompañamos a Kyrie en la mejora y estandarización de su proceso comercial. Establecimos una forma común de gestionar la venta para facilitar la incorporación de nuevas líneas y productos y dar estructura a la ampliación de su oferta.",
+    focus: "Estandarización comercial + ampliación de oferta",
     icon: Sparkles,
     tone: "purple",
   },
@@ -126,7 +138,8 @@ export default function SuccessStories({ mode = "full" }: SuccessStoriesProps) {
                   <span>{story.metricLabel}</span>
                 </div>
                 <h3>{story.headline}</h3>
-                <p>{story.description}</p>
+                <p><strong>Qué hicimos</strong><br/>{story.actions}</p>
+                <p><strong>Valor aportado</strong><br/>{story.value}</p>
                 <footer>{story.focus}</footer>
               </motion.article>
             );
@@ -138,7 +151,7 @@ export default function SuccessStories({ mode = "full" }: SuccessStoriesProps) {
             <a href="/que-hacemos#casos-de-exito">Ver resultados y cómo los construimos <ArrowRight size={15} /></a>
           </div>
         ) : (
-          <small className="success-stories-note">El alcance y los resultados dependen de cada proyecto. Las sucursales y líneas de producto describen la escala actual de las empresas, no resultados atribuibles a TOOL.</small>
+          <small className="success-stories-note">El alcance, los plazos y los resultados dependen de cada proyecto.</small>
         )}
       </div>
     </section>
