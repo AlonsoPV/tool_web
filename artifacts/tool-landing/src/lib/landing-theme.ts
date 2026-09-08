@@ -40,7 +40,6 @@ export const NAV_LINKS = [
       { label: "Quién construye contigo", description: "Las personas detrás de la estrategia y ejecución.", href: "/quienes-somos#equipo" },
     ],
   },
-  { label: "Sales Lab · GAOZ", href: "/gaoz" },
   { label: "Contacto", href: "/contacto" },
 ] as const;
 
