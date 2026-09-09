@@ -6,6 +6,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import NotFound from "@/pages/not-found";
 import Home from "@/pages/Home";
 import Gaoz from "@/pages/Gaoz";
+import GaozDiagnosis from "@/pages/GaozDiagnosis";
 import WhatWeDo from "@/pages/WhatWeDo";
 import About from "@/pages/About";
 import Contact from "@/pages/Contact";
@@ -37,6 +38,7 @@ function Router() {
     <>
       <RouteScrollManager />
       <Switch>
+        <Route path="/gaoz/diagnostico" component={GaozDiagnosis} />
         <Route path="/gaoz" component={Gaoz} />
         <Route path="/" component={Home} />
         <Route path="/que-hacemos" component={WhatWeDo} />

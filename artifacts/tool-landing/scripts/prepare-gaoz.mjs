@@ -10,4 +10,9 @@ html = html.replace(/<title>.*?<\/title>/, `<title>${title}</title>`)
   .replace(/(<meta (?:name|property)="(?:og:title|twitter:title)" content=")[^"]*/g, `$1${title}`)
   .replace('</head>', '<link rel="canonical" href="https://tool-sales-lab-gaoz.alpeva.chatgpt.site/gaoz/" />\n<meta property="og:locale" content="es_MX" />\n</head>');
 await writeFile('out/gaoz/index.html', html);
+await mkdir('out/gaoz/diagnostico', { recursive: true });
+const diagnosticTitle = 'Diagnóstico comercial GAOZ | TOOL';
+const diagnosticDescription = 'Situación actual, prioridades y primeras acciones del diagnóstico comercial de GAOZ. Una ruta visual hacia un sistema de ventas medible.';
+const diagnosticHtml = html.replaceAll(title, diagnosticTitle).replaceAll(description, diagnosticDescription).replace('https://tool-sales-lab-gaoz.alpeva.chatgpt.site/gaoz/', 'https://tool-sales-lab-gaoz.alpeva.chatgpt.site/gaoz/diagnostico/');
+await writeFile('out/gaoz/diagnostico/index.html', diagnosticHtml);
 

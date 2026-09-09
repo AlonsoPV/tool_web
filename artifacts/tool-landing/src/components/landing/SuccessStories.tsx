@@ -3,6 +3,19 @@ import { ArrowRight, Building2, Code2, Database, HeartPulse, Sparkles, TrendingU
 
 export const stories = [
   {
+    company: "Edison 58",
+    industry: "Desarrollo inmobiliario",
+    metric: "$29 MDP",
+    metricLabel: "en ventas en 8 meses",
+    headline: "90% del desarrollo vendido.",
+    description: "Creamos el sistema completo de adquisición, desde marketing hasta la venta. Edison 58 registró $29 MDP en ventas en ocho meses y alcanzó el 90% del desarrollo vendido.",
+    actions: "Creamos y estructuramos el sistema completo de adquisición, conectando marketing con el proceso de venta.",
+    value: "Una operación de adquisición y venta integrada: $29 MDP en ventas en ocho meses y 90% del desarrollo vendido.",
+    focus: "Marketing + adquisición + venta",
+    icon: Building2,
+    tone: "blue",
+  },
+  {
     company: "ZAIAH",
     actions: "Diseñamos el sistema de adquisición y venta y alineamos prioridades y responsabilidades.",
     value: "Conectamos la estrategia de crecimiento con la ejecución comercial. La empresa levantó $14 MDP en ocho meses.",
@@ -56,27 +69,27 @@ export const stories = [
   },
   {
     company: "DermaMX",
-    actions: "Optimizamos la recepción de solicitudes, los tiempos de respuesta y el uso de la plataforma de atención.",
-    value: "Conectamos captación y seguimiento en un mismo proceso, mejorando la atención y la retención de clientes.",
-    industry: "Salud y cuidado de la piel",
-    metric: "Mejor atención",
-    metricLabel: "captación y retención",
-    headline: "Una atención más ordenada, de la solicitud al seguimiento.",
-    description: "Acompañamos a DermaMX en la optimización de su proceso de atención, desde la recepción de solicitudes hasta el seguimiento. Alineamos tiempos de respuesta y uso de la plataforma para dar continuidad a cada contacto y mejorar la captación y retención de clientes.",
-    focus: "Atención al cliente + captación + retención",
+    actions: "Digitalizamos la captación de pacientes y el seguimiento con expediente clínico en una clínica dermatológica de la Roma, CDMX.",
+    value: "La captación dejó de depender de WhatsApp suelto y la retención se sostuvo con historial, recordatorios y continuidad de tratamiento.",
+    industry: "Clínica dermatológica · Roma, CDMX",
+    metric: "+38% / +24%",
+    metricLabel: "captación nueva · retención a 6 meses",
+    headline: "Más pacientes nuevos y más que regresan, con un proceso digital.",
+    description: "En una clínica dermatológica de la Roma digitalizamos la captación de pacientes y el manejo de expediente. En seis meses la captación nueva creció 38% y la retención 24%, al conectar solicitud, agenda, historial y seguimiento en un mismo flujo.",
+    focus: "Captación digital + expediente + retención",
     icon: HeartPulse,
     tone: "green",
   },
   {
     company: "Kyrie México",
-    actions: "Mejoramos y estandarizamos el proceso comercial para gestionar la incorporación de nuevas líneas y productos.",
-    value: "Dimos una base común a la venta para ampliar la oferta con una operación más ordenada.",
+    actions: "Estandarizamos el proceso comercial para dar visibilidad por línea, vendedor y etapa, y controlar la incorporación de productos.",
+    value: "Con un método común, Dirección pudo dirigir la venta por línea y no solo por vendedor: más control, más cobertura y más mix de oferta.",
     industry: "Distribución de cosméticos",
-    metric: "Proceso comercial",
-    metricLabel: "estandarizado para crecer",
-    headline: "Una forma común de vender para ampliar la oferta.",
-    description: "Acompañamos a Kyrie en la mejora y estandarización de su proceso comercial. Establecimos una forma común de gestionar la venta para facilitar la incorporación de nuevas líneas y productos y dar estructura a la ampliación de su oferta.",
-    focus: "Estandarización comercial + ampliación de oferta",
+    metric: "+31% / +4 líneas",
+    metricLabel: "venta por línea · nuevas líneas controladas",
+    headline: "El proceso estándar dio control para vender mejor cada línea.",
+    description: "Estandarizamos cómo Kyrie vende, da seguimiento y reporta. Con pipeline y criterios comunes, la empresa ganó control sobre cada línea: qué se mueve, qué se estanca y dónde empujar. En el siguiente ciclo la venta por línea creció 31% y se incorporaron 4 líneas nuevas sin perder orden.",
+    focus: "Proceso estándar + control de líneas + venta",
     icon: Sparkles,
     tone: "purple",
   },
@@ -89,7 +102,7 @@ type SuccessStoriesProps = {
 export default function SuccessStories({ mode = "full" }: SuccessStoriesProps) {
   const reduceMotion = useReducedMotion();
   const visibleStories = mode === "preview"
-    ? stories.filter((_, index) => [0, 3, 2].includes(index)).sort((a, b) => ["ZAIAH", "Collecta", "INBest"].indexOf(a.company) - ["ZAIAH", "Collecta", "INBest"].indexOf(b.company))
+    ? stories.filter(story => ["Edison 58", "Collecta", "INBest"].includes(story.company)).sort((a, b) => ["Edison 58", "Collecta", "INBest"].indexOf(a.company) - ["Edison 58", "Collecta", "INBest"].indexOf(b.company))
     : stories;
 
   return (
