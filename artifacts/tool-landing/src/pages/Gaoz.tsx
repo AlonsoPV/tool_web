@@ -1,4 +1,4 @@
-import { ArrowUpRight, ArrowRight, Check, MoveDown } from 'lucide-react';
+import { ArrowUpRight, ArrowRight, Check, MessageCircle, MoveDown } from 'lucide-react';
 import PageMeta from '@/components/PageMeta';
 import { DEMO_URL } from '@/lib/landing-theme';
 import '@/styles/gaoz.css';
@@ -30,7 +30,15 @@ const pillars = [
   ['Herramientas', 'CRM, tableros y seguimiento alineados al proceso. La verdad comercial deja de vivir en chats y archivos.'],
   ['Ritmo', 'Una cadencia que sostiene, corrige y mejora cada semana. El sistema no se apaga cuando termina el programa.'],
 ];
-function CTA({children='Conversemos sobre el arranque'}:{children?:React.ReactNode}) { return <a className="gz-button" href={contact} target="_blank" rel="noopener noreferrer">{children}<ArrowUpRight size={19}/></a>; }
+function CTA({children='Conversemos sobre el arranque'}:{children?:React.ReactNode}) {
+  return (
+    <a className="gz-button" href={contact} target="_blank" rel="noopener noreferrer">
+      <MessageCircle size={18} />
+      {children}
+      <ArrowUpRight size={18} />
+    </a>
+  );
+}
 function ProofAndInvestment(){
   const caseStories = stories.filter((s) => ['Edison 58', 'ZAIAH', 'INBest', 'Collecta', 'DermaMX', 'Kyrie México'].includes(s.company));
   return <>
@@ -116,7 +124,7 @@ function ProofAndInvestment(){
           <li>100% presencial, con acceso a todas las clases grabadas</li>
         </ul>
       </div>
-      <CTA>Definamos la fecha de arranque</CTA>
+      <CTA>Quiero Sales Lab este mes</CTA>
       <p className="gz-investment-note">Trabajamos con los clientes, oportunidades e inventario de GAOZ. El acompañamiento posterior se acuerda por separado.</p>
     </div>
   </section>
@@ -128,14 +136,14 @@ export default function Gaoz(){return <div className="gz">
   <a className="gz-skip" href="#gaoz-main">Saltar al contenido</a>
   <header className="gz-nav"><a href="/" className="gz-brand" aria-label="Ir a la web principal de TOOL">TOOL<span>SALES LAB</span></a><nav aria-label="Navegación del programa"><a href="/gaoz/diagnostico/">Diagnóstico</a><a href="#programa">Programa</a><a href="#casos">Casos</a><a href="#inversion">Inversión</a></nav><a href={contact} target="_blank" rel="noopener noreferrer" className="gz-nav-cta">Hablemos <ArrowUpRight size={16}/></a></header>
   <main id="gaoz-main">
-    <section className="gz-hero"><div className="gz-hero-copy"><div className="gz-eyebrow"><span className="gz-dot"/> TOOL SALES LAB · DISEÑADO PARA GAOZ</div><h1>En 5 semanas,<br/><span>convierte la experiencia<br/>en un sistema de ventas.</span></h1><p><strong>GAOZ ya sabe vender.</strong> Ahora toca convertir 27 años de experiencia en un método que todo el equipo pueda repetir.</p><p>Priorizamos oportunidades, activamos inventario y ponemos el seguimiento en marcha con tus negocios reales.</p><div className="gz-actions"><CTA>Construyamos el sistema</CTA><a className="gz-text-link" href="#programa">Ver el programa <MoveDown size={16}/></a></div><div className="gz-hero-note">5 semanas <span> / </span> 10 sesiones <span> / </span> Tu operación real</div></div>
+    <section className="gz-hero"><div className="gz-hero-copy"><div className="gz-eyebrow"><span className="gz-dot"/> TOOL SALES LAB · DISEÑADO PARA GAOZ</div><h1>En 5 semanas,<br/><span>convierte la experiencia<br/>en un sistema de ventas.</span></h1><p><strong>GAOZ ya sabe vender.</strong> Ahora toca convertir 27 años de experiencia en un método que todo el equipo pueda repetir.</p><p>Priorizamos oportunidades, activamos inventario y ponemos el seguimiento en marcha con tus negocios reales.</p><div className="gz-actions"><CTA>Quiero más ventas con sistema</CTA><a className="gz-text-link" href="#programa">Ver el programa <MoveDown size={16}/></a></div><div className="gz-hero-note">5 semanas <span> / </span> 10 sesiones <span> / </span> Tu operación real</div></div>
     <div className="gz-system-visual" aria-label="Del conocimiento de GAOZ a un sistema comercial: foco, equipo, método, ejecución y control"><div className="gz-visual-head"><span>GAOZ / COMMERCIAL OS</span><span>VERSIÓN 1.0</span></div><div className="gz-visual-title">La experiencia<br/>se vuelve <em>sistema.</em></div><div className="gz-system-steps">{['Foco comercial','Equipo alineado','Método compartido','Mejor ejecución','Control y dirección'].map((s,i)=><div key={s}><span>0{i+1}</span><strong>{s}</strong><ArrowUpRight size={17}/></div>)}</div><div className="gz-visual-foot"><span className="gz-dot"/> ACTIVACIÓN DESDE LA SEMANA 01</div></div></section>
     <div className="gz-proof"><span>EL PUNTO DE PARTIDA ES GAOZ</span><strong>Clientes reales</strong><span>+</span><strong>Oportunidades reales</strong><span>+</span><strong>Inventario y datos reales</strong></div>
     <a className="gz-diagnosis-entry" href="/gaoz/diagnostico/"><div><span>EL PUNTO DE PARTIDA</span><strong>Consulta el diagnóstico de GAOZ</strong><p>Qué vemos, qué priorizar y por dónde empezar.</p></div><ArrowRight size={24}/></a>
     <section className="gz-section gz-program" id="programa"><div className="gz-section-head"><div><div className="gz-eyebrow">02 / LA RUTA DE TRABAJO</div><h2>Una ruta clara e inmersiva.<br/><span>Un resultado cada semana.</span></h2></div><p>10 sesiones sobre la operación real de GAOZ.</p></div><div className="gz-week-nav" aria-label="Ir a una semana">{weeks.map(w=><a key={w.n} href={'#semana-'+w.n}><span>{w.n}</span>{w.title}<ArrowRight size={15}/></a>)}</div>{weeks.map(w=><article className="gz-week" id={'semana-'+w.n} key={w.n}><div className="gz-week-title"><span className="gz-week-number">{w.n}</span><div className="gz-eyebrow">SEMANA {w.n}</div><h3>{w.title}</h3><p>{w.sub}</p></div><div className="gz-sessions">{w.sessions.map(s=><section className="gz-session" key={s.label}><div className="gz-eyebrow">{s.label}</div><h4>{s.title}</h4><div className="gz-result"><Check size={17}/><p><strong>Resultado</strong>{s.result}</p></div></section>)}</div></article>)}</section>
     <section className="gz-delivery" id="sistema"><div className="gz-delivery-intro"><div className="gz-eyebrow">03 / LO QUE SE QUEDA EN GAOZ</div><h2>Terminas con<br/>un sistema<br/><span>en marcha.</span></h2><p>Seis piezas que se quedan en GAOZ: para vender, medir y mejorar sin volver a improvisar.</p><div className="gz-os-label"><span className="gz-dot"/> GAOZ COMMERCIAL OPERATING SYSTEM v1</div></div><div className="gz-pillars">{pillars.map(([t,c],i)=><div key={t}><span>0{i+1}</span><div><h3>{t}</h3><p>{c}</p></div><ArrowUpRight size={21}/></div>)}</div></section>
     <ProofAndInvestment />
-    <section className="gz-final" id="arranque"><div className="gz-eyebrow">EL SIGUIENTE CAPÍTULO DE GAOZ</div><h2>La experiencia ya está.<br/><span>Construyamos el siguiente paso.</span></h2><p>Alineemos prioridades, equipo y fecha de arranque.</p><CTA>Hablemos del arranque</CTA><div className="gz-final-note">Conversación directa con TOOL por WhatsApp</div></section>
+    <section className="gz-final" id="arranque"><div className="gz-eyebrow">EL SIGUIENTE CAPÍTULO DE GAOZ</div><h2>La experiencia ya está.<br/><span>Construyamos el siguiente paso.</span></h2><p>Alineemos prioridades, equipo y fecha de arranque.</p><CTA>Hablar ahora y reservar fecha</CTA><div className="gz-final-note">Respuesta directa. Sin formularios.</div></section>
   </main><footer className="gz-footer"><a className="gz-brand" href="/">TOOL<span>SALES LAB</span></a><span>Una propuesta para GAOZ · Versión cliente 01</span><a href="#programa">Volver al programa ↑</a></footer>
  </div>}
 
