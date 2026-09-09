@@ -1,0 +1,261 @@
+.gg{
+  --gg-ink:#f4f7fb;
+  --gg-muted:#9eb2cb;
+  --gg-accent:#49d9a8;
+  --gg-navy:#061428;
+  --gg-deep:#0a1d3d;
+  position:relative;
+  min-height:100vh;
+  min-height:100dvh;
+  overflow:hidden;
+  color:var(--gg-ink);
+  background:var(--gg-navy);
+  font-family:Manrope,sans-serif;
+}
+.gg *{box-sizing:border-box}
+.gg a{color:inherit;text-decoration:none}
+.gg h1,.gg p{margin:0}
+
+.gg-atmosphere{
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+}
+.gg-plane{
+  position:absolute;
+  display:block;
+  border-radius:40% 60% 55% 45%;
+  filter:blur(2px);
+}
+.gg-plane-a{
+  top:-18%;
+  right:-12%;
+  width:58vw;
+  height:58vw;
+  max-width:720px;
+  max-height:720px;
+  background:
+    radial-gradient(circle at 35% 40%,rgba(51,119,223,.42),transparent 58%),
+    radial-gradient(circle at 70% 70%,rgba(73,217,168,.18),transparent 50%);
+  animation:gg-drift 18s ease-in-out infinite alternate;
+}
+.gg-plane-b{
+  bottom:-28%;
+  left:-18%;
+  width:70vw;
+  height:55vw;
+  max-width:860px;
+  max-height:680px;
+  background:
+    radial-gradient(circle at 55% 35%,rgba(16,185,129,.22),transparent 55%),
+    radial-gradient(circle at 20% 70%,rgba(30,74,134,.5),transparent 60%);
+  animation:gg-drift 22s ease-in-out infinite alternate-reverse;
+}
+.gg-grid{
+  position:absolute;
+  inset:0;
+  opacity:.22;
+  background-image:
+    linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px);
+  background-size:72px 72px;
+  mask-image:radial-gradient(ellipse at 40% 35%,#000 20%,transparent 72%);
+}
+.gg-glow{
+  position:absolute;
+  top:18%;
+  left:8%;
+  width:min(42vw,420px);
+  height:min(42vw,420px);
+  border-radius:50%;
+  background:radial-gradient(circle,rgba(73,217,168,.12),transparent 68%);
+  animation:gg-pulse 7s ease-in-out infinite;
+}
+
+.gg-top{
+  position:relative;
+  z-index:1;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+  padding:28px 6% 0;
+}
+.gg-brand{
+  font-size:clamp(28px,3.2vw,36px);
+  font-weight:800;
+  letter-spacing:-.08em;
+  line-height:1;
+}
+.gg-badge{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:8px 12px;
+  border:1px solid rgba(158,178,203,.28);
+  border-radius:4px;
+  color:var(--gg-muted);
+  font-size:11px;
+  font-weight:650;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+}
+
+.gg-main{
+  position:relative;
+  z-index:1;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  min-height:calc(100vh - 88px);
+  min-height:calc(100dvh - 88px);
+  max-width:920px;
+  padding:48px 6% 64px;
+  animation:gg-rise .7s cubic-bezier(.22,1,.36,1) both;
+}
+.gg-kicker{
+  margin-bottom:22px;
+  color:var(--gg-accent);
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:.18em;
+}
+.gg-main h1{
+  font-size:clamp(42px,7.2vw,84px);
+  font-weight:700;
+  line-height:.98;
+  letter-spacing:-.055em;
+}
+.gg-main h1 em{
+  color:var(--gg-accent);
+  font-style:normal;
+}
+.gg-lead{
+  max-width:34ch;
+  margin-top:22px;
+  color:var(--gg-muted);
+  font:400 17px/1.65 Inter,sans-serif;
+}
+
+.gg-form{
+  display:grid;
+  gap:14px;
+  width:min(100%,420px);
+  margin-top:36px;
+}
+.gg-form label{
+  display:grid;
+  gap:8px;
+  color:#c5d4e8;
+  font-size:12px;
+  font-weight:650;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+.gg-form input{
+  width:100%;
+  padding:16px 18px;
+  border:1px solid rgba(183,201,223,.28);
+  border-radius:6px;
+  background:rgba(255,255,255,.05);
+  color:#fff;
+  font:600 16px/1.2 Manrope,sans-serif;
+  letter-spacing:.12em;
+  outline:none;
+  transition:border-color .2s ease, background .2s ease, box-shadow .2s ease;
+}
+.gg-form input::placeholder{color:rgba(255,255,255,.28);letter-spacing:.28em}
+.gg-form input:focus{
+  border-color:rgba(73,217,168,.7);
+  background:rgba(255,255,255,.08);
+  box-shadow:0 0 0 3px rgba(73,217,168,.16);
+}
+.gg-form button{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  width:100%;
+  margin-top:4px;
+  padding:16px 20px;
+  border:0;
+  border-radius:999px;
+  background:#10b981;
+  color:#fff;
+  font:700 15px/1 Manrope,sans-serif;
+  cursor:pointer;
+  box-shadow:0 14px 30px rgba(16,185,129,.28);
+  transition:background .2s ease, transform .2s ease, box-shadow .2s ease;
+}
+.gg-form button:hover{
+  background:#0da575;
+  transform:translateY(-2px);
+  box-shadow:0 18px 36px rgba(16,185,129,.36);
+}
+.gg-form button:focus-visible{
+  outline:3px solid #49d9a8;
+  outline-offset:4px;
+}
+.gg-error{
+  color:#ffb4a4;
+  font:500 13px/1.45 Inter,sans-serif;
+}
+.gg-form.is-shake{animation:gg-shake .42s ease}
+
+.gg-meta{
+  margin-top:34px;
+  color:rgba(158,178,203,.72);
+  font:500 12px/1.5 Inter,sans-serif;
+  letter-spacing:.02em;
+}
+
+.gg-loading{
+  display:grid;
+  place-items:center;
+  min-height:100vh;
+  min-height:100dvh;
+  background:var(--gg-navy);
+}
+.gg-loading-mark{
+  color:#fff;
+  font:800 28px/1 Manrope,sans-serif;
+  letter-spacing:-.08em;
+  opacity:.55;
+}
+
+@keyframes gg-rise{
+  from{opacity:0;transform:translateY(18px)}
+  to{opacity:1;transform:none}
+}
+@keyframes gg-drift{
+  from{transform:translate3d(0,0,0) scale(1)}
+  to{transform:translate3d(-18px,22px,0) scale(1.05)}
+}
+@keyframes gg-pulse{
+  0%,100%{opacity:.55;transform:scale(1)}
+  50%{opacity:.95;transform:scale(1.08)}
+}
+@keyframes gg-shake{
+  0%,100%{transform:translateX(0)}
+  25%{transform:translateX(-6px)}
+  50%{transform:translateX(6px)}
+  75%{transform:translateX(-4px)}
+}
+
+@media(max-width:700px){
+  .gg-top{padding:22px 6% 0}
+  .gg-badge{letter-spacing:.08em;font-size:10px}
+  .gg-main{padding:40px 6% 48px;justify-content:flex-start}
+  .gg-lead{font-size:16px}
+  .gg-form{margin-top:28px}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .gg-main,
+  .gg-plane-a,
+  .gg-plane-b,
+  .gg-glow,
+  .gg-form.is-shake{
+    animation:none!important;
+  }
+}

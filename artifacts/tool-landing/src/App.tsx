@@ -7,6 +7,7 @@ import NotFound from "@/pages/not-found";
 import Home from "@/pages/Home";
 import Gaoz from "@/pages/Gaoz";
 import GaozDiagnosis from "@/pages/GaozDiagnosis";
+import GaozGate from "@/components/GaozGate";
 import WhatWeDo from "@/pages/WhatWeDo";
 import About from "@/pages/About";
 import Contact from "@/pages/Contact";
@@ -33,13 +34,29 @@ function RouteScrollManager() {
   return null;
 }
 
+function GaozProposal() {
+  return (
+    <GaozGate>
+      <Gaoz />
+    </GaozGate>
+  );
+}
+
+function GaozDiagnosisProtected() {
+  return (
+    <GaozGate>
+      <GaozDiagnosis />
+    </GaozGate>
+  );
+}
+
 function Router() {
   return (
     <>
       <RouteScrollManager />
       <Switch>
-        <Route path="/gaoz/diagnostico" component={GaozDiagnosis} />
-        <Route path="/gaoz" component={Gaoz} />
+        <Route path="/gaoz/diagnostico" component={GaozDiagnosisProtected} />
+        <Route path="/gaoz" component={GaozProposal} />
         <Route path="/" component={Home} />
         <Route path="/que-hacemos" component={WhatWeDo} />
         <Route path="/quienes-somos" component={About} />
