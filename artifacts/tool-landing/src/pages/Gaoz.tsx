@@ -9,14 +9,14 @@ const contact = `${DEMO_URL}?text=${encodeURIComponent('Hola, quiero conversar s
 const weeks = [
   { n:'01', title:'Commercial X-Ray', sub:'Encontrar el foco.', sessions:[
     {label:'SESIÓN 1 · DIAGNÓSTICO', title:'¿Dónde perdemos oportunidades? ¿Dónde podemos crecer?', copy:'Leemos juntos la operación para identificar cuellos de botella, fugas, dependencias y palancas de crecimiento.', result:'Entregamos un mapa ejecutivo con fugas, palancas y prioridades. El equipo deja de opinar sobre “dónde está el problema” y trabaja sobre un diagnóstico compartido.'},
-    {label:'SESIÓN 2 · SEGMENTACIÓN Y FOCO', title:'La mejor oportunidad puede estar en la cartera actual.', copy:'Segmentamos por recurrencia, potencial, ticket y línea comprada. Activamos upsell, cross-sell, resell y reactivación; ponemos a prueba el potencial de tomografía y resonancia.', result:'Entregamos el mapa de cartera, el Top 20 con siguiente paso y la estrategia de salida de 5 equipos. El esfuerzo comercial se concentra donde hay más probabilidad y valor.'}]},
+    {label:'SESIÓN 2 · SEGMENTACIÓN Y FOCO', title:'La mejor oportunidad puede estar en la cartera actual.', copy:'Segmentamos por recurrencia, potencial, ticket y línea comprada. Activamos upsell, cross-sell, resell y reactivación; ponemos a prueba el potencial de tomografía y resonancia.', result:'Entregamos el mapa de cartera, el Top 20 con el siguiente paso y la estrategia de salida del inventario. El esfuerzo comercial se concentra donde hay más probabilidad y valor.'}]},
   { n:'02', title:'Arquitectura del equipo', sub:'Dar claridad para actuar.', sessions:[
     {label:'SESIONES 3 Y 4 · ESTRUCTURA COMERCIAL', title:'Quién dirige. Quién vende. Quién decide.', copy:'Definimos la función del gerente comercial, responsabilidades de vendedores, ownership de cartera, reglas de decisión e interacción con Dirección. Cada compromiso tendrá un responsable.', result:'Entregamos la estructura comercial v1 y scorecards por rol. Cada compromiso tiene dueño, y Dirección deja de coordinar la venta a mano.'}]},
   { n:'03', title:'Construir el método', sub:'Hacer repetible lo que funciona.', sessions:[
     {label:'SESIÓN 5 · MÉTODO COMERCIAL GAOZ', title:'Una forma común de vender.', copy:'De cada vendedor con su propio método a un proceso compartido, con criterios claros para avanzar.', result:'Entregamos el Sales Process GAOZ v1, con etapas y criterios para avanzar. El equipo vende con un método común y deja de depender del estilo de cada vendedor.'},
     {label:'SESIÓN 6 · METAS, PIPELINE Y RITMO', title:'Una meta que se traduce en acciones.', copy:'Construimos KPIs, forecast, Top Deals, Weekly Comercial y compromisos. La gestión empieza por saber qué mover cada semana.', result:'Entregamos el scorecard y el ritmo semanal de revisión. La meta anual se traduce en pipeline, oportunidades y actividad que el equipo sí puede ejecutar.'}]},
   { n:'04', title:'Vender mejor', sub:'Llevar el sistema a la conversación.', sessions:[
-    {label:'SESIÓN 7 · MINDSET & CULTURA', title:'El sistema funciona cuando cambian los comportamientos.', copy:'Trabajamos la mentalidad que sostiene los resultados: aprendizaje, accountability y ejecución consistente. Identificamos qué comportamientos necesita GAOZ y cuáles frenan al equipo.', result:'Entregamos los comportamientos que el equipo debe sostener cada semana. El sistema deja de ser un documento y se vuelve hábito de ejecución y accountability.'},
+    {label:'SESIÓN 7 · MINDSET & CULTURA', title:'El sistema funciona cuando cambian los comportamientos.', copy:'Trabajamos la mentalidad que sostiene los resultados: aprendizaje, accountability y ejecución consistente. Identificamos qué comportamientos necesita GAOZ y cuáles frenan al equipo.', result:'Entregamos los comportamientos que el equipo debe sostener cada semana. El sistema deja de ser un documento y se vuelve un estándar cultural. Creamos un sentido de identidad y propósito en el equipo.'},
     {label:'SESIÓN 8 · DEAL LAB', title:'Negocios reales. Conversaciones decisivas.', copy:'Simulaciones y clínicas sobre precio, competencia, descuento, múltiples decisores, comparación de equipos, urgencia, financiamiento y seguimiento.', result:'Entregamos el playbook de objeciones y un plan para las oportunidades abiertas. El equipo negocia con argumentos, protege margen y mueve deals que antes se estancaban.'}]},
   { n:'05', title:'Instalar y escalar', sub:'Dejar listo el siguiente ciclo.', sessions:[
     {label:'SESIÓN 9 · CRM & CONTROL ROOM', title:'Un solo lugar para la verdad comercial.', copy:'Con el proceso definido, estructuramos etapas, campos, actividades, responsables, alertas, forecast y dashboards en el diseño del CRM.', result:'Entregamos el CRM Blueprint: etapas, campos, responsables y tableros. La operación queda visible en un solo lugar y el seguimiento deja de vivir en chats y archivos.'},
@@ -100,17 +100,12 @@ function ProofAndInvestment(){
     <div className="gz-investment-card">
       <span className="gz-eyebrow">TOOL SALES LAB · GAOZ</span>
       <div className="gz-price">
-        <strong className="gz-price-amount">$60,000</strong>
-        <p className="gz-price-terms">MXN + IVA · pago único</p>
+        <strong className="gz-price-amount">$60,000.0</strong>
+        <p className="gz-price-terms">MXN + IVA</p>
+        <p className="gz-price-terms">Esquema de pago: 50% de arranque y 50% de cierre</p>
       </div>
       <h3>5 semanas · 10 sesiones</h3>
       <p>Trabajo enfocado en quick wins, con un alcance definido desde el inicio.</p>
-      <ul>
-        <li><strong>Foco:</strong> diagnóstico, cartera y Top 20.</li>
-        <li><strong>Ejecución:</strong> roles, proceso y scorecard comercial.</li>
-        <li><strong>Negociación:</strong> Deal Lab y playbook de objeciones.</li>
-        <li><strong>Continuidad:</strong> CRM Blueprint y roadmap de 60 días.</li>
-      </ul>
       <div className="gz-investment-perks">
         <span className="gz-eyebrow">INCLUYE</span>
         <ul>
@@ -121,7 +116,7 @@ function ProofAndInvestment(){
             </a>
           </li>
           <li>10 clases en vivo + 5 sesiones de Q&amp;A</li>
-          <li>100% presencial, con acceso a todas las clases grabadas</li>
+          <li>100% presencial, con acceso a material didáctico y de trabajo</li>
         </ul>
       </div>
       <CTA>Quiero Sales Lab este mes</CTA>
@@ -136,10 +131,20 @@ export default function Gaoz(){return <div className="gz">
   <a className="gz-skip" href="#gaoz-main">Saltar al contenido</a>
   <header className="gz-nav"><a href="/" className="gz-brand" aria-label="Ir a la web principal de TOOL">TOOL<span>SALES LAB</span></a><nav aria-label="Navegación del programa"><a href="/gaoz/diagnostico/">Diagnóstico</a><a href="#programa">Programa</a><a href="#casos">Casos</a><a href="#inversion">Inversión</a></nav><a href={contact} target="_blank" rel="noopener noreferrer" className="gz-nav-cta">Hablemos <ArrowUpRight size={16}/></a></header>
   <main id="gaoz-main">
-    <section className="gz-hero"><div className="gz-hero-copy"><div className="gz-eyebrow"><span className="gz-dot"/> TOOL SALES LAB · DISEÑADO PARA GAOZ</div><h1>En 5 semanas,<br/><span>convierte la experiencia<br/>en un sistema de ventas.</span></h1><p><strong>GAOZ ya sabe vender.</strong> Ahora toca convertir 27 años de experiencia en un método que todo el equipo pueda repetir.</p><p>Priorizamos oportunidades, activamos inventario y ponemos el seguimiento en marcha con tus negocios reales.</p><div className="gz-actions"><CTA>Quiero más ventas con sistema</CTA><a className="gz-text-link" href="#programa">Ver el programa <MoveDown size={16}/></a></div><div className="gz-hero-note">5 semanas <span> / </span> 10 sesiones <span> / </span> Tu operación real</div></div>
+    <section className="gz-hero"><div className="gz-hero-copy"><div className="gz-eyebrow"><span className="gz-dot"/> TOOL SALES LAB · DISEÑADO PARA GAOZ</div><h1>En 5 semanas,<br/><span>convierte la experiencia<br/>en un sistema de ventas.</span></h1><p><strong>GAOZ ya vende.</strong> Ahora toca convertir 27 años de experiencia en un método que todo el equipo pueda repetir.</p><p>Priorizamos oportunidades, activamos inventario y ponemos el seguimiento en marcha con tus negocios reales.</p><div className="gz-actions"><a className="gz-text-link" href="#programa">Ver el programa <MoveDown size={16}/></a></div><div className="gz-hero-note">5 semanas <span> / </span> 10 sesiones <span> / </span> Tu operación real</div></div>
     <div className="gz-system-visual" aria-label="Del conocimiento de GAOZ a un sistema comercial: foco, equipo, método, ejecución y control"><div className="gz-visual-head"><span>GAOZ / COMMERCIAL OS</span><span>VERSIÓN 1.0</span></div><div className="gz-visual-title">La experiencia<br/>se vuelve <em>sistema.</em></div><div className="gz-system-steps">{['Foco comercial','Equipo alineado','Método compartido','Mejor ejecución','Control y dirección'].map((s,i)=><div key={s}><span>0{i+1}</span><strong>{s}</strong><ArrowUpRight size={17}/></div>)}</div><div className="gz-visual-foot"><span className="gz-dot"/> ACTIVACIÓN DESDE LA SEMANA 01</div></div></section>
     <div className="gz-proof"><span>EL PUNTO DE PARTIDA ES GAOZ</span><strong>Clientes reales</strong><span>+</span><strong>Oportunidades reales</strong><span>+</span><strong>Inventario y datos reales</strong></div>
-    <a className="gz-diagnosis-entry" href="/gaoz/diagnostico/"><div><span>EL PUNTO DE PARTIDA</span><strong>Consulta el diagnóstico de GAOZ</strong><p>Qué vemos, qué priorizar y por dónde empezar.</p></div><ArrowRight size={24}/></a>
+    <a className="gz-diagnosis-entry" href="/gaoz/diagnostico/">
+      <div className="gz-diagnosis-entry-copy">
+        <span className="gz-diagnosis-entry-label"><span className="gz-dot" /> EL PUNTO DE PARTIDA</span>
+        <strong>Consulta el diagnóstico de GAOZ</strong>
+        <p>Qué vemos, qué priorizar y por dónde empezar.</p>
+      </div>
+      <span className="gz-diagnosis-entry-action" aria-hidden="true">
+        Ver diagnóstico
+        <ArrowRight size={18} />
+      </span>
+    </a>
     <section className="gz-section gz-program" id="programa"><div className="gz-section-head"><div><div className="gz-eyebrow">02 / LA RUTA DE TRABAJO</div><h2>Una ruta clara e inmersiva.<br/><span>Un resultado cada semana.</span></h2></div><p>10 sesiones sobre la operación real de GAOZ.</p></div><div className="gz-week-nav" aria-label="Ir a una semana">{weeks.map(w=><a key={w.n} href={'#semana-'+w.n}><span>{w.n}</span>{w.title}<ArrowRight size={15}/></a>)}</div>{weeks.map(w=><article className="gz-week" id={'semana-'+w.n} key={w.n}><div className="gz-week-title"><span className="gz-week-number">{w.n}</span><div className="gz-eyebrow">SEMANA {w.n}</div><h3>{w.title}</h3><p>{w.sub}</p></div><div className="gz-sessions">{w.sessions.map(s=><section className="gz-session" key={s.label}><div className="gz-eyebrow">{s.label}</div><h4>{s.title}</h4><div className="gz-result"><Check size={17}/><p><strong>Resultado</strong>{s.result}</p></div></section>)}</div></article>)}</section>
     <section className="gz-delivery" id="sistema"><div className="gz-delivery-intro"><div className="gz-eyebrow">03 / LO QUE SE QUEDA EN GAOZ</div><h2>Terminas con<br/>un sistema<br/><span>en marcha.</span></h2><p>Seis piezas que se quedan en GAOZ: para vender, medir y mejorar sin volver a improvisar.</p><div className="gz-os-label"><span className="gz-dot"/> GAOZ COMMERCIAL OPERATING SYSTEM v1</div></div><div className="gz-pillars">{pillars.map(([t,c],i)=><div key={t}><span>0{i+1}</span><div><h3>{t}</h3><p>{c}</p></div><ArrowUpRight size={21}/></div>)}</div></section>
     <ProofAndInvestment />
