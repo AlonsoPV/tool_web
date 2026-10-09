@@ -1,36 +1,123 @@
-import { ArrowUpRight, ArrowRight, Check, MessageCircle, MoveDown } from 'lucide-react';
+import { ArrowRight, ArrowUpRight, Check, MessageCircle } from 'lucide-react';
 import PageMeta from '@/components/PageMeta';
 import { DEMO_URL } from '@/lib/landing-theme';
 import '@/styles/gaoz.css';
 import '@/styles/gaoz-tool-theme.css';
-import { stories } from '@/components/landing/SuccessStories';
+import '@/styles/gaoz-proposal.css';
 
-const contact = `${DEMO_URL}?text=${encodeURIComponent('Hola, quiero conversar sobre TOOL Sales Lab para GAOZ y definir el arranque del programa de 5 semanas.')}`;
-const weeks = [
-  { n:'01', title:'Commercial X-Ray', sub:'Encontrar el foco.', sessions:[
-    {label:'SESIÓN 1 · DIAGNÓSTICO', title:'¿Dónde perdemos oportunidades? ¿Dónde podemos crecer?', copy:'Leemos juntos la operación para identificar cuellos de botella, fugas, dependencias y palancas de crecimiento.', result:'Entregamos un mapa ejecutivo con fugas, palancas y prioridades. El equipo deja de opinar sobre “dónde está el problema” y trabaja sobre un diagnóstico compartido.'},
-    {label:'SESIÓN 2 · SEGMENTACIÓN Y FOCO', title:'La mejor oportunidad puede estar en la cartera actual.', copy:'Segmentamos por recurrencia, potencial, ticket y línea comprada. Activamos upsell, cross-sell, resell y reactivación; ponemos a prueba el potencial de tomografía y resonancia.', result:'Entregamos el mapa de cartera, el Top 20 con el siguiente paso y la estrategia de salida del inventario. El esfuerzo comercial se concentra donde hay más probabilidad y valor.'}]},
-  { n:'02', title:'Arquitectura del equipo', sub:'Dar claridad para actuar.', sessions:[
-    {label:'SESIONES 3 Y 4 · ESTRUCTURA COMERCIAL', title:'Quién dirige. Quién vende. Quién decide.', copy:'Definimos la función del gerente comercial, responsabilidades de vendedores, ownership de cartera, reglas de decisión e interacción con Dirección. Cada compromiso tendrá un responsable.', result:'Entregamos la estructura comercial v1 y scorecards por rol. Cada compromiso tiene dueño, y Dirección deja de coordinar la venta a mano.'}]},
-  { n:'03', title:'Construir el método', sub:'Hacer repetible lo que funciona.', sessions:[
-    {label:'SESIÓN 5 · MÉTODO COMERCIAL GAOZ', title:'Una forma común de vender.', copy:'De cada vendedor con su propio método a un proceso compartido, con criterios claros para avanzar.', result:'Entregamos el Sales Process GAOZ v1, con etapas y criterios para avanzar. El equipo vende con un método común y deja de depender del estilo de cada vendedor.'},
-    {label:'SESIÓN 6 · METAS, PIPELINE Y RITMO', title:'Una meta que se traduce en acciones.', copy:'Construimos KPIs, forecast, Top Deals, Weekly Comercial y compromisos. La gestión empieza por saber qué mover cada semana.', result:'Entregamos el scorecard y el ritmo semanal de revisión. La meta anual se traduce en pipeline, oportunidades y actividad que el equipo sí puede ejecutar.'}]},
-  { n:'04', title:'Vender mejor', sub:'Llevar el sistema a la conversación.', sessions:[
-    {label:'SESIÓN 7 · MINDSET & CULTURA', title:'El sistema funciona cuando cambian los comportamientos.', copy:'Trabajamos la mentalidad que sostiene los resultados: aprendizaje, accountability y ejecución consistente. Identificamos qué comportamientos necesita GAOZ y cuáles frenan al equipo.', result:'Entregamos los comportamientos que el equipo debe sostener cada semana. El sistema deja de ser un documento y se vuelve un estándar cultural. Creamos un sentido de identidad y propósito en el equipo.'},
-    {label:'SESIÓN 8 · DEAL LAB', title:'Negocios reales. Conversaciones decisivas.', copy:'Simulaciones y clínicas sobre precio, competencia, descuento, múltiples decisores, comparación de equipos, urgencia, financiamiento y seguimiento.', result:'Entregamos el playbook de objeciones y un plan para las oportunidades abiertas. El equipo negocia con argumentos, protege margen y mueve deals que antes se estancaban.'}]},
-  { n:'05', title:'Instalar y escalar', sub:'Dejar listo el siguiente ciclo.', sessions:[
-    {label:'SESIÓN 9 · CRM & CONTROL ROOM', title:'Un solo lugar para la verdad comercial.', copy:'Con el proceso definido, estructuramos etapas, campos, actividades, responsables, alertas, forecast y dashboards en el diseño del CRM.', result:'Entregamos el CRM Blueprint: etapas, campos, responsables y tableros. La operación queda visible en un solo lugar y el seguimiento deja de vivir en chats y archivos.'},
-    {label:'SESIÓN 10 · ESTRATEGIA COMERCIAL', title:'Un norte claro para los próximos 60 días.', copy:'Alineamos visión, metas y objetivos del negocio con el mercado donde competir y el cliente ideal. Revisamos qué funcionó, qué corregir y cómo avanzar.', result:'Entregamos el roadmap de 60 días con metas, mercado y siguiente ciclo. GAOZ termina con un norte claro y una forma de seguir mejorando sin volver a partir de cero.'}]},
+const contact = `${DEMO_URL}?text=${encodeURIComponent('Hola, quiero conversar sobre la propuesta de 21 semanas para GAOZ y definir el arranque.')}`;
+
+const challenges = [
+  { title: 'Falta de estructura comercial', copy: 'No existe una estructura suficientemente definida de funciones, procesos, autoridad, objetivos y seguimiento que permita coordinar al equipo y sostener resultados.' },
+  { title: 'Dependencia del dueño', copy: 'Las relaciones y el conocimiento comercial se concentran en una persona. Hay que distinguir qué prácticas son replicables y cuáles dependen de relaciones personales.' },
+  { title: 'Ventas poco predecibles', copy: 'Faltan estándares y mecanismos de gobierno que aseguren seguimiento, decisiones y cumplimiento.' },
+  { title: 'Capital inmovilizado', copy: 'Inventario detenido y cuentas vencidas restringen la liquidez.' },
+  { title: 'Decisiones con visibilidad limitada', copy: 'Se necesita convertir el CRM en una fuente confiable para anticipar problemas y accionar.' },
 ];
-const pillars = [
-  ['Estrategia', 'Elige dónde jugar y cómo ganar. El equipo deja de perseguir todo y concentra recursos donde sí hay ventaja.'],
-  ['Estructura', 'Cada cliente, meta y decisión tiene dueño. Dirección deja de ser el cuello de botella de la operación.'],
-  ['Método', 'Una forma común de vender, con criterios para avanzar. El resultado deja de depender del estilo de cada vendedor.'],
-  ['Gestión', 'KPIs, forecast y revisión semanal. Ves qué se mueve, qué se estanca y dónde intervenir a tiempo.'],
-  ['Herramientas', 'CRM, tableros y seguimiento alineados al proceso. La verdad comercial deja de vivir en chats y archivos.'],
-  ['Ritmo', 'Una cadencia que sostiene, corrige y mejora cada semana. El sistema no se apaga cuando termina el programa.'],
+
+const fronts = [
+  {
+    label: 'Resultados de corto plazo',
+    items: [
+      'Colocación de inventario detenido.',
+      'Venta de productos ya validados.',
+      'Recuperación de cuentas por cobrar.',
+      'Reactivación y desarrollo de clientes actuales.',
+    ],
+  },
+  {
+    label: 'Transformación estructural',
+    items: [
+      'Procesos y políticas comerciales.',
+      'Estructura, gobierno y capacidades del equipo.',
+      'CRM, indicadores y objetivos.',
+      'Hábitos de ejecución y autonomía.',
+    ],
+  },
 ];
-function CTA({children='Conversemos sobre el arranque'}:{children?:React.ReactNode}) {
+
+const stages = [
+  {
+    id: 'etapa-1',
+    n: '01',
+    weeks: 'Semanas 1–4',
+    title: 'Diagnosticar y activar',
+    purpose: 'Identificar dónde se pierde valor y comenzar a recuperarlo.',
+    steps: [
+      { title: 'Entender cómo se vende', copy: 'Revisar casos ganados y perdidos, observar al equipo y detectar las prácticas del mejor vendedor que sí pueden estandarizarse. Distinguir la relación personal del dueño del método comercial.' },
+      { title: 'Mapear el ciclo completo', copy: 'Prospección, calificación, cotización, cierre, entrega, cobranza, postventa y recompra. Detectar fricciones, traspasos entre áreas y razones sociales.' },
+      { title: 'Evaluar capacidades y cultura', copy: 'Habilidades, hábitos, disciplina de seguimiento, estructura y capacidad de venta y entrega instalada.' },
+      { title: 'Analizar datos y mercado', copy: 'Caídas del funnel, ticket, margen, productos, cartera, inventario, segmentos y territorios. Distinguir equipos nuevos y reacondicionados. Registrar faltantes antes de inferir causas.' },
+    ],
+    deliverables: 'Diagnóstico ejecutivo, mapa de procesos y brechas, línea base de KPIs, prioridades de mercado y tres listas de ejecución activas.',
+    gate: 'Prioridades y metas calibradas al cierre de semana 4. Oportunidades comerciales y de cobranza con seguimiento verificable.',
+  },
+  {
+    id: 'etapa-2',
+    n: '02',
+    weeks: 'Semanas 5–8',
+    title: 'Diseñar y validar',
+    purpose: 'Convertir las mejores prácticas en un método comercial sencillo, medible y replicable.',
+    steps: [
+      { title: 'Modelo comercial y gobierno', copy: 'Definir funciones, autoridad, reglas de escalamiento y participación del dueño en cartera clave. Separar autonomía operativa de dependencia económica de sus ventas. Definición de meta de ventas y KPIs.' },
+      { title: 'Activar resultados · semanas 1–2', copy: 'Construir listas accionables de inventario, productos validados y cartera vencida. Priorizar cada caso por potencial, factibilidad, siguiente acción y fecha.' },
+      { title: 'Proceso y políticas', copy: 'Estandarizar etapas y criterios de avance, cotización, precios, descuentos, crédito, cobranza, garantías, entrega y recompra. Contemplar razones sociales y traspasos entre áreas.' },
+      { title: 'Enfoque comercial', copy: 'Priorizar segmentos, productos, territorios y canales por margen, demanda y capacidad. Distinguir propuesta de valor y condiciones de equipos nuevos frente a reacondicionados.' },
+      { title: 'Herramientas mínimas útiles', copy: 'CRM con etapas y campos obligatorios, cotizador, fichas, one-pagers, presentaciones, playbook, tablero de KPIs y OKRs, y reuniones orientadas a decisiones.' },
+    ],
+    deliverables: 'Modelo objetivo, procesos y políticas, kit comercial, diseño de CRM y tablero, plan de capacidades y piloto validado.',
+    gate: 'Proceso aprobado y demostrado como utilizable por el equipo en casos reales.',
+  },
+  {
+    id: 'etapa-3',
+    n: '03',
+    weeks: 'Semanas 9–21',
+    title: 'Implementar y consolidar',
+    purpose: 'Convertir el modelo en ejecución constante y autonomía.',
+    steps: [
+      { title: 'Sales Readiness', copy: 'Desarrollar habilidades de diagnóstico consultivo, negociación, manejo de objeciones, cierre y seguimiento, según las brechas observadas.' },
+      { title: 'Funciones y decisión', copy: 'Implementar funciones y niveles de decisión, con acompañamiento práctico sobre casos reales.' },
+      { title: 'Reuniones institucionalizadas', copy: 'Revisar ventas, conversión, márgenes, cobranza, inventario y compromisos con una cadencia fija.' },
+      { title: 'Pipeline en CRM', copy: 'Operar todo el pipeline en CRM: cada oportunidad con etapa, siguiente acción y fecha. Sin seguimiento, no hay visibilidad.' },
+      { title: 'Piloto con casos reales', copy: 'Probar el proceso en oportunidades y gestiones de cobranza. Corregir fricciones antes del despliegue.' },
+      { title: 'Corrección con datos', copy: 'Corregir desviaciones con datos y verificar que las acciones se ejecuten y produzcan resultados.' },
+      { title: 'Estrategia 2027', copy: 'Diseño de la estrategia comercial para 2027.' },
+    ],
+    deliverables: 'Operación comercial funcionando, tablero activo, reuniones institucionalizadas, desempeño comparado con línea base y plan de continuidad de 90 días.',
+    gate: 'Cuatro ciclos semanales consecutivos de seguimiento conducidos por GAOZ, con información actualizada, decisiones registradas y compromisos verificados.',
+  },
+];
+
+const priorities = [
+  { title: 'Inventario detenido', copy: 'Validar equipos comercializables, disponibilidad, margen y clientes compatibles. Seguir cada caso hasta venta, entrega y cobro, diferenciando estos hitos.' },
+  { title: 'Productos validados', copy: 'Focalizar ventas en soluciones que GAOZ ya domina, con propuesta de valor, cotización y seguimiento estándar.' },
+  { title: 'Cobranza', copy: 'Conciliar saldos por cliente y razón social. Segmentar por antigüedad, monto y recuperabilidad. Registrar promesas de pago, bloqueos y acciones preventivas.' },
+  { title: 'Mercado', copy: 'Ajustar segmentos, productos, canales y territorios conforme a respuesta comercial, rentabilidad y capacidad real de entrega.' },
+];
+
+const cadences = [
+  { name: 'Semanal', role: 'Operación', use: 'Revisar pipeline, cobranza, inventario y bloqueos.', output: 'Acciones, fechas y evidencia de avance.' },
+  { name: 'Quincenal', role: 'Decisiones', use: 'Resolver desviaciones y decisiones que requieren escalamiento.', output: 'Decisiones y ajustes aprobados.' },
+  { name: 'Mensual', role: 'Resultados', use: 'Evaluar OKRs, rentabilidad, liquidez y prioridades.', output: 'Resultados vs. línea base y cambios de enfoque.' },
+];
+
+const indicators = [
+  { result: 'Más ventas', kpis: 'Ventas del equipo, pipeline, conversión por etapa, ciclo comercial y oportunidades perdidas.' },
+  { result: 'Más rentabilidad', kpis: 'Ticket promedio y mediana, margen y mezcla por producto y tipo de equipo.' },
+  { result: 'Más liquidez', kpis: 'Efectivo recuperado sobre cartera vencida conciliada, nuevos atrasos y reducción de inventario detenido.' },
+  { result: 'Más disciplina', kpis: 'Oportunidades con siguiente paso, seguimiento oportuno y cumplimiento verificable de compromisos.' },
+  { result: 'Más autonomía', kpis: 'Ventas sin intervención del dueño, decisiones autónomas y proporción de ventas vinculadas a su cartera.' },
+];
+
+const outcomes = [
+  { title: 'Un sistema de ventas replicable', copy: 'Del primer contacto a la recompra, con prácticas estándar y capacidades desarrolladas.' },
+  { title: 'Un mecanismo de generación de resultados', copy: 'Cartera, inventario y productos validados gestionados con acciones, no solo reportes.' },
+  { title: 'Un gobierno comercial operativo', copy: 'Decisiones, compromisos, seguimiento y aprendizaje sustentados en datos.' },
+  { title: 'Una operación menos dependiente del dueño', copy: 'Autoridad clara y cuatro ciclos consecutivos de gestión autónoma.' },
+  { title: 'Un plan de continuidad de 90 días', copy: 'Indicadores, hábitos, mejoras pendientes y prioridades para sostener lo implementado.' },
+];
+
+function CTA({ children }: { children: string }) {
   return (
     <a className="gz-button" href={contact} target="_blank" rel="noopener noreferrer">
       <MessageCircle size={18} />
@@ -39,116 +126,258 @@ function CTA({children='Conversemos sobre el arranque'}:{children?:React.ReactNo
     </a>
   );
 }
-function ProofAndInvestment(){
-  const caseStories = stories.filter((s) => ['Edison 58', 'ZAIAH', 'INBest', 'Collecta', 'DermaMX', 'Kyrie México'].includes(s.company));
-  return <>
-  <section className="gz-section gz-cases" id="casos">
-    <div className="gz-section-head">
-      <div>
-        <div className="gz-eyebrow">EXPERIENCIA DE TOOL</div>
-        <h2>Retos distintos.<br/><span>Intervenciones concretas.</span></h2>
-      </div>
-      <p>Adquisición, liderazgo, retención y expansión: experiencia aplicada a cada negocio.</p>
-    </div>
-    <div className="gz-evidence-grid" aria-label="Casos de intervención de TOOL">
-      {caseStories.map((s, index) => {
-        const Icon = s.icon;
-        return (
-          <article className="gz-case-card" data-tone={s.tone} key={s.company}>
-            <div className="gz-case-top">
-              <div className="gz-case-company">
-                <span aria-hidden="true"><Icon size={16} /></span>
-                <div>
-                  <strong>{s.company}</strong>
-                  <small>{s.industry}</small>
+
+export default function Gaoz() {
+  return (
+    <div className="gz gz-proposal">
+      <PageMeta
+        title="TOOL · Propuesta GAOZ | Sistema comercial en 21 semanas"
+        description="Propuesta para transformar la operación comercial de GAOZ en un sistema estructurado, medible y replicable. Horizonte de 21 semanas, con activación desde la primera."
+      />
+      <a className="gz-skip" href="#gaoz-main">Saltar al contenido</a>
+      <header className="gz-nav">
+        <a href="/" className="gz-brand" aria-label="Ir a la web principal de TOOL">TOOL<span>GAOZ</span></a>
+        <nav aria-label="Navegación de la propuesta">
+          <a href="#reto">Reto</a>
+          <a href="#ruta">Ruta</a>
+          <a href="#gobierno">Gobierno</a>
+          <a href="#cierre">Cierre</a>
+        </nav>
+        <a href={contact} target="_blank" rel="noopener noreferrer" className="gz-nav-cta">Hablemos <ArrowUpRight size={16} /></a>
+      </header>
+
+      <main id="gaoz-main">
+        <section className="gz-hero">
+          <div className="gz-hero-copy">
+            <div className="gz-eyebrow"><span className="gz-dot" /> PROPUESTA · GAOZ</div>
+            <h1>Vender más.<br /><span>Recuperar capital.</span></h1>
+            <p className="gz-hero-lead"><strong>Construir una operación comercial que no dependa de una sola persona.</strong></p>
+            <div className="gz-objective">
+              <span>Objetivo</span>
+              <p>Transformar la operación comercial de GAOZ en un sistema estructurado, medible y replicable, capaz de generar ventas, recuperar cartera y desarrollar autonomía.</p>
+            </div>
+            <div className="gz-actions">
+              <a className="gz-text-link" href="#ruta">Ver la ruta de 21 semanas <ArrowRight size={16} /></a>
+            </div>
+            <div className="gz-hero-note">21 semanas <span>/</span> Activación desde la semana 1 <span>/</span> Operación real</div>
+          </div>
+          <div className="gz-system-visual gz-horizon" aria-label="Horizonte de 21 semanas: 4 de diagnóstico, 4 de diseño y 13 de implementación">
+            <div className="gz-visual-head"><span>GAOZ / HORIZONTE</span><span>21 SEMANAS</span></div>
+            <div className="gz-visual-title">La activación<br />empieza <em>ya.</em></div>
+            <ol className="gz-horizon-list">
+              <li><b>01</b><div><strong>Diagnosticar y activar</strong><span>4 semanas</span></div></li>
+              <li><b>02</b><div><strong>Diseñar y validar</strong><span>4 semanas</span></div></li>
+              <li><b>03</b><div><strong>Implementar y consolidar</strong><span>13 semanas</span></div></li>
+            </ol>
+            <div className="gz-visual-foot"><span className="gz-dot" /> ACTIVACIÓN COMERCIAL DESDE LA SEMANA 01</div>
+          </div>
+        </section>
+
+        <div className="gz-proof">
+          <span>DOS FRENTES A LA VEZ</span>
+          <strong>Resultados de corto plazo</strong>
+          <span>+</span>
+          <strong>Transformación estructural</strong>
+        </div>
+
+        <section className="gz-section" id="reto">
+          <div className="gz-section-head">
+            <div>
+              <div className="gz-eyebrow">01 / EL RETO DE NEGOCIO</div>
+              <h2>Lo que hoy limita<br /><span>el crecimiento.</span></h2>
+            </div>
+            <p>Cinco condiciones que la propuesta ataca al mismo tiempo: estructura, dependencia, predictibilidad, liquidez y visibilidad.</p>
+          </div>
+          <div className="gz-challenge-grid">
+            {challenges.map((item, index) => (
+              <article key={item.title}>
+                <span>0{index + 1}</span>
+                <h3>{item.title}</h3>
+                <p>{item.copy}</p>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section className="gz-section gz-band gz-fronts" id="frentes">
+          <div className="gz-section-head">
+            <div>
+              <div className="gz-eyebrow">02 / DOS FRENTES SIMULTÁNEOS</div>
+              <h2>Recuperar capital<br /><span>mientras se construye el sistema.</span></h2>
+            </div>
+          </div>
+          <div className="gz-front-grid">
+            {fronts.map((front, index) => (
+              <article className={index === 0 ? 'is-now' : 'is-system'} key={front.label}>
+                <h3>{front.label}</h3>
+                <ul>
+                  {front.items.map((item) => <li key={item}>{item}</li>)}
+                </ul>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section className="gz-section gz-route" id="ruta">
+          <div className="gz-section-head">
+            <div>
+              <div className="gz-eyebrow">03 / RUTA DE EJECUCIÓN</div>
+              <h2>Tres etapas.<br /><span>Una puerta de salida en cada una.</span></h2>
+            </div>
+            <p>4 semanas de diagnóstico y activación, 4 de diseño y validación, 13 de implementación y consolidación.</p>
+          </div>
+          <nav className="gz-stage-nav" aria-label="Ir a una etapa">
+            {stages.map((stage) => (
+              <a key={stage.id} href={`#${stage.id}`}>
+                <span>{stage.n}</span>
+                {stage.title}
+                <ArrowRight size={15} />
+              </a>
+            ))}
+          </nav>
+          {stages.map((stage) => (
+            <article className="gz-stage" id={stage.id} key={stage.id}>
+              <div className="gz-stage-title">
+                <div className="gz-stage-kicker"><b>{stage.n}</b><span>{stage.weeks}</span></div>
+                <h3>{stage.title}</h3>
+                <p>{stage.purpose}</p>
+              </div>
+              <div className="gz-stage-body">
+                <ol>
+                  {stage.steps.map((step) => (
+                    <li key={step.title}>
+                      <strong>{step.title}</strong>
+                      <p>{step.copy}</p>
+                    </li>
+                  ))}
+                </ol>
+                <div className="gz-stage-notes">
+                  <div className="is-deliverable">
+                    <span>Entregables</span>
+                    <p>{stage.deliverables}</p>
+                  </div>
+                  <div className="is-gate">
+                    <span>Puerta de salida</span>
+                    <p>{stage.gate}</p>
+                  </div>
                 </div>
               </div>
-              <span className="gz-case-index">0{index + 1}</span>
-            </div>
-            <div className="gz-case-metric">
-              <strong>{s.metric}</strong>
-              <span>{s.metricLabel}</span>
-            </div>
-            <h3>{s.headline}</h3>
-            <div className="gz-case-panels">
-              <div className="gz-case-detail">
-                <strong>Qué hicimos</strong>
-                <p>{s.actions}</p>
-              </div>
-              <div className="gz-case-detail">
-                <strong>Valor aportado</strong>
-                <p>{s.value}</p>
-              </div>
-            </div>
-            <footer>{s.focus}</footer>
-          </article>
-        );
-      })}
-    </div>
-    <p className="gz-evidence-note">Cada proyecto tiene su propio alcance, plazo y resultados.</p>
-  </section>
-  <section className="gz-section gz-investment" id="inversion">
-    <div>
-      <div className="gz-eyebrow">INVERSIÓN Y ALCANCE</div>
-      <h2>Empieza con foco.<br/><span>Quédate con un sistema.</span></h2>
-      <p>10 sesiones con tu equipo para activar oportunidades y construir una forma común de vender.</p>
-      <div className="gz-investment-outcomes">
-        <div><strong>Desde la primera semana</strong><p>Top 20 oportunidades y estrategia de salida para 5 equipos.</p></div>
-        <div><strong>Al terminar</strong><p>Método, responsables, seguimiento y un plan para los siguientes 60 días.</p></div>
-      </div>
-    </div>
-    <div className="gz-investment-card">
-      <span className="gz-eyebrow">TOOL SALES LAB · GAOZ</span>
-      <div className="gz-price">
-        <strong className="gz-price-amount">$60,000.0</strong>
-        <p className="gz-price-terms">MXN + IVA</p>
-        <p className="gz-price-terms">Esquema de pago: 50% de arranque y 50% de cierre</p>
-      </div>
-      <h3>5 semanas · 10 sesiones</h3>
-      <p>Trabajo enfocado en quick wins, con un alcance definido desde el inicio.</p>
-      <div className="gz-investment-perks">
-        <span className="gz-eyebrow">INCLUYE</span>
-        <ul>
-          <li>
-            Reserva este mes y ten acceso a nuestro{' '}
-            <a href="https://tool-scrumban.vercel.app/producto" target="_blank" rel="noopener noreferrer">
-              Scrumban <ArrowUpRight size={14} />
-            </a>
-          </li>
-          <li>10 clases en vivo + 5 sesiones de Q&amp;A</li>
-          <li>100% presencial, con acceso a material didáctico y de trabajo</li>
-        </ul>
-      </div>
-      <CTA>Quiero Sales Lab este mes</CTA>
-      <p className="gz-investment-note">Trabajamos con los clientes, oportunidades e inventario de GAOZ. El acompañamiento posterior se acuerda por separado.</p>
-    </div>
-  </section>
-  <section className="gz-section gz-faq"><div className="gz-eyebrow">ANTES DE EMPEZAR</div><h2>Antes de empezar.</h2><div className="gz-evidence-grid"><article><h3>¿Qué necesita aportar GAOZ?</h3><p>Participación del equipo y datos de cartera, oportunidades e inventario.</p></article><article><h3>¿Qué contempla el CRM?</h3><p>El diseño de etapas, campos y seguimiento. Licencias e integraciones adicionales se precisan en la propuesta.</p></article><article><h3>¿Qué pasa al terminar?</h3><p>Te quedas con el sistema v1 y un plan de 60 días. El acompañamiento posterior se acuerda por separado.</p></article></div></section>
- </>}
+            </article>
+          ))}
+        </section>
 
-export default function Gaoz(){return <div className="gz">
-  <PageMeta title="TOOL Sales Lab · GAOZ | Sistema comercial en 5 semanas" description="Convierte 27 años de experiencia de GAOZ en un sistema comercial enfocado, medible y repetible. 5 semanas, 10 sesiones y oportunidades reales desde el inicio."/>
-  <a className="gz-skip" href="#gaoz-main">Saltar al contenido</a>
-  <header className="gz-nav"><a href="/" className="gz-brand" aria-label="Ir a la web principal de TOOL">TOOL<span>SALES LAB</span></a><nav aria-label="Navegación del programa"><a href="/gaoz/diagnostico/">Diagnóstico</a><a href="#programa">Programa</a><a href="#casos">Casos</a><a href="#inversion">Inversión</a></nav><a href={contact} target="_blank" rel="noopener noreferrer" className="gz-nav-cta">Hablemos <ArrowUpRight size={16}/></a></header>
-  <main id="gaoz-main">
-    <section className="gz-hero"><div className="gz-hero-copy"><div className="gz-eyebrow"><span className="gz-dot"/> TOOL SALES LAB · DISEÑADO PARA GAOZ</div><h1>En 5 semanas,<br/><span>convierte la experiencia<br/>en un sistema de ventas.</span></h1><p><strong>GAOZ ya vende.</strong> Ahora toca convertir 27 años de experiencia en un método que todo el equipo pueda repetir.</p><p>Priorizamos oportunidades, activamos inventario y ponemos el seguimiento en marcha con tus negocios reales.</p><div className="gz-actions"><a className="gz-text-link" href="#programa">Ver el programa <MoveDown size={16}/></a></div><div className="gz-hero-note">5 semanas <span> / </span> 10 sesiones <span> / </span> Tu operación real</div></div>
-    <div className="gz-system-visual" aria-label="Del conocimiento de GAOZ a un sistema comercial: foco, equipo, método, ejecución y control"><div className="gz-visual-head"><span>GAOZ / COMMERCIAL OS</span><span>VERSIÓN 1.0</span></div><div className="gz-visual-title">La experiencia<br/>se vuelve <em>sistema.</em></div><div className="gz-system-steps">{['Foco comercial','Equipo alineado','Método compartido','Mejor ejecución','Control y dirección'].map((s,i)=><div key={s}><span>0{i+1}</span><strong>{s}</strong><ArrowUpRight size={17}/></div>)}</div><div className="gz-visual-foot"><span className="gz-dot"/> ACTIVACIÓN DESDE LA SEMANA 01</div></div></section>
-    <div className="gz-proof"><span>EL PUNTO DE PARTIDA ES GAOZ</span><strong>Clientes reales</strong><span>+</span><strong>Oportunidades reales</strong><span>+</span><strong>Inventario y datos reales</strong></div>
-    <a className="gz-diagnosis-entry" href="/gaoz/diagnostico/">
-      <div className="gz-diagnosis-entry-copy">
-        <span className="gz-diagnosis-entry-label"><span className="gz-dot" /> EL PUNTO DE PARTIDA</span>
-        <strong>Consulta el diagnóstico de GAOZ</strong>
-        <p>Qué vemos, qué priorizar y por dónde empezar.</p>
-      </div>
-      <span className="gz-diagnosis-entry-action" aria-hidden="true">
-        Ver diagnóstico
-        <ArrowRight size={18} />
-      </span>
-    </a>
-    <section className="gz-section gz-program" id="programa"><div className="gz-section-head"><div><div className="gz-eyebrow">02 / LA RUTA DE TRABAJO</div><h2>Una ruta clara e inmersiva.<br/><span>Un resultado cada semana.</span></h2></div><p>10 sesiones sobre la operación real de GAOZ.</p></div><div className="gz-week-nav" aria-label="Ir a una semana">{weeks.map(w=><a key={w.n} href={'#semana-'+w.n}><span>{w.n}</span>{w.title}<ArrowRight size={15}/></a>)}</div>{weeks.map(w=><article className="gz-week" id={'semana-'+w.n} key={w.n}><div className="gz-week-title"><span className="gz-week-number">{w.n}</span><div className="gz-eyebrow">SEMANA {w.n}</div><h3>{w.title}</h3><p>{w.sub}</p></div><div className="gz-sessions">{w.sessions.map(s=><section className="gz-session" key={s.label}><div className="gz-eyebrow">{s.label}</div><h4>{s.title}</h4><div className="gz-result"><Check size={17}/><p><strong>Resultado</strong>{s.result}</p></div></section>)}</div></article>)}</section>
-    <section className="gz-delivery" id="sistema"><div className="gz-delivery-intro"><div className="gz-eyebrow">03 / LO QUE SE QUEDA EN GAOZ</div><h2>Terminas con<br/>un sistema<br/><span>en marcha.</span></h2><p>Seis piezas que se quedan en GAOZ: para vender, medir y mejorar sin volver a improvisar.</p><div className="gz-os-label"><span className="gz-dot"/> GAOZ COMMERCIAL OPERATING SYSTEM v1</div></div><div className="gz-pillars">{pillars.map(([t,c],i)=><div key={t}><span>0{i+1}</span><div><h3>{t}</h3><p>{c}</p></div><ArrowUpRight size={21}/></div>)}</div></section>
-    <ProofAndInvestment />
-    <section className="gz-final" id="arranque"><div className="gz-eyebrow">EL SIGUIENTE CAPÍTULO DE GAOZ</div><h2>La experiencia ya está.<br/><span>Construyamos el siguiente paso.</span></h2><p>Alineemos prioridades, equipo y fecha de arranque.</p><CTA>Hablar ahora y reservar fecha</CTA><div className="gz-final-note">Respuesta directa. Sin formularios.</div></section>
-  </main><footer className="gz-footer"><a className="gz-brand" href="/">TOOL<span>SALES LAB</span></a><span>Una propuesta para GAOZ · Versión cliente 01</span><a href="#programa">Volver al programa ↑</a></footer>
- </div>}
+        <section className="gz-section gz-band" id="prioridades">
+          <div className="gz-section-head">
+            <div>
+              <div className="gz-eyebrow">04 / PRIORIDADES ACTIVAS</div>
+              <h2>Cuatro frentes que no se pausan<br /><span>durante el proyecto.</span></h2>
+            </div>
+          </div>
+          <div className="gz-priority-grid">
+            {priorities.map((item, index) => (
+              <article key={item.title}>
+                <span>0{index + 1}</span>
+                <h3>{item.title}</h3>
+                <p>{item.copy}</p>
+              </article>
+            ))}
+          </div>
+        </section>
 
+        <section className="gz-section" id="gobierno">
+          <div className="gz-section-head">
+            <div>
+              <div className="gz-eyebrow">05 / GOBIERNO Y MEDICIÓN</div>
+              <h2>Menos reportes de actividad.<br /><span>Más decisiones verificables.</span></h2>
+            </div>
+            <p>El CRM será la fuente central. Cada oportunidad tendrá etapa, siguiente acción y fecha. El seguimiento concluye en acción, no solo en actualización de estatus.</p>
+          </div>
+          <div className="gz-table-wrap">
+            <table className="gz-table">
+              <thead>
+                <tr>
+                  <th>Cadencia</th>
+                  <th>Para qué sirve</th>
+                  <th>Salida obligatoria</th>
+                </tr>
+              </thead>
+              <tbody>
+                {cadences.map((row) => (
+                  <tr key={row.name}>
+                    <th><strong>{row.name}</strong><span>{row.role}</span></th>
+                    <td>{row.use}</td>
+                    <td>{row.output}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section className="gz-section gz-band gz-indicators" id="indicadores">
+          <div className="gz-section-head">
+            <div>
+              <div className="gz-eyebrow">06 / INDICADORES DE ÉXITO</div>
+              <h2>Qué se mide<br /><span>contra línea base.</span></h2>
+            </div>
+          </div>
+          <div className="gz-table-wrap">
+            <table className="gz-table">
+              <thead>
+                <tr>
+                  <th>Resultado</th>
+                  <th>Indicadores principales</th>
+                </tr>
+              </thead>
+              <tbody>
+                {indicators.map((row) => (
+                  <tr key={row.result}>
+                    <th>{row.result}</th>
+                    <td>{row.kpis}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <p className="gz-kpi-note">Metas y OKRs: versión preliminar en semana 2 y calibración al cierre de semana 4, a partir de línea base real, capacidad de entrega y prioridades comerciales. Medir por separado cartera del dueño, equipo de campo e inside sales. Distinguir equipos nuevos y reacondicionados.</p>
+        </section>
+
+        <section className="gz-delivery" id="cierre">
+          <div className="gz-delivery-intro">
+            <div className="gz-eyebrow">07 / QUÉ DEBE QUEDAR FUNCIONANDO</div>
+            <h2>El sistema<br />en operación,<br /><span>no en un documento.</span></h2>
+          </div>
+          <div className="gz-pillars">
+            {outcomes.map((item, index) => (
+              <div key={item.title}>
+                <span>0{index + 1}</span>
+                <div>
+                  <h3>{item.title}</h3>
+                  <p>{item.copy}</p>
+                </div>
+                <Check size={18} />
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section className="gz-section gz-criterion">
+          <span className="gz-eyebrow">CRITERIO EJECUTIVO</span>
+          <p>El proyecto se considerará implementado cuando GAOZ opere consistentemente su sistema comercial, tome decisiones con datos y dé seguimiento sin intervención cotidiana del dueño. El incremento de ventas y la recuperación económica serán objetivos medidos contra línea base, no resultados garantizados. Reducir la dependencia económica de su cartera puede requerir un horizonte mayor.</p>
+        </section>
+
+        <section className="gz-final" id="arranque">
+          <div className="gz-eyebrow">SIGUIENTE PASO</div>
+          <h2>El horizonte está definido.<br /><span>Definamos el arranque.</span></h2>
+          <p>Alineemos prioridades, equipo y fecha de inicio de las 21 semanas.</p>
+          <CTA>Hablar sobre el arranque</CTA>
+        </section>
+      </main>
+      <footer className="gz-footer">
+        <a className="gz-brand" href="/">TOOL<span>GAOZ</span></a>
+        <span>Propuesta para GAOZ · 21 semanas</span>
+        <a href="#ruta">Volver a la ruta ↑</a>
+      </footer>
+    </div>
+  );
+}

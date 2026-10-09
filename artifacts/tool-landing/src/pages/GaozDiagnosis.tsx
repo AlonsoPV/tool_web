@@ -383,7 +383,7 @@ export default function GaozDiagnosis() {
       <a className="gd-skip" href="#diagnostico">Saltar al diagnóstico</a>
       <header className="gd-header">
         <a className="gd-logo" href="/">TOOL</a>
-        <a href="/gaoz/"><ArrowLeft size={16} /> Volver al Sales Lab</a>
+        <a href="/gaoz/"><ArrowLeft size={16} /> Volver a la propuesta</a>
       </header>
       <main id="diagnostico">
         <section className="gd-intro">
@@ -393,7 +393,7 @@ export default function GaozDiagnosis() {
         <nav className="gd-route" aria-label="Ruta del diagnóstico">
           <a href="#situacion"><b>01</b> Qué vemos <ArrowRight size={16} /></a>
           <a href="#base"><b>02</b> Qué ya funciona <ArrowRight size={16} /></a>
-          <a href="/gaoz/#programa"><b>03</b> Cómo empezar <ArrowRight size={16} /></a>
+          <a href="/gaoz/#ruta"><b>03</b> Cómo empezar <ArrowRight size={16} /></a>
         </nav>
 
         <section className="gd-section" id="situacion">
@@ -456,10 +456,10 @@ export default function GaozDiagnosis() {
         <section className="gd-next">
           <div>
             <span className="gd-label">DEL DIAGNÓSTICO A LA ACCIÓN</span>
-            <h2>Esta es la base del Sales Lab.</h2>
-            <p>5 semanas para construir y empezar a usar el sistema comercial de GAOZ.</p>
+            <h2>Esta es la base de la propuesta.</h2>
+            <p>21 semanas para diagnosticar, diseñar e implementar el sistema comercial de GAOZ.</p>
           </div>
-          <a className="gd-button" href="/gaoz/#programa">Ver el plan de trabajo <ArrowUpRight size={18} /></a>
+          <a className="gd-button" href="/gaoz/#ruta">Ver la ruta de ejecución <ArrowUpRight size={18} /></a>
         </section>
       </main>
       <footer className="gd-footer">

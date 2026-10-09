@@ -43,7 +43,7 @@ function GaozCover({ onUnlock }: { onUnlock: () => void }) {
     <div className="gg">
       <PageMeta
         title="TOOL · Propuesta GAOZ"
-        description="Acceso a la propuesta confidencial TOOL Sales Lab para GAOZ."
+        description="Acceso a la propuesta confidencial de 21 semanas para transformar la operación comercial de GAOZ."
       />
       <div className="gg-atmosphere" aria-hidden="true">
         <span className="gg-plane gg-plane-a" />
@@ -63,11 +63,11 @@ function GaozCover({ onUnlock }: { onUnlock: () => void }) {
       </header>
 
       <main className="gg-main">
-        <p className="gg-kicker">TOOL SALES LAB · GAOZ 2026</p>
+        <p className="gg-kicker">PROPUESTA · GAOZ · 21 SEMANAS</p>
         <h1>
-          De la experiencia
+          Vender más.
           <br />
-          <em>al sistema comercial.</em>
+          <em>Recuperar capital.</em>
         </h1>
         <p className="gg-lead">
           Documento de trabajo para Dirección. Ingresa la clave para abrir la propuesta.
