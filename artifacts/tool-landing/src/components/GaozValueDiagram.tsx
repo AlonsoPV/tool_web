@@ -9,6 +9,7 @@ type Stage = {
   full: string;
   purpose: string;
   highlights: string[];
+  activities: { title: string; copy: string }[];
   deliverable: string;
   gate: string;
   icon: LucideIcon;
@@ -23,14 +24,20 @@ const stages: Stage[] = [
     weeks: 'Semanas 1–4',
     title: 'Diagnosticar y activar',
     full: 'Diagnosticar y activar',
-    purpose: 'Encontrar dónde se escapa valor y empezar a recuperarlo, sin esperar a que termine el diagnóstico.',
+    purpose: 'Identificar dónde se pierde valor y comenzar a recuperarlo.',
     highlights: [
-      'Activar inventario, el mailing del 5 de octubre y la conciliación de cartera.',
-      'Distinguir qué prácticas pueden volverse método y cuáles dependen del dueño.',
-      'Armar la línea base con el diagnóstico V10, incluidas oportunidades abiertas.',
+      'Activar inventario, productos validados y cartera desde las semanas 1–2.',
+      'Distinguir las prácticas comerciales replicables de la relación personal del dueño.',
+      'Integrar datos del funnel y del mercado; registrar faltantes antes de inferir causas.',
+    ],
+    activities: [
+      { title: 'Entender cómo se vende', copy: 'Revisar casos ganados y perdidos, observar al equipo y detectar las prácticas del mejor vendedor que sí pueden estandarizarse. Distinguir la relación personal del dueño del método comercial.' },
+      { title: 'Mapear el ciclo completo', copy: 'Revisar prospección, calificación, cotización, cierre, entrega, cobranza, postventa y recompra. Detectar fricciones, traspasos entre áreas y razones sociales.' },
+      { title: 'Evaluar capacidades y cultura', copy: 'Analizar habilidades, hábitos, disciplina de seguimiento, estructura y capacidad de venta y entrega instalada.' },
+      { title: 'Analizar datos y mercado', copy: 'Revisar caídas del funnel, ticket, margen, productos, cartera, inventario, segmentos y territorios. Distinguir equipos nuevos y reacondicionados. Registrar faltantes antes de inferir causas.' },
     ],
     deliverable: 'Diagnóstico ejecutivo, mapa de procesos y brechas, línea base de KPIs, prioridades de mercado y tres listas de ejecución activas.',
-    gate: 'Al cerrar la semana 4: prioridades y metas calibradas, con oportunidades comerciales y de cobranza bajo seguimiento verificable.',
+    gate: 'Prioridades y metas calibradas al cierre de semana 4. Oportunidades comerciales y de cobranza con seguimiento verificable.',
     icon: Search,
     color: '#0e2748',
     lit: '#16345c',
@@ -41,14 +48,21 @@ const stages: Stage[] = [
     weeks: 'Semanas 5–8',
     title: 'Diseñar y validar',
     full: 'Diseñar y validar',
-    purpose: 'Convertir lo que sí funciona en un método claro. La autonomía no transfiere la cartera personal del dueño ni depende de que él capacite al equipo.',
+    purpose: 'Convertir las mejores prácticas en un método comercial sencillo, medible y replicable.',
     highlights: [
-      'Definir funciones, autoridad y reglas para vender y cobrar.',
-      'Fijar prioridades de producto y un piloto veterinario acotado.',
-      'Dejar CRM, kit comercial y tablero listos para casos reales.',
+      'Definir funciones, autoridad, reglas de escalamiento y participación del dueño en cartera clave.',
+      'Activar listas de inventario, productos validados y cartera vencida.',
+      'Validar procesos, herramientas y capacidades con un piloto en casos reales.',
+    ],
+    activities: [
+      { title: 'Modelo comercial y gobierno', copy: 'Definir funciones, autoridad, reglas de escalamiento y participación del dueño en cartera clave. Separar autonomía operativa de dependencia económica de sus ventas. Definir meta de ventas y KPIs.' },
+      { title: 'Activar resultados · semanas 1–2', copy: 'Construir listas accionables de inventario, productos validados y cartera vencida. Priorizar cada caso por potencial, factibilidad, siguiente acción y fecha.' },
+      { title: 'Proceso y políticas', copy: 'Estandarizar etapas y criterios de avance, cotización, precios, descuentos, crédito, cobranza, garantías, entrega y recompra. Contemplar razones sociales y traspasos entre áreas.' },
+      { title: 'Enfoque comercial', copy: 'Priorizar segmentos, productos, territorios y canales por margen, demanda y capacidad. Distinguir propuesta de valor y condiciones de equipos nuevos frente a reacondicionados.' },
+      { title: 'Herramientas mínimas útiles', copy: 'Preparar CRM con etapas y campos obligatorios, cotizador, fichas, one-pagers, presentaciones, playbook, tablero de KPIs y OKRs, y reuniones orientadas a decisiones.' },
     ],
     deliverable: 'Modelo comercial objetivo, procesos y políticas, kit comercial, diseño de CRM y tablero, plan de capacidades y piloto validado.',
-    gate: 'Al cerrar la semana 8: el proceso aprobado y el equipo habiendo demostrado su utilidad en casos reales.',
+    gate: 'Proceso aprobado y demostrado como utilizable por el equipo en casos reales.',
     icon: PenLine,
     color: '#14556e',
     lit: '#1a6a86',
@@ -59,13 +73,22 @@ const stages: Stage[] = [
     weeks: 'Semanas 9–21',
     title: 'Implementar y consolidar',
     full: 'Implementar y consolidar',
-    purpose: 'Que vender, decidir y dar seguimiento con el nuevo método sea la forma habitual de trabajar en GAOZ.',
+    purpose: 'Convertir el modelo en ejecución constante y autonomía.',
     highlights: [
-      'Practicar la venta y las decisiones sobre casos reales.',
-      'Operar cada oportunidad con etapa, siguiente acción y fecha.',
-      'Cerrar con cuatro ciclos autónomos y un plan de 90 días.',
+      'Desarrollar habilidades comerciales según las brechas observadas.',
+      'Operar el pipeline, las reuniones y las decisiones sobre casos reales.',
+      'Corregir con datos, preparar la estrategia 2027 y transferir la continuidad.',
     ],
-    deliverable: 'Operación comercial funcionando, tablero activo, reuniones institucionalizadas, desempeño comparado contra línea base y plan de continuidad de 90 días.',
+    activities: [
+      { title: 'Sales Readiness', copy: 'Desarrollar habilidades de diagnóstico consultivo, negociación, manejo de objeciones, cierre y seguimiento, según las brechas observadas.' },
+      { title: 'Funciones y decisión', copy: 'Implementar funciones y niveles de decisión, con acompañamiento práctico sobre casos reales.' },
+      { title: 'Reuniones institucionalizadas', copy: 'Revisar ventas, conversión, márgenes, cobranza, inventario y compromisos con una cadencia fija.' },
+      { title: 'Pipeline en CRM', copy: 'Operar todo el pipeline en CRM: cada oportunidad con etapa, siguiente acción y fecha. Sin seguimiento, no hay visibilidad.' },
+      { title: 'Piloto con casos reales', copy: 'Probar el proceso en oportunidades y gestiones de cobranza. Corregir fricciones antes del despliegue.' },
+      { title: 'Corrección con datos', copy: 'Corregir desviaciones con datos y verificar que las acciones se ejecuten y produzcan resultados.' },
+      { title: 'Estrategia 2027', copy: 'Diseñar la estrategia comercial para 2027.' },
+    ],
+    deliverable: 'Operación comercial funcionando, tablero activo, reuniones institucionalizadas, desempeño comparado con línea base y plan de continuidad de 90 días.',
     gate: 'Cuatro ciclos semanales consecutivos conducidos por GAOZ, con información actualizada, decisiones registradas y compromisos verificados.',
     icon: BadgeCheck,
     color: '#0b7358',
@@ -208,6 +231,18 @@ function PhaseBody({ stage }: { stage: Stage }) {
       <ul>
         {stage.highlights.map((item) => <li key={item}>{item}</li>)}
       </ul>
+      <details className="gv-now-activities">
+        <summary>Ver actividades de la fase</summary>
+        <ol>
+          {stage.activities.map((activity) => (
+            <li key={activity.title}>
+              <strong>{activity.title}</strong>
+              <p>{activity.copy}</p>
+            </li>
+          ))}
+        </ol>
+      </details>
+      <p className="gv-now-gate"><span>Entregables</span>{stage.deliverable}</p>
       <p className="gv-now-gate"><span>Cierre</span>{stage.gate}</p>
     </>
   );

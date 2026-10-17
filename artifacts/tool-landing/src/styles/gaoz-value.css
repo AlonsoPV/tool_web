@@ -833,6 +833,34 @@ button.gv-entry.gv-exit-mark.is-on small{color:#fff}
   background:var(--gv-phase,#10b981);
   content:"";
 }
+.gv-now-activities{
+  margin:8px 14px 0;
+  border-top:1px solid #e6efeb;
+}
+.gv-now-activities summary{
+  padding:9px 0;
+  color:#0a1d3d;
+  font:700 12px/1.35 Manrope,sans-serif;
+  cursor:pointer;
+}
+.gv-now-activities ol{
+  margin:0 0 10px;
+  padding:0 0 0 20px;
+  list-style:decimal;
+}
+.gv-now-activities li{
+  padding:7px 0 7px 2px;
+  color:#24344a;
+  font-size:12px;
+  line-height:1.4;
+}
+.gv-now-activities li::before{display:none}
+.gv-now-activities li strong{
+  display:block;
+  margin-bottom:2px;
+  color:#0a1d3d;
+}
+.gv-now-activities li p{margin:0}
 .gv-now-gate{
   margin:10px 0 0;
   padding:10px 14px 12px;
