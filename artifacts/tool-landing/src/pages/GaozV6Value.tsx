@@ -7,11 +7,6 @@ import '@/styles/gaoz-tool-theme.css';
 import '@/styles/gaoz-proposal.css';
 import '@/styles/gaoz-value.css';
 
-const payments = [
-  { when: 'Arranque', whenNote: 'Al iniciar', share: '50%', amount: '$20,000.00 + IVA' },
-  { when: 'Cierre', whenNote: 'Al terminar', share: '50%', amount: '$20,000.00 + IVA' },
-];
-
 const excluded = [
   'Horario de atención fuera de lo estipulado',
   'Atención presencial, por definir',
@@ -20,8 +15,8 @@ const excluded = [
 ];
 
 const terms = [
-  { label: 'Moneda e impuesto', copy: 'Pesos mexicanos. El IVA se factura aparte sobre $40,000.00.' },
-  { label: 'Forma de pago', copy: '50% al arranque y 50% al cierre de las 21 semanas.' },
+  { label: 'Moneda e impuesto', copy: 'Pesos mexicanos. Honorarios de $40,000.00 mensuales; el IVA se factura aparte.' },
+  { label: 'Forma de pago', copy: 'Pago mensual a mes vencido, al cierre de cada mes de servicio. Sin anticipo ni división del pago en parcialidades.' },
   { label: 'Alcance', copy: 'Comercial y Marketing, en coordinación con Administración y áreas técnicas para vender, entregar y cobrar. Incluye ofertas de mantenimiento, renovación y referidos con Servicio.' },
   { label: 'Fuera de este acuerdo', copy: 'La operación interna integral de Servicio, una reestructura societaria o el desarrollo completo de una unidad veterinaria.' },
   { label: 'Resultados', copy: 'Ventas y recuperación se miden contra la línea base. No hay garantía de resultados.' },
@@ -84,32 +79,24 @@ export default function GaozV6Value() {
         </div>
         <div className="gz-econ-hero">
           <p className="gz-econ-amount">$40,000.00 <span>+ IVA</span></p>
-          <p className="gz-econ-note">MXN · Comercial y Marketing</p>
+          <p className="gz-econ-note">MXN al mes · Comercial y Marketing</p>
         </div>
         <table>
-          <caption>Esquema de pago</caption>
+          <caption>Pago mensual a mes vencido</caption>
           <thead>
             <tr>
-              <th scope="col">Momento</th>
-              <th scope="col">Parte</th>
+              <th scope="col">Periodicidad</th>
+              <th scope="col">Vencimiento</th>
               <th scope="col">Importe</th>
             </tr>
           </thead>
           <tbody>
-            {payments.map((row) => (
-              <tr key={row.when}>
-                <th scope="row">{row.when}<small>{row.whenNote}</small></th>
-                <td>{row.share}</td>
-                <td>{row.amount}</td>
-              </tr>
-            ))}
-          </tbody>
-          <tfoot>
             <tr>
-              <th scope="row" colSpan={2}>Inversión total</th>
+              <th scope="row">Mensual</th>
+              <td>Al cierre de cada mes de servicio</td>
               <td>$40,000.00 + IVA</td>
             </tr>
-          </tfoot>
+          </tbody>
         </table>
         <section className="gz-econ-terms" aria-labelledby="gz-econ-terms-title">
           <h3 id="gz-econ-terms-title">Condiciones comerciales</h3>
