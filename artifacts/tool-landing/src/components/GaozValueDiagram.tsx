@@ -26,9 +26,10 @@ const stages: Stage[] = [
     full: 'Diagnosticar y activar',
     purpose: 'Identificar dónde se pierde valor y comenzar a recuperarlo.',
     highlights: [
-      'Activar inventario, productos validados y cartera desde las semanas 1–2.',
-      'Distinguir las prácticas comerciales replicables de la relación personal del dueño.',
-      'Integrar datos del funnel y del mercado; registrar faltantes antes de inferir causas.',
+      'Entender cómo se vende',
+      'Mapear el ciclo completo',
+      'Evaluar capacidades y cultura',
+      'Analizar datos y mercado',
     ],
     activities: [
       { title: 'Entender cómo se vende', copy: 'Revisar casos ganados y perdidos, observar al equipo y detectar las prácticas del mejor vendedor que sí pueden estandarizarse. Distinguir la relación personal del dueño del método comercial.' },
@@ -36,7 +37,7 @@ const stages: Stage[] = [
       { title: 'Evaluar capacidades y cultura', copy: 'Analizar habilidades, hábitos, disciplina de seguimiento, estructura y capacidad de venta y entrega instalada.' },
       { title: 'Analizar datos y mercado', copy: 'Revisar caídas del funnel, ticket, margen, productos, cartera, inventario, segmentos y territorios. Distinguir equipos nuevos y reacondicionados. Registrar faltantes antes de inferir causas.' },
     ],
-    deliverable: 'Diagnóstico ejecutivo, mapa de procesos y brechas, línea base de KPIs, prioridades de mercado y tres listas de ejecución activas.',
+    deliverable: 'Diagnóstico ejecutivo, mapa de procesos y brechas, prioridades comerciales.',
     gate: 'Prioridades y metas calibradas al cierre de semana 4. Oportunidades comerciales y de cobranza con seguimiento verificable.',
     icon: Search,
     color: '#0e2748',
@@ -50,18 +51,18 @@ const stages: Stage[] = [
     full: 'Diseñar y validar',
     purpose: 'Convertir las mejores prácticas en un método comercial sencillo, medible y replicable.',
     highlights: [
-      'Definir funciones, autoridad, reglas de escalamiento y participación del dueño en cartera clave.',
-      'Activar listas de inventario, productos validados y cartera vencida.',
-      'Validar procesos, herramientas y capacidades con un piloto en casos reales.',
+      'Modelo comercial y gobierno',
+      'Proceso y políticas',
+      'Enfoque comercial',
+      'Herramientas mínimas útiles',
     ],
     activities: [
       { title: 'Modelo comercial y gobierno', copy: 'Definir funciones, autoridad, reglas de escalamiento y participación del dueño en cartera clave. Separar autonomía operativa de dependencia económica de sus ventas. Definir meta de ventas y KPIs.' },
-      { title: 'Activar resultados · semanas 1–2', copy: 'Construir listas accionables de inventario, productos validados y cartera vencida. Priorizar cada caso por potencial, factibilidad, siguiente acción y fecha.' },
       { title: 'Proceso y políticas', copy: 'Estandarizar etapas y criterios de avance, cotización, precios, descuentos, crédito, cobranza, garantías, entrega y recompra. Contemplar razones sociales y traspasos entre áreas.' },
       { title: 'Enfoque comercial', copy: 'Priorizar segmentos, productos, territorios y canales por margen, demanda y capacidad. Distinguir propuesta de valor y condiciones de equipos nuevos frente a reacondicionados.' },
       { title: 'Herramientas mínimas útiles', copy: 'Preparar CRM con etapas y campos obligatorios, cotizador, fichas, one-pagers, presentaciones, playbook, tablero de KPIs y OKRs, y reuniones orientadas a decisiones.' },
     ],
-    deliverable: 'Modelo comercial objetivo, procesos y políticas, kit comercial, diseño de CRM y tablero, plan de capacidades y piloto validado.',
+    deliverable: 'Playbook comercial, kit de herramientas comerciales, políticas y procedimientos de venta.',
     gate: 'Proceso aprobado y demostrado como utilizable por el equipo en casos reales.',
     icon: PenLine,
     color: '#14556e',
@@ -75,11 +76,17 @@ const stages: Stage[] = [
     full: 'Implementar y consolidar',
     purpose: 'Convertir el modelo en ejecución constante y autonomía.',
     highlights: [
-      'Desarrollar habilidades comerciales según las brechas observadas.',
-      'Operar el pipeline, las reuniones y las decisiones sobre casos reales.',
-      'Corregir con datos, preparar la estrategia 2027 y transferir la continuidad.',
+      'Activar resultados',
+      'Sales Readiness',
+      'Funciones y decisión',
+      'Reuniones institucionalizadas',
+      'Pipeline en CRM',
+      'Piloto con casos reales',
+      'Corrección con datos',
+      'Estrategia 2027',
     ],
     activities: [
+      { title: 'Activar resultados', copy: 'Construir listas accionables de inventario, productos validados y cartera vencida. Priorizar cada caso por potencial, factibilidad, siguiente acción y fecha.' },
       { title: 'Sales Readiness', copy: 'Desarrollar habilidades de diagnóstico consultivo, negociación, manejo de objeciones, cierre y seguimiento, según las brechas observadas.' },
       { title: 'Funciones y decisión', copy: 'Implementar funciones y niveles de decisión, con acompañamiento práctico sobre casos reales.' },
       { title: 'Reuniones institucionalizadas', copy: 'Revisar ventas, conversión, márgenes, cobranza, inventario y compromisos con una cadencia fija.' },
@@ -88,7 +95,7 @@ const stages: Stage[] = [
       { title: 'Corrección con datos', copy: 'Corregir desviaciones con datos y verificar que las acciones se ejecuten y produzcan resultados.' },
       { title: 'Estrategia 2027', copy: 'Diseñar la estrategia comercial para 2027.' },
     ],
-    deliverable: 'Operación comercial funcionando, tablero activo, reuniones institucionalizadas, desempeño comparado con línea base y plan de continuidad de 90 días.',
+    deliverable: 'Academia Comercial de GAOZ, plan estratégico 2027 y mapa de trazabilidad de factores de éxito.',
     gate: 'Cuatro ciclos semanales consecutivos conducidos por GAOZ, con información actualizada, decisiones registradas y compromisos verificados.',
     icon: BadgeCheck,
     color: '#0b7358',
@@ -227,7 +234,6 @@ function PhaseCard({ stage }: { stage: Stage }) {
 function PhaseBody({ stage }: { stage: Stage }) {
   return (
     <>
-      <p className="gv-now-purpose">{stage.purpose}</p>
       <ul>
         {stage.highlights.map((item) => <li key={item}>{item}</li>)}
       </ul>
@@ -243,7 +249,7 @@ function PhaseBody({ stage }: { stage: Stage }) {
         </ol>
       </details>
       <p className="gv-now-gate"><span>Entregables</span>{stage.deliverable}</p>
-      <p className="gv-now-gate"><span>Cierre</span>{stage.gate}</p>
+      <p className="gv-now-gate"><span>Puerta de salida</span>{stage.gate}</p>
     </>
   );
 }

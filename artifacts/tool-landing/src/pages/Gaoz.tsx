@@ -49,7 +49,7 @@ const stages = [
       { title: 'Evaluar capacidades y cultura', copy: 'Habilidades, hábitos, disciplina de seguimiento, estructura y capacidad de venta y entrega instalada.' },
       { title: 'Analizar datos y mercado', copy: 'Caídas del funnel, ticket, margen, productos, cartera, inventario, segmentos y territorios. Distinguir equipos nuevos y reacondicionados. Registrar faltantes antes de inferir causas.' },
     ],
-    deliverables: 'Diagnóstico ejecutivo, mapa de procesos y brechas, línea base de KPIs, prioridades de mercado y tres listas de ejecución activas.',
+    deliverables: 'Diagnóstico ejecutivo, mapa de procesos y brechas, prioridades comerciales.',
     gate: 'Prioridades y metas calibradas al cierre de semana 4. Oportunidades comerciales y de cobranza con seguimiento verificable.',
   },
   {
@@ -60,12 +60,11 @@ const stages = [
     purpose: 'Convertir las mejores prácticas en un método comercial sencillo, medible y replicable.',
     steps: [
       { title: 'Modelo comercial y gobierno', copy: 'Definir funciones, autoridad, reglas de escalamiento y participación del dueño en cartera clave. Separar autonomía operativa de dependencia económica de sus ventas. Definición de meta de ventas y KPIs.' },
-      { title: 'Activar resultados · semanas 1–2', copy: 'Construir listas accionables de inventario, productos validados y cartera vencida. Priorizar cada caso por potencial, factibilidad, siguiente acción y fecha.' },
       { title: 'Proceso y políticas', copy: 'Estandarizar etapas y criterios de avance, cotización, precios, descuentos, crédito, cobranza, garantías, entrega y recompra. Contemplar razones sociales y traspasos entre áreas.' },
       { title: 'Enfoque comercial', copy: 'Priorizar segmentos, productos, territorios y canales por margen, demanda y capacidad. Distinguir propuesta de valor y condiciones de equipos nuevos frente a reacondicionados.' },
       { title: 'Herramientas mínimas útiles', copy: 'CRM con etapas y campos obligatorios, cotizador, fichas, one-pagers, presentaciones, playbook, tablero de KPIs y OKRs, y reuniones orientadas a decisiones.' },
     ],
-    deliverables: 'Modelo objetivo, procesos y políticas, kit comercial, diseño de CRM y tablero, plan de capacidades y piloto validado.',
+    deliverables: 'Playbook comercial, kit de herramientas comerciales, políticas y procedimientos de venta.',
     gate: 'Proceso aprobado y demostrado como utilizable por el equipo en casos reales.',
   },
   {
@@ -75,6 +74,7 @@ const stages = [
     title: 'Implementar y consolidar',
     purpose: 'Convertir el modelo en ejecución constante y autonomía.',
     steps: [
+      { title: 'Activar resultados', copy: 'Construir listas accionables de inventario, productos validados y cartera vencida. Priorizar cada caso por potencial, factibilidad, siguiente acción y fecha.' },
       { title: 'Sales Readiness', copy: 'Desarrollar habilidades de diagnóstico consultivo, negociación, manejo de objeciones, cierre y seguimiento, según las brechas observadas.' },
       { title: 'Funciones y decisión', copy: 'Implementar funciones y niveles de decisión, con acompañamiento práctico sobre casos reales.' },
       { title: 'Reuniones institucionalizadas', copy: 'Revisar ventas, conversión, márgenes, cobranza, inventario y compromisos con una cadencia fija.' },
@@ -83,7 +83,7 @@ const stages = [
       { title: 'Corrección con datos', copy: 'Corregir desviaciones con datos y verificar que las acciones se ejecuten y produzcan resultados.' },
       { title: 'Estrategia 2027', copy: 'Diseño de la estrategia comercial para 2027.' },
     ],
-    deliverables: 'Operación comercial funcionando, tablero activo, reuniones institucionalizadas, desempeño comparado con línea base y plan de continuidad de 90 días.',
+    deliverables: 'Academia Comercial de GAOZ, plan estratégico 2027 y mapa de trazabilidad de factores de éxito.',
     gate: 'Cuatro ciclos semanales consecutivos de seguimiento conducidos por GAOZ, con información actualizada, decisiones registradas y compromisos verificados.',
   },
 ];
