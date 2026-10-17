@@ -6,6 +6,8 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import NotFound from "@/pages/not-found";
 import Home from "@/pages/Home";
 import Gaoz from "@/pages/Gaoz";
+import GaozV6 from "@/pages/GaozV6";
+import GaozV6Value from "@/pages/GaozV6Value";
 import GaozDiagnosis from "@/pages/GaozDiagnosis";
 import GaozGate from "@/components/GaozGate";
 import WhatWeDo from "@/pages/WhatWeDo";
@@ -34,10 +36,41 @@ function RouteScrollManager() {
   return null;
 }
 
+const gaozV6Cover = {
+  kicker: 'PROPUESTA V6 · GAOZ · 21 SEMANAS',
+  title: (
+    <>
+      Más ventas. Mayor liquidez.
+      <br />
+      <em>Menos dependencia del dueño.</em>
+    </>
+  ),
+  lead: 'Documento de trabajo para Dirección. Ingresa la clave para abrir la propuesta V6.',
+  meta: 'PA V6 · Solo para uso interno de GAOZ',
+  pageTitle: 'TOOL · Propuesta GAOZ V6',
+  pageDescription: 'Acceso a la propuesta confidencial V6 de 21 semanas para convertir las oportunidades de GAOZ en ventas, liquidez y autonomía.',
+};
+
 function GaozProposal() {
   return (
     <GaozGate>
       <Gaoz />
+    </GaozGate>
+  );
+}
+
+function GaozV6Proposal() {
+  return (
+    <GaozGate storageKey="tool-gaoz-v6-unlocked" cover={gaozV6Cover}>
+      <GaozV6 />
+    </GaozGate>
+  );
+}
+
+function GaozV6ValueProposal() {
+  return (
+    <GaozGate storageKey="tool-gaoz-v6-unlocked" cover={gaozV6Cover}>
+      <GaozV6Value />
     </GaozGate>
   );
 }
@@ -56,6 +89,8 @@ function Router() {
       <RouteScrollManager />
       <Switch>
         <Route path="/gaoz/diagnostico" component={GaozDiagnosisProtected} />
+        <Route path="/gaoz-v6/valor" component={GaozV6ValueProposal} />
+        <Route path="/gaoz-v6" component={GaozV6Proposal} />
         <Route path="/gaoz" component={GaozProposal} />
         <Route path="/" component={Home} />
         <Route path="/que-hacemos" component={WhatWeDo} />
