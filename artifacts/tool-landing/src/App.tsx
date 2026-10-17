@@ -37,18 +37,12 @@ function RouteScrollManager() {
 }
 
 const gaozV6Cover = {
-  kicker: 'PROPUESTA V6 · GAOZ · 21 SEMANAS',
-  title: (
-    <>
-      Más ventas. Mayor liquidez.
-      <br />
-      <em>Menos dependencia del dueño.</em>
-    </>
-  ),
-  lead: 'Documento de trabajo para Dirección. Ingresa la clave para abrir la propuesta V6.',
-  meta: 'PA V6 · Solo para uso interno de GAOZ',
-  pageTitle: 'TOOL · Propuesta GAOZ V6',
-  pageDescription: 'Acceso a la propuesta confidencial V6 de 21 semanas para convertir las oportunidades de GAOZ en ventas, liquidez y autonomía.',
+  kicker: 'PROPUESTA COMERCIAL · GAOZ · 21 SEMANAS',
+  title: 'Diseño y Ejecución de Ecosistema Comercial - GAOZ',
+  lead: 'Documento de trabajo para Dirección. Ingresa la clave para abrir la propuesta.',
+  meta: 'Solo para uso interno de GAOZ',
+  pageTitle: 'Diseño y Ejecución de Ecosistema Comercial - GAOZ',
+  pageDescription: 'Propuesta de 21 semanas para diseñar y ejecutar un ecosistema comercial para GAOZ.',
 };
 
 function GaozProposal() {

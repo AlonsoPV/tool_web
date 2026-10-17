@@ -30,20 +30,20 @@ export default function GaozV6Value() {
   return (
     <div className="gz gz-proposal gz-v6 gz-value-page">
       <PageMeta
-        title="TOOL · Ruta de ejecución GAOZ V6"
+        title="Diseño y Ejecución de Ecosistema Comercial - GAOZ · Ruta de ejecución"
         description="Tres fases en 21 semanas: diagnosticar y activar, diseñar y validar, implementar y consolidar."
       />
       <a className="gz-skip" href="#gaoz-valor">Saltar al diagrama</a>
       <header className="gz-nav">
-        <a href="/gaoz-v6" className="gz-brand" aria-label="Volver a la propuesta GAOZ V6">TOOL<span>GAOZ V6</span></a>
+        <a href="/gaoz-v6" className="gz-brand" aria-label="Volver a la propuesta Diseño y Ejecución de Ecosistema Comercial - GAOZ">TOOL<span>GAOZ</span></a>
         <a href="/gaoz-v6" className="gz-nav-cta"><ArrowLeft size={16} /> Propuesta</a>
       </header>
       <main id="gaoz-valor">
         <GaozValueDiagram />
       </main>
       <footer className="gz-footer">
-        <a className="gz-brand" href="/gaoz-v6">TOOL<span>GAOZ V6</span></a>
-        <span>Propuesta PA V6 · 21 semanas</span>
+        <a className="gz-brand" href="/gaoz-v6">TOOL<span>GAOZ</span></a>
+        <span>Diseño y Ejecución de Ecosistema Comercial - GAOZ · 21 semanas</span>
         <div className="gz-value-actions">
           <button
             type="button"
@@ -70,7 +70,7 @@ export default function GaozV6Value() {
       >
         <div className="gz-econ-head">
           <div>
-            <p>Propuesta V6 · 21 semanas</p>
+            <p>Diseño y Ejecución de Ecosistema Comercial - GAOZ</p>
             <h2 id="gz-econ-title">Inversión y condiciones</h2>
           </div>
           <button type="button" onClick={() => economics.current?.close()} aria-label="Cerrar detalle económico">
@@ -79,7 +79,6 @@ export default function GaozV6Value() {
         </div>
         <div className="gz-econ-hero">
           <p className="gz-econ-amount">$40,000.00 <span>+ IVA</span></p>
-          <p className="gz-econ-note">MXN al mes · Comercial y Marketing</p>
         </div>
         <table>
           <caption>Pago mensual a mes vencido</caption>

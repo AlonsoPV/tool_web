@@ -6,7 +6,7 @@ import '@/styles/gaoz.css';
 import '@/styles/gaoz-tool-theme.css';
 import '@/styles/gaoz-proposal.css';
 
-const contact = `${DEMO_URL}?text=${encodeURIComponent('Hola, quiero conversar sobre la propuesta V6 de 21 semanas para GAOZ y definir el arranque.')}`;
+const contact = `${DEMO_URL}?text=${encodeURIComponent('Hola, quiero conversar sobre la propuesta de 21 semanas para GAOZ y definir el arranque.')}`;
 
 const loops = [
   { problem: 'Seguimiento desigual', action: 'Calificar y acompañar cada oportunidad', benefit: 'Más ventas' },
@@ -196,12 +196,12 @@ export default function GaozV6() {
   return (
     <div className="gz gz-proposal gz-v6">
       <PageMeta
-        title="TOOL · Propuesta GAOZ V6 | Sistema comercial en 21 semanas"
-        description="Más ventas, mayor liquidez y menos dependencia del dueño. Propuesta V6 de 21 semanas para GAOZ."
+        title="Diseño y Ejecución de Ecosistema Comercial - GAOZ"
+        description="Propuesta de 21 semanas para diseñar y ejecutar un ecosistema comercial para GAOZ."
       />
       <a className="gz-skip" href="#gaoz-main">Saltar al contenido</a>
       <header className="gz-nav">
-        <a href="/" className="gz-brand" aria-label="Ir a la web principal de TOOL">TOOL<span>GAOZ V6</span></a>
+        <a href="/" className="gz-brand" aria-label="Ir a la web principal de TOOL">TOOL<span>GAOZ</span></a>
         <nav aria-label="Navegación de la propuesta">
           <a href="#reto">Reto</a>
           <a href="#valor">Valor</a>
@@ -216,7 +216,7 @@ export default function GaozV6() {
       <main id="gaoz-main">
         <section className="gz-hero">
           <div className="gz-hero-copy">
-            <div className="gz-eyebrow"><span className="gz-dot" /> PROPUESTA V6 · 21 SEMANAS</div>
+            <div className="gz-eyebrow"><span className="gz-dot" /> PROPUESTA · 21 SEMANAS</div>
             <h1>Más ventas.<br />Mayor liquidez.<br /><span>Menos dependencia del dueño.</span></h1>
             <p className="gz-hero-lead">En 21 semanas convertimos oportunidades que hoy se pierden en ventas y cobranza, y dejamos un sistema que el equipo pueda operar.</p>
             <div className="gz-actions">
@@ -455,8 +455,8 @@ export default function GaozV6() {
         </section>
       </main>
       <footer className="gz-footer">
-        <a className="gz-brand" href="/">TOOL<span>GAOZ V6</span></a>
-        <span>Propuesta PA V6 · 21 semanas</span>
+        <a className="gz-brand" href="/">TOOL<span>GAOZ</span></a>
+        <span>Diseño y Ejecución de Ecosistema Comercial - GAOZ · 21 semanas</span>
         <a href="/gaoz-v6/valor">Ruta de ejecución</a>
         <a href="#ruta">Volver a la ruta ↑</a>
       </footer>
