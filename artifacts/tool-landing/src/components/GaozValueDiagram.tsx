@@ -1,7 +1,7 @@
 import { useLayoutEffect, useRef, useState, type CSSProperties } from 'react';
 import { BadgeCheck, PenLine, Search, type LucideIcon } from 'lucide-react';
 
-type Stage = {
+export type Stage = {
   id: string;
   index: string;
   weeks: string;
@@ -17,7 +17,7 @@ type Stage = {
   lit: string;
 };
 
-const stages: Stage[] = [
+const defaultStages: Stage[] = [
   {
     id: 'etapa-1',
     index: '01',
@@ -114,7 +114,7 @@ const INNER = R - STROKE / 2;
 const OUTER = R + STROKE / 2;
 const RING_VB = '248 0 624 560';
 
-type Outcome = {
+export type Outcome = {
   id: string;
   index: string;
   title: string;
@@ -125,7 +125,7 @@ type Outcome = {
 
 const outcomeCriterion = 'Se miden contra línea base, sin garantías de resultados.';
 
-const outcomes: Outcome[] = [
+const defaultOutcomes: Outcome[] = [
   {
     id: 'ventas',
     index: '01',
@@ -168,8 +168,6 @@ const outcomes: Outcome[] = [
   },
 ];
 
-const segmentSweep = (SWEEP - GAP * (stages.length - 1)) / stages.length;
-
 function point(deg: number, radius: number) {
   const rad = (deg * Math.PI) / 180;
   return [CX + radius * Math.cos(rad), CY + radius * Math.sin(rad)] as const;
@@ -208,14 +206,17 @@ function headPath(deg: number) {
   return `M ${ox} ${oy} L ${ex + tx * 118} ${ey + ty * 118} L ${ix} ${iy} Z`;
 }
 
-const segments = stages.map((stage, index) => {
-  const start = START + index * (segmentSweep + GAP);
-  const end = start + segmentSweep;
-  const mid = start + segmentSweep / 2;
-  const [x, y] = point(mid, R - 4);
-  const [bx, by] = point(mid, OUTER + 8);
-  return { ...stage, start, end, mid, x, y, bx, by };
-});
+function makeSegments(source: Stage[]) {
+  const sweep = (SWEEP - GAP * (source.length - 1)) / source.length;
+  return source.map((stage, index) => {
+    const start = START + index * (sweep + GAP);
+    const end = start + sweep;
+    const mid = start + sweep / 2;
+    const [x, y] = point(mid, R - 4);
+    const [bx, by] = point(mid, OUTER + 8);
+    return { ...stage, start, end, mid, x, y, bx, by };
+  });
+}
 
 const ringEnd = START + SWEEP;
 
@@ -309,6 +310,7 @@ function ExitBody({
   shown,
   active,
   idPrefix,
+  items,
   onPreview,
   onRelease,
   onSelect,
@@ -317,12 +319,13 @@ function ExitBody({
   shown: number;
   active: number;
   idPrefix: string;
+  items: Outcome[];
   onPreview: (index: number, pointerType: string) => void;
   onRelease: (pointerType: string) => void;
   onSelect: (index: number) => void;
   quiet?: boolean;
 }) {
-  const outcome = outcomes[shown];
+  const outcome = items[shown];
   return (
     <>
       <div key="head" className="gv-now-head">
@@ -331,7 +334,7 @@ function ExitBody({
       </div>
       <b key="title" className="gv-phase">{outcome.title}</b>
       <ol key="picks" className="gv-picks">
-        {outcomes.map((item, index) => (
+        {items.map((item, index) => (
           <li key={item.id}>
             <button
               id={`${idPrefix}-${item.id}`}
@@ -360,7 +363,18 @@ function ExitBody({
   );
 }
 
-export default function GaozValueDiagram() {
+export default function GaozValueDiagram({
+  title = 'Cómo se ejecuta la implementación en GAOZ',
+  lead = 'Entra en la semana 1, recorre tres fases y sale en el resultado que GAOZ va a medir.',
+  stages = defaultStages,
+  outcomes = defaultOutcomes,
+}: {
+  title?: string;
+  lead?: string;
+  stages?: Stage[];
+  outcomes?: Outcome[];
+} = {}) {
+  const segments = makeSegments(stages);
   const [viewOn, setViewOn] = useState<'phase' | 'exit'>('phase');
   const [viewHover, setViewHover] = useState<'phase' | 'exit' | null>(null);
   const view = viewHover ?? viewOn;
@@ -561,8 +575,8 @@ export default function GaozValueDiagram() {
     <section className="gv" aria-labelledby="gv-title">
       <div className="gv-head">
         <div className="gz-eyebrow"><span className="gz-dot" /> RUTA DE EJECUCIÓN</div>
-        <h1 id="gv-title">Cómo se ejecuta la implementación en GAOZ</h1>
-        <p className="gv-lead">Entra en la semana 1, recorre tres fases y sale en el resultado que GAOZ va a medir.</p>
+        <h1 id="gv-title">{title}</h1>
+        <p className="gv-lead">{lead}</p>
       </div>
 
       <div className="gv-board">
@@ -686,6 +700,7 @@ export default function GaozValueDiagram() {
                   shown={leaving.outcomeIndex}
                   active={leaving.outcomeIndex}
                   idPrefix="valor-leave"
+                  items={outcomes}
                   quiet
                   onPreview={() => undefined}
                   onRelease={() => undefined}
@@ -702,6 +717,7 @@ export default function GaozValueDiagram() {
                 shown={outShown}
                 active={outOn}
                 idPrefix="valor-out"
+                items={outcomes}
                 onPreview={previewOutcome}
                 onRelease={releaseOutcome}
                 onSelect={selectOutcome}
@@ -787,6 +803,7 @@ export default function GaozValueDiagram() {
                 shown={outShown}
                 active={outOn}
                 idPrefix="valor-om"
+                items={outcomes}
                 onPreview={previewOutcome}
                 onRelease={releaseOutcome}
                 onSelect={selectOutcome}

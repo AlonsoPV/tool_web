@@ -49,24 +49,35 @@ const proof = [
   { ...generatedResults[3], n: '04', headline: '0% churn', note: 'desde 30% en un año', why: 'La cartera existente se vuelve crecimiento, no fuga.' },
 ];
 
-export default function GaozV6Team() {
+export default function GaozV6Team({
+  basePath = '/gaoz-v6',
+  brand = 'GAOZ',
+  title = 'Equipo TOOL · Propuesta GAOZ',
+  horizon = '21 semanas',
+}: {
+  basePath?: string;
+  brand?: string;
+  title?: string;
+  horizon?: string;
+} = {}) {
+  const weekMark = horizon.replace(/semanas?/i, '').trim();
   return (
     <div className="gz gz-proposal gz-v6 gz-value-page gz-team-page">
       <PageMeta
-        title="Equipo TOOL · Propuesta GAOZ"
-        description="Quién ejecuta la ruta de 21 semanas, de qué se hace cargo cada socio y qué resultados ya se produjeron en otras empresas."
+        title={title}
+        description={`Quién ejecuta la ruta de ${horizon}, de qué se hace cargo cada socio y qué resultados ya se produjeron en otras empresas.`}
       />
       <a className="gz-skip" href="#gaoz-equipo">Saltar al brief de equipo</a>
       <header className="gz-nav">
-        <a href="/gaoz-v6" className="gz-brand" aria-label="Volver a la propuesta Diseño y Ejecución de Ecosistema Comercial - GAOZ">TOOL<span>GAOZ</span></a>
-        <a href="/gaoz-v6" className="gz-nav-cta"><ArrowLeft size={16} /> Propuesta</a>
+        <a href={basePath} className="gz-brand" aria-label={`Volver a la propuesta ${brand}`}>TOOL<span>{brand}</span></a>
+        <a href={basePath} className="gz-nav-cta"><ArrowLeft size={16} /> Propuesta</a>
       </header>
       <main id="gaoz-equipo" className="gz-team-main">
         <section className="gz-brief-hero">
           <p className="gz-team-kicker">Brief para Dirección</p>
           <h1>El equipo que va a ejecutar. No el que entrega un PDF.</h1>
           <ul className="gz-brief-meta" aria-label="Alcance del engagement">
-            <li>21 semanas</li>
+            <li>{horizon}</li>
             <li>Diagnóstico, diseño e implementación</li>
             <li>El mismo equipo de principio a fin</li>
           </ul>
@@ -156,16 +167,16 @@ export default function GaozV6Team() {
         <aside className="gz-team-together">
           <div>
             <p>El final que Dirección está comprando</p>
-            <h2>El lunes después de la semana 21, la reunión comercial la conduce GAOZ.</h2>
+            <h2>El lunes después de la semana {weekMark}, la reunión comercial la conduce GAOZ.</h2>
             <p className="gz-brief-story">No hay un PDF en el escritorio. Hay prioridades de venta, un proceso que el equipo ya usa y cuatro ciclos corridos con evidencia. Abraham leyó el negocio. Alonso dejó el método. TOOL ya no tiene que estar en la sala.</p>
           </div>
           <div className="gz-brief-cta">
             <ol className="gz-brief-arc">
               <li><span>Hoy</span> La venta vive en la relación del dueño.</li>
-              <li><span>21 semanas</span> Dos socios instalan lectura, proceso y hábito.</li>
+              <li><span>{horizon}</span> Dos socios instalan lectura, proceso y hábito.</li>
               <li><span>Después</span> GAOZ decide con dato, no con memoria.</li>
             </ol>
-            <a href="/gaoz-v6" className="gz-brief-next">
+            <a href={basePath} className="gz-brief-next">
               Seguir con la ruta
               <ArrowRight size={16} />
             </a>
@@ -173,15 +184,15 @@ export default function GaozV6Team() {
         </aside>
       </main>
       <footer className="gz-footer">
-        <a className="gz-brand" href="/gaoz-v6">TOOL<span>GAOZ</span></a>
-        <span>Diseño y Ejecución de Ecosistema Comercial - GAOZ · 21 semanas</span>
+        <a className="gz-brand" href={basePath}>TOOL<span>{brand}</span></a>
+        <span>Diseño y Ejecución de Ecosistema Comercial - {brand} · {horizon}</span>
         <div className="gz-value-actions">
-          <a href="/gaoz-v6/equipo" className="gz-econ-open is-current" aria-current="page">Equipo</a>
-          <a href="/gaoz-v6/valor" className="gz-econ-open">
+          <a href={`${basePath}/equipo`} className="gz-econ-open is-current" aria-current="page">Equipo</a>
+          <a href={`${basePath}/valor`} className="gz-econ-open">
             <span className="gz-back-full">Ruta de ejecución</span>
             <span className="gz-back-short">Diagrama</span>
           </a>
-          <a href="/gaoz-v6" className="gz-back-link">
+          <a href={basePath} className="gz-back-link">
             <ArrowLeft size={16} />
             <span className="gz-back-full">Volver a la propuesta</span>
             <span className="gz-back-short">Propuesta</span>
