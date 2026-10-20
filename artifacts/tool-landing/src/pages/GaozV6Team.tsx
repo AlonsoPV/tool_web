@@ -15,18 +15,28 @@ const people = [
     index: '01',
     front: 'Estrategia / Comercial',
     title: 'Socio responsable de la estrategia, cultura y modelo comercial',
-    owns: 'Dónde se vende, a quién y con qué oferta.',
-    education: 'Ingeniero Industrial. Egresado de UPIICSA.',
-    experience: 'Implementación de sistemas de gestión de calidad, consultoría estratégica y comercial, gestión de proyectos, desarrollo de líneas de negocio y emprendedor.',
+    degree: 'Ingeniero Industrial',
+    school: 'Egresado de UPIICSA',
+    experience: [
+      'Sistemas de gestión de calidad',
+      'Consultoría estratégica y comercial',
+      'Gestión de proyectos',
+      'Desarrollo de líneas de negocio',
+      'Emprendedor',
+    ],
   },
   {
     ...founders[1],
     index: '02',
     front: 'Operación / Tecnología',
     title: 'Socio responsable de proceso y adopción',
-    owns: 'Cómo se opera, se mide y se sostiene sin depender de TOOL.',
-    education: 'Ingeniero en desarrollo sustentable. Egresado del ITESM CCM.',
-    experience: 'Digitalización de pequeñas y medianas empresas, consultoría en implementación y diseño de procesos, y emprendedor.',
+    degree: 'Ingeniero en Desarrollo Sustentable',
+    school: 'Egresado del ITESM CCM',
+    experience: [
+      'Digitalización de pymes',
+      'Diseño e implementación de procesos',
+      'Emprendedor',
+    ],
   },
 ];
 
@@ -75,7 +85,7 @@ function TeamStoriesCarousel() {
       >
         {stories.map((story, index) => (
           <div className="gz-story-slide" key={story.company}>
-            <StoryCard story={story} index={index} />
+            <StoryCard story={story} index={index} variant="brief" />
           </div>
         ))}
       </div>
@@ -149,22 +159,38 @@ export default function GaozV6Team({
                     <img src={person.photo} alt={person.name} />
                   </figure>
                   <div>
-                    <p className="gz-cv-index">{person.index}<b>{person.front}</b></p>
+                    <p className="gz-cv-index"><span>{person.index}</span><b>{person.front}</b></p>
                     <h3>{person.name}</h3>
                     <p className="gz-cv-title">{person.title}</p>
-                    <div className="gz-team-links">
-                      <a href={person.linkedin} target="_blank" rel="noopener noreferrer" aria-label={`LinkedIn de ${person.name}`}>
-                        <Linkedin size={15} /> LinkedIn
-                      </a>
-                      <a href={person.whatsapp} target="_blank" rel="noopener noreferrer" aria-label={`WhatsApp de ${person.name}`}>
-                        <MessageCircle size={15} /> WhatsApp
-                      </a>
-                    </div>
+                  </div>
+                  <div className="gz-team-links">
+                    <a href={person.linkedin} target="_blank" rel="noopener noreferrer" aria-label={`LinkedIn de ${person.name}`}>
+                      <Linkedin size={15} /> LinkedIn
+                    </a>
+                    <a href={person.whatsapp} target="_blank" rel="noopener noreferrer" aria-label={`WhatsApp de ${person.name}`}>
+                      <MessageCircle size={15} /> WhatsApp
+                    </a>
                   </div>
                 </div>
-                <p className="gz-brief-owns"><span>Se hace cargo de</span> {person.owns}</p>
-                <p className="gz-cv-edu">{person.education}</p>
-                <p className="gz-cv-xp"><span>Experiencia en</span> {person.experience}</p>
+                <dl className="gz-cv-profile">
+                  <div>
+                    <dt>Formación</dt>
+                    <dd>
+                      <strong>{person.degree}</strong>
+                      <span>{person.school}</span>
+                    </dd>
+                  </div>
+                  <div>
+                    <dt>Experiencia</dt>
+                    <dd>
+                      <ul>
+                        {person.experience.map((item) => (
+                          <li key={item}>{item}</li>
+                        ))}
+                      </ul>
+                    </dd>
+                  </div>
+                </dl>
               </li>
             ))}
           </ol>

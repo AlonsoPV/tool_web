@@ -14,6 +14,15 @@ export const stories = [
     focus: "Marketing + adquisición + venta",
     icon: Building2,
     tone: "blue",
+    brief: {
+      kpis: [
+        { value: "$29 MDP", label: "En ventas · 8 meses" },
+        { value: "90%", label: "Del desarrollo vendido" },
+      ],
+      message: "De marketing a ventas, en un solo sistema.",
+      copy: "Diseñamos y estructuramos el proceso de adquisición, conectando la captación de prospectos con el seguimiento comercial.",
+      tags: ["Estrategia comercial", "Marketing", "Proceso de ventas"],
+    },
   },
   {
     company: "ZAIAH",
@@ -27,6 +36,15 @@ export const stories = [
     focus: "Estrategia + sistema de adquisición",
     icon: Building2,
     tone: "blue",
+    brief: {
+      kpis: [
+        { value: "$14 MDP", label: "Capital · 8 meses" },
+        { value: "8 meses", label: "De levantamiento" },
+      ],
+      message: "Un sistema comercial capaz de sostener el crecimiento.",
+      copy: "Diseñamos el sistema de adquisición y venta y alineamos prioridades y responsabilidades.",
+      tags: ["Estrategia", "Adquisición", "Ventas"],
+    },
   },
   {
     company: "Blue Pixel",
@@ -40,6 +58,15 @@ export const stories = [
     focus: "Operación comercial + incentivos",
     icon: Code2,
     tone: "purple",
+    brief: {
+      kpis: [
+        { value: "Sistema", label: "Comercial instalado" },
+        { value: "Foco", label: "Incentivos alineados" },
+      ],
+      message: "Más claridad, estructura y foco para vender.",
+      copy: "Estructuramos la operación de ventas y un esquema de compensación ligado a las metas del negocio.",
+      tags: ["Operación comercial", "Incentivos", "Proceso de ventas"],
+    },
   },
   {
     company: "INBest",
@@ -53,6 +80,15 @@ export const stories = [
     focus: "Liderazgo + capacidad instalada",
     icon: TrendingUp,
     tone: "purple",
+    brief: {
+      kpis: [
+        { value: "Sucesión", label: "A Dirección Comercial" },
+        { value: "CEO", label: "Deja de operar la venta" },
+      ],
+      message: "La venta dejó de depender del CEO.",
+      copy: "Maduramos la operación comercial y desarrollamos al vendedor con mejor desempeño hasta asumir la Dirección Comercial.",
+      tags: ["Liderazgo", "Sucesión", "Capacidad instalada"],
+    },
   },
   {
     company: "Collecta",
@@ -66,6 +102,15 @@ export const stories = [
     focus: "Experiencia + expansión de cartera",
     icon: Database,
     tone: "green",
+    brief: {
+      kpis: [
+        { value: "0%", label: "Churn · desde 30% en un año" },
+        { value: "+10%", label: "Valor de cartera" },
+      ],
+      message: "La experiencia del cliente se convirtió en crecimiento.",
+      copy: "Diseñamos la experiencia del cliente y una estrategia de venta cruzada y ampliación de servicios.",
+      tags: ["Customer experience", "Retención", "Expansión de cartera"],
+    },
   },
   {
     company: "DermaMX",
@@ -79,6 +124,15 @@ export const stories = [
     focus: "Captación digital + expediente + retención",
     icon: HeartPulse,
     tone: "green",
+    brief: {
+      kpis: [
+        { value: "+38%", label: "Captación nueva" },
+        { value: "+24%", label: "Retención a 6 meses" },
+      ],
+      message: "Más pacientes nuevos y más que regresan, con un proceso digital.",
+      copy: "Digitalizamos la captación y el expediente clínico, conectando solicitud, agenda, historial y seguimiento.",
+      tags: ["Captación digital", "Expediente", "Retención"],
+    },
   },
   {
     company: "Kyrie México",
@@ -92,13 +146,56 @@ export const stories = [
     focus: "Proceso estándar + control de líneas + venta",
     icon: Sparkles,
     tone: "purple",
+    brief: {
+      kpis: [
+        { value: "+31%", label: "Venta por línea" },
+        { value: "+4", label: "Líneas nuevas controladas" },
+      ],
+      message: "El proceso estándar dio control para vender mejor cada línea.",
+      copy: "Estandarizamos el proceso comercial para dar visibilidad por línea, vendedor y etapa, y controlar la incorporación de productos.",
+      tags: ["Proceso comercial", "Control de líneas", "Ventas"],
+    },
   },
 ];
 
 export type Story = (typeof stories)[number];
 
-export function StoryCard({ story, index }: { story: Story; index: number }) {
+export function StoryCard({
+  story,
+  index,
+  variant = 'full',
+}: {
+  story: Story;
+  index: number;
+  variant?: 'full' | 'brief';
+}) {
   const Icon = story.icon;
+
+  if (variant === 'brief') {
+    const { brief } = story;
+    return (
+      <article className="gz-story-brief">
+        <p className="gz-story-kicker">Caso de éxito · {story.industry}</p>
+        <h3>{story.company}</h3>
+        <dl className="gz-story-kpis">
+          {brief.kpis.map((kpi) => (
+            <div key={kpi.value}>
+              <dt>{kpi.value}</dt>
+              <dd>{kpi.label}</dd>
+            </div>
+          ))}
+        </dl>
+        <p className="gz-story-message">{brief.message}</p>
+        <p className="gz-story-copy">{brief.copy}</p>
+        <ul className="gz-story-tags">
+          {brief.tags.map((tag) => (
+            <li key={tag}>{tag}</li>
+          ))}
+        </ul>
+      </article>
+    );
+  }
+
   return (
     <article className="success-story-card" data-tone={story.tone}>
       <div className="success-story-topline">
