@@ -1,53 +1,109 @@
+import { useRef, useState } from 'react';
 import { ArrowLeft, ArrowRight, Linkedin, MessageCircle } from 'lucide-react';
 import PageMeta from '@/components/PageMeta';
 import { founders } from '@/components/Founders';
-import { generatedResults } from '@/data/generated-results';
+import { stories, StoryCard } from '@/components/landing/SuccessStories';
 import '@/styles/gaoz.css';
 import '@/styles/gaoz-tool-theme.css';
 import '@/styles/gaoz-proposal.css';
 import '@/styles/gaoz-value.css';
+import '@/styles/tool-redesign.css';
 
 const people = [
   {
     ...founders[0],
     index: '01',
-    front: 'Comercial',
-    title: 'Socio responsable de la lectura comercial',
+    front: 'Estrategia / Comercial',
+    title: 'Socio responsable de la estrategia, cultura y modelo comercial',
     owns: 'Dónde se vende, a quién y con qué oferta.',
-    mandate: 'Que Dirección sepa dónde se pierde valor y qué hay que vender primero.',
-    focus: [
-      'Prioridades de venta, segmentos y propuesta de valor.',
-      'Distinguir la relación del dueño del método que sí se puede copiar.',
-      'Activar inventario, productos validados y cartera con siguiente acción.',
-    ],
+    education: 'Ingeniero Industrial. Egresado de UPIICSA.',
+    experience: 'Implementación de sistemas de gestión de calidad, consultoría estratégica y comercial, gestión de proyectos, desarrollo de líneas de negocio y emprendedor.',
   },
   {
     ...founders[1],
     index: '02',
-    front: 'Operativo',
+    front: 'Operación / Tecnología',
     title: 'Socio responsable de proceso y adopción',
     owns: 'Cómo se opera, se mide y se sostiene sin depender de TOOL.',
-    mandate: 'Que el método quede instalado en el equipo, no en una presentación.',
-    focus: [
-      'Proceso, políticas, CRM y tableros que el equipo sí use.',
-      'Cadencia de decisión: reuniones, compromisos y evidencia.',
-      'Adopción: que GAOZ pueda conducir la operación al cierre de la ruta.',
-    ],
+    education: 'Ingeniero en desarrollo sustentable. Egresado del ITESM CCM.',
+    experience: 'Digitalización de pequeñas y medianas empresas, consultoría en implementación y diseño de procesos, y emprendedor.',
   },
 ];
 
-const criteria = [
-  { n: '01', label: 'Quién responde', copy: 'Uno lee el negocio y la venta. El otro instala proceso, dato y hábito. Nombres, no un equipo anónimo.' },
-  { n: '02', label: 'Hasta cuándo', copy: 'Entran en la semana 1. Diagnosticar, diseñar e implementar es el mismo equipo. No entregan un PDF y desaparecen.' },
-  { n: '03', label: 'Qué prueba hay', copy: 'Capital levantado, sistema comercial instalado, sucesión del dueño y cartera que deja de fugarse.' },
-];
+function TeamStoriesCarousel() {
+  const scroller = useRef<HTMLDivElement>(null);
+  const [selected, setSelected] = useState(0);
 
-const proof = [
-  { ...generatedResults[0], n: '01', headline: '$14 MDP', note: 'capital en 8 meses', why: 'Un sistema de adquisición que sí convierte en capital.' },
-  { ...generatedResults[1], n: '02', headline: 'Sistema comercial', note: 'claridad, estructura y foco', why: 'Ventas con estructura, foco e incentivos alineados a la empresa.' },
-  { ...generatedResults[2], n: '03', headline: 'Sucesión del CEO', note: 'a Dirección Comercial', why: 'La operación comercial deja de depender del dueño.' },
-  { ...generatedResults[3], n: '04', headline: '0% churn', note: 'desde 30% en un año', why: 'La cartera existente se vuelve crecimiento, no fuga.' },
-];
+  function slides() {
+    return [...(scroller.current?.querySelectorAll<HTMLElement>('.gz-story-slide') ?? [])];
+  }
+
+  function slideOffset(slide: HTMLElement) {
+    const origin = slides()[0];
+    return origin ? slide.offsetLeft - origin.offsetLeft : slide.offsetLeft;
+  }
+
+  function syncSelected() {
+    const node = scroller.current;
+    if (!node) return;
+    const left = node.scrollLeft;
+    let best = 0;
+    let bestDist = Number.POSITIVE_INFINITY;
+    slides().forEach((slide, index) => {
+      const dist = Math.abs(slideOffset(slide) - left);
+      if (dist < bestDist) {
+        bestDist = dist;
+        best = index;
+      }
+    });
+    setSelected(best);
+  }
+
+  function scrollTo(index: number) {
+    const node = scroller.current;
+    const slide = slides()[(index + stories.length) % stories.length];
+    if (!node || !slide) return;
+    node.scrollTo({ left: slideOffset(slide), behavior: 'smooth' });
+  }
+
+  return (
+    <div className="gz-story-carousel">
+      <div
+        className="gz-story-viewport"
+        ref={scroller}
+        onScroll={syncSelected}
+      >
+        {stories.map((story, index) => (
+          <div className="gz-story-slide" key={story.company}>
+            <StoryCard story={story} index={index} />
+          </div>
+        ))}
+      </div>
+      <div className="gz-story-nav">
+        <button type="button" onClick={() => scrollTo(selected - 1)} aria-label="Caso anterior">
+          <ArrowLeft size={16} />
+        </button>
+        <div className="gz-story-dots" role="tablist" aria-label="Casos de éxito">
+          {stories.map((story, index) => (
+            <button
+              key={story.company}
+              type="button"
+              role="tab"
+              aria-label={`Ver caso ${story.company}`}
+              aria-selected={index === selected}
+              className={index === selected ? 'is-on' : undefined}
+              onClick={() => scrollTo(index)}
+            />
+          ))}
+        </div>
+        <button type="button" onClick={() => scrollTo(selected + 1)} aria-label="Caso siguiente">
+          <ArrowRight size={16} />
+        </button>
+        <span className="gz-story-count">{String(selected + 1).padStart(2, '0')} / {String(stories.length).padStart(2, '0')}</span>
+      </div>
+    </div>
+  );
+}
 
 export default function GaozV6Team({
   basePath = '/gaoz-v6',
@@ -60,7 +116,6 @@ export default function GaozV6Team({
   title?: string;
   horizon?: string;
 } = {}) {
-  const weekMark = horizon.replace(/semanas?/i, '').trim();
   return (
     <div className="gz gz-proposal gz-v6 gz-value-page gz-team-page">
       <PageMeta
@@ -74,36 +129,11 @@ export default function GaozV6Team({
       </header>
       <main id="gaoz-equipo" className="gz-team-main">
         <section className="gz-brief-hero">
-          <p className="gz-team-kicker">Brief para Dirección</p>
           <h1>El equipo que va a ejecutar. No el que entrega un PDF.</h1>
           <ul className="gz-brief-meta" aria-label="Alcance del engagement">
             <li>{horizon}</li>
             <li>Diagnóstico, diseño e implementación</li>
             <li>El mismo equipo de principio a fin</li>
-          </ul>
-          <ul className="gz-brief-criteria">
-            {criteria.map((item) => (
-              <li key={item.label}>
-                <span>{item.n}</span>
-                <strong>{item.label}</strong>
-                <p>{item.copy}</p>
-              </li>
-            ))}
-          </ul>
-        </section>
-        <section className="gz-brief-proof" aria-label="Resultados que ya se produjeron">
-          <header>
-            <p className="gz-team-kicker">Lo que Dirección suele pedir primero</p>
-            <h2>Prueba, no promesa.</h2>
-          </header>
-          <ul>
-            {proof.map((item) => (
-              <li key={item.company}>
-                <p>{item.company}</p>
-                <strong>{item.headline}</strong>
-                <span>{item.note}</span>
-              </li>
-            ))}
           </ul>
         </section>
         <section className="gz-brief-people" aria-labelledby="gz-brief-people-title">
@@ -119,7 +149,7 @@ export default function GaozV6Team({
                     <img src={person.photo} alt={person.name} />
                   </figure>
                   <div>
-                    <p className="gz-cv-index">{person.index}<span> / 02</span><b>{person.front}</b></p>
+                    <p className="gz-cv-index">{person.index}<b>{person.front}</b></p>
                     <h3>{person.name}</h3>
                     <p className="gz-cv-title">{person.title}</p>
                     <div className="gz-team-links">
@@ -133,55 +163,19 @@ export default function GaozV6Team({
                   </div>
                 </div>
                 <p className="gz-brief-owns"><span>Se hace cargo de</span> {person.owns}</p>
-                <p className="gz-brief-mandate">{person.mandate}</p>
-                <ul className="gz-cv-focus">
-                  {person.focus.map((item) => (
-                    <li key={item}>{item}</li>
-                  ))}
-                </ul>
+                <p className="gz-cv-edu">{person.education}</p>
+                <p className="gz-cv-xp"><span>Experiencia en</span> {person.experience}</p>
               </li>
             ))}
           </ol>
         </section>
         <section className="gz-brief-cases" id="resultados" aria-labelledby="gz-team-results-title">
           <header>
-            <p className="gz-team-kicker">Por qué eso importa aquí</p>
-            <h2 id="gz-team-results-title">Casos de la misma clase de problema.</h2>
+            <h2 id="gz-team-results-title">Casos de éxito</h2>
             <p>Estructura comercial, autonomía del dueño, capital y cartera. No son logos: son decisiones que ya se tomaron con un equipo real.</p>
           </header>
-          <ol>
-            {proof.map((item) => (
-              <li key={item.company}>
-                <div className="gz-case-top">
-                  <p className="gz-case-industry">{item.industry}</p>
-                  <span className="gz-case-index">{item.n}</span>
-                </div>
-                <h3>{item.company}</h3>
-                <p className="gz-cv-work-metric">{item.headline}<em>{item.note}</em></p>
-                <p className="gz-brief-why">{item.why}</p>
-                <p className="gz-case-copy">{item.copy}</p>
-              </li>
-            ))}
-          </ol>
+          <TeamStoriesCarousel />
         </section>
-        <aside className="gz-team-together">
-          <div>
-            <p>El final que Dirección está comprando</p>
-            <h2>El lunes después de la semana {weekMark}, la reunión comercial la conduce GAOZ.</h2>
-            <p className="gz-brief-story">No hay un PDF en el escritorio. Hay prioridades de venta, un proceso que el equipo ya usa y cuatro ciclos corridos con evidencia. Abraham leyó el negocio. Alonso dejó el método. TOOL ya no tiene que estar en la sala.</p>
-          </div>
-          <div className="gz-brief-cta">
-            <ol className="gz-brief-arc">
-              <li><span>Hoy</span> La venta vive en la relación del dueño.</li>
-              <li><span>{horizon}</span> Dos socios instalan lectura, proceso y hábito.</li>
-              <li><span>Después</span> GAOZ decide con dato, no con memoria.</li>
-            </ol>
-            <a href={basePath} className="gz-brief-next">
-              Seguir con la ruta
-              <ArrowRight size={16} />
-            </a>
-          </div>
-        </aside>
       </main>
       <footer className="gz-footer">
         <a className="gz-brand" href={basePath}>TOOL<span>{brand}</span></a>

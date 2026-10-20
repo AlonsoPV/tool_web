@@ -361,7 +361,6 @@ export default function Plan() {
         </section>
 
         <section className="gz-final" id="arranque">
-          <div className="gz-eyebrow">PARA DECIRLE AL CLIENTE · 20 SEGUNDOS</div>
           <h2>Ya sabemos dónde se pierde valor.<br /><span>Hay que convertirlo.</span></h2>
           <p>Vamos a trabajar desde el inicio en convertir oportunidades, colocar inventario y recuperar cobranza, mientras dejamos un método que el equipo pueda operar. El avance se verá en ventas, efectivo recuperado y menor dependencia del dueño.</p>
           <CTA>Hablar sobre el arranque</CTA>

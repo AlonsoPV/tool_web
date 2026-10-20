@@ -95,6 +95,31 @@ export const stories = [
   },
 ];
 
+export type Story = (typeof stories)[number];
+
+export function StoryCard({ story, index }: { story: Story; index: number }) {
+  const Icon = story.icon;
+  return (
+    <article className="success-story-card" data-tone={story.tone}>
+      <div className="success-story-topline">
+        <div className="success-story-company">
+          <span><Icon size={18} /></span>
+          <div><strong>{story.company}</strong><small>{story.industry}</small></div>
+        </div>
+        <span className="success-story-index">0{index + 1}</span>
+      </div>
+      <div className="success-story-result">
+        <strong>{story.metric}</strong>
+        <span>{story.metricLabel}</span>
+      </div>
+      <h3>{story.headline}</h3>
+      <p><strong>Qué hicimos</strong><br />{story.actions}</p>
+      <p><strong>Valor aportado</strong><br />{story.value}</p>
+      <footer>{story.focus}</footer>
+    </article>
+  );
+}
+
 type SuccessStoriesProps = {
   mode?: "preview" | "full";
 };
@@ -129,34 +154,15 @@ export default function SuccessStories({ mode = "full" }: SuccessStoriesProps) {
           viewport={{ once: true, margin: "-60px" }}
           variants={{ hidden: {}, visible: { transition: { staggerChildren: .08 } } }}
         >
-          {visibleStories.map((story, index) => {
-            const Icon = story.icon;
-            return (
-              <motion.article
-                className="success-story-card"
-                data-tone={story.tone}
-                key={story.company}
-                variants={{ hidden: { opacity: 0, y: 18 }, visible: { opacity: 1, y: 0, transition: { duration: .45 } } }}
-              >
-                <div className="success-story-topline">
-                  <div className="success-story-company">
-                    <span><Icon size={18} /></span>
-                    <div><strong>{story.company}</strong><small>{story.industry}</small></div>
-                  </div>
-                  <span className="success-story-index">0{index + 1}</span>
-                </div>
-
-                <div className="success-story-result">
-                  <strong>{story.metric}</strong>
-                  <span>{story.metricLabel}</span>
-                </div>
-                <h3>{story.headline}</h3>
-                <p><strong>Qué hicimos</strong><br/>{story.actions}</p>
-                <p><strong>Valor aportado</strong><br/>{story.value}</p>
-                <footer>{story.focus}</footer>
-              </motion.article>
-            );
-          })}
+          {visibleStories.map((story, index) => (
+            <motion.div
+              key={story.company}
+              variants={{ hidden: { opacity: 0, y: 18 }, visible: { opacity: 1, y: 0, transition: { duration: .45 } } }}
+              style={{ display: "contents" }}
+            >
+              <StoryCard story={story} index={index} />
+            </motion.div>
+          ))}
         </motion.div>
 
         {mode === "preview" ? (
