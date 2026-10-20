@@ -368,11 +368,13 @@ export default function GaozValueDiagram({
   lead = 'Entra en la semana 1, recorre tres fases y sale en el resultado que GAOZ va a medir.',
   stages = defaultStages,
   outcomes = defaultOutcomes,
+  horizon = '21 semanas',
 }: {
   title?: string;
   lead?: string;
   stages?: Stage[];
   outcomes?: Outcome[];
+  horizon?: string;
 } = {}) {
   const segments = makeSegments(stages);
   const [viewOn, setViewOn] = useState<'phase' | 'exit'>('phase');
@@ -582,7 +584,7 @@ export default function GaozValueDiagram({
       <div className="gv-board">
       <div className="gv-orbit is-active">
         <RouteEntry />
-        <svg className="gv-svg" viewBox={RING_VB} role="img" aria-label="Ruta de ejecución de 21 semanas. Entrada en la semana 1. Fases: diagnosticar y activar, diseñar y validar, implementar y consolidar. Salida: resultado para GAOZ.">
+        <svg className="gv-svg" viewBox={RING_VB} role="img" aria-label={`Ruta de ejecución de ${horizon}. Entrada en la semana 1. Fases: diagnosticar y activar, diseñar y validar, implementar y consolidar. Salida: resultado para GAOZ.`}>
 
           <ellipse cx={CX} cy={CY + 28} rx={OUTER + 8} ry="46" fill="#0a1d3d" opacity="0.06" />
 
@@ -663,7 +665,7 @@ export default function GaozValueDiagram({
           <foreignObject x={CX - 118} y={CY - 52} width={236} height={104}>
             <div className="gv-hub">
               <span>Ruta de ejecución</span>
-              <strong>21 semanas</strong>
+              <strong>{horizon}</strong>
               <em>Activar, diseñar, consolidar</em>
             </div>
           </foreignObject>

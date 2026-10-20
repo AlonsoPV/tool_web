@@ -45,6 +45,7 @@ export default function PlanValue() {
           lead={planDiagramLead}
           stages={planStages}
           outcomes={planOutcomes}
+          horizon="16 semanas"
         />
       </main>
       <footer className="gz-footer">
