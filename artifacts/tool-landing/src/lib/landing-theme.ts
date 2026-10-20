@@ -38,6 +38,7 @@ export const NAV_LINKS = [
       { label: "Por qué empezamos", description: "El patrón que decidimos ayudar a resolver.", href: "/quienes-somos#origen" },
       { label: "Cómo pensamos", description: "Los principios que guían cada proyecto.", href: "/quienes-somos#principios" },
       { label: "Quién construye contigo", description: "Las personas detrás de la estrategia y ejecución.", href: "/quienes-somos#equipo" },
+      { label: "Resultados", description: "Casos que ya generamos en otras empresas.", href: "/quienes-somos#resultados" },
     ],
   },
   { label: "Contacto", href: "/contacto" },

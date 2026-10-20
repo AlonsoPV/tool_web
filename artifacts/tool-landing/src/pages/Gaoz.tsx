@@ -138,10 +138,7 @@ export default function Gaoz() {
       <header className="gz-nav">
         <a href="/" className="gz-brand" aria-label="Ir a la web principal de TOOL">TOOL<span>GAOZ</span></a>
         <nav aria-label="Navegación de la propuesta">
-          <a href="#reto">Reto</a>
-          <a href="#ruta">Ruta</a>
-          <a href="#gobierno">Gobierno</a>
-          <a href="#cierre">Cierre</a>
+          <a href="/gaoz-v6/valor">Diagrama</a>
         </nav>
         <a href={contact} target="_blank" rel="noopener noreferrer" className="gz-nav-cta">Hablemos <ArrowUpRight size={16} /></a>
       </header>

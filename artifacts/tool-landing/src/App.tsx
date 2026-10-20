@@ -8,6 +8,7 @@ import Home from "@/pages/Home";
 import Gaoz from "@/pages/Gaoz";
 import GaozV6 from "@/pages/GaozV6";
 import GaozV6Value from "@/pages/GaozV6Value";
+import GaozV6Team from "@/pages/GaozV6Team";
 import GaozDiagnosis from "@/pages/GaozDiagnosis";
 import GaozGate from "@/components/GaozGate";
 import WhatWeDo from "@/pages/WhatWeDo";
@@ -69,6 +70,14 @@ function GaozV6ValueProposal() {
   );
 }
 
+function GaozV6TeamProposal() {
+  return (
+    <GaozGate storageKey="tool-gaoz-v6-unlocked" cover={gaozV6Cover}>
+      <GaozV6Team />
+    </GaozGate>
+  );
+}
+
 function GaozDiagnosisProtected() {
   return (
     <GaozGate>
@@ -84,6 +93,7 @@ function Router() {
       <Switch>
         <Route path="/gaoz/diagnostico" component={GaozDiagnosisProtected} />
         <Route path="/gaoz-v6/valor" component={GaozV6ValueProposal} />
+        <Route path="/gaoz-v6/equipo" component={GaozV6TeamProposal} />
         <Route path="/gaoz-v6" component={GaozV6Proposal} />
         <Route path="/gaoz" component={GaozProposal} />
         <Route path="/" component={Home} />

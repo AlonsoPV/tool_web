@@ -4,7 +4,7 @@ import SectionShell from "@/components/landing/SectionShell";
 import abrahamPhoto from "@assets/AbrahamCastillo_1784129559789.png";
 import alonsoPhoto from "@assets/AlonsoPerez (1).png";
 
-const founders = [
+export const founders = [
   {
     name: "Abraham Castillo Harris",
     role: "Estrategia, desarrollo comercial y crecimiento de negocio.",

@@ -270,12 +270,14 @@ function ExitMark({
   onSelect,
   onPreview,
   onRelease,
+  controls,
 }: {
   on: boolean;
   id: string;
   onSelect: () => void;
   onPreview: (pointerType: string) => void;
   onRelease: (pointerType: string) => void;
+  controls?: string;
 }) {
   return (
     <button
@@ -283,13 +285,22 @@ function ExitMark({
       type="button"
       className={`gv-entry gv-exit-mark${on ? ' is-on' : ''}`}
       aria-pressed={on}
+      aria-expanded={on}
+      aria-controls={controls}
+      aria-label="Salida. Resultado GAOZ. Ver qué mediremos al cerrar la ruta."
       onClick={onSelect}
       onPointerEnter={(event) => onPreview(event.pointerType)}
       onPointerLeave={(event) => onRelease(event.pointerType)}
     >
       <span>Salida</span>
-      <b>Resultado</b>
-      <small>GAOZ</small>
+      <b>
+        <em className="gv-exit-short">Resultado</em>
+        <em className="gv-exit-long">Resultado GAOZ</em>
+      </b>
+      <small>
+        <em className="gv-exit-short">GAOZ</em>
+        <em className="gv-exit-long">Qué mediremos al cerrar</em>
+      </small>
     </button>
   );
 }
@@ -480,14 +491,19 @@ export default function GaozValueDiagram() {
     }, 220);
   }
 
+  function isDesktopView() {
+    return window.matchMedia('(min-width: 960px)').matches;
+  }
+
   function previewPhase(index: number, pointerType: string) {
-    if (pointerType !== 'mouse') return;
+    if (pointerType !== 'mouse' || !isDesktopView()) return;
     clearHold();
     setViewHover('phase');
     setPhaseHover(index);
   }
 
   function releasePhase(pointerType: string) {
+    if (!isDesktopView()) return;
     scheduleRelease(pointerType);
   }
 
@@ -496,36 +512,42 @@ export default function GaozValueDiagram() {
     setViewHover(null);
     setPhaseOn(index);
     setPhaseHover(null);
-    if (window.matchMedia('(min-width: 960px)').matches) return;
+    if (isDesktopView()) return;
     requestAnimationFrame(() => {
       document.getElementById(`valor-m-${stages[index].id}`)?.scrollIntoView({ block: 'nearest' });
     });
   }
 
   function previewExit(pointerType: string) {
-    if (pointerType !== 'mouse') return;
+    if (pointerType !== 'mouse' || !isDesktopView()) return;
     clearHold();
     setViewHover('exit');
   }
 
   function releaseExit(pointerType: string) {
+    if (!isDesktopView()) return;
     scheduleRelease(pointerType);
   }
 
   function selectExit() {
-    setViewOn('exit');
+    const next = viewOn === 'exit' ? 'phase' : 'exit';
+    setViewOn(next);
     setViewHover(null);
     setPhaseHover(null);
+    if (isDesktopView() || next !== 'exit') return;
+    requestAnimationFrame(() => {
+      document.getElementById('valor-m-exit-body')?.scrollIntoView({ block: 'nearest' });
+    });
   }
 
   function previewOutcome(index: number, pointerType: string) {
-    if (pointerType !== 'mouse') return;
+    if (pointerType !== 'mouse' || !isDesktopView()) return;
     clearOutcomeHold();
     setOutHover(index);
   }
 
   function releaseOutcome(pointerType: string) {
-    if (pointerType !== 'mouse') return;
+    if (pointerType !== 'mouse' || !isDesktopView()) return;
     clearOutcomeHold();
     outcomeTimer.current = window.setTimeout(() => setOutHover(null), 180);
   }
@@ -737,25 +759,41 @@ export default function GaozValueDiagram() {
             );
           })}
         </ol>
-        <ExitMark
-          id="valor-salida-m"
-          on={exitOn}
-          onSelect={selectExit}
-          onPreview={previewExit}
-          onRelease={releaseExit}
-        />
-        {exitOn && (
-          <div className="gv-now is-on gv-rail-body" style={{ '--gv-phase': '#0b7358' } as CSSProperties}>
-            <ExitBody
-              shown={outShown}
-              active={outOn}
-              idPrefix="valor-om"
-              onPreview={previewOutcome}
-              onRelease={releaseOutcome}
-              onSelect={selectOutcome}
-            />
-          </div>
-        )}
+        <div className="gv-mobile-exit">
+          <button
+            id="valor-salida-m"
+            type="button"
+            className={exitOn ? 'is-on' : undefined}
+            aria-pressed={exitOn}
+            aria-expanded={exitOn}
+            aria-controls="valor-m-exit-body"
+            aria-label="Salida. Resultado GAOZ. Ver qué mediremos al cerrar la ruta."
+            style={{ '--gv-phase': '#0b7358' } as CSSProperties}
+            onClick={selectExit}
+          >
+            <span className="gv-rail-num">Salida</span>
+            <span className="gv-rail-copy">
+              <b>Resultado GAOZ</b>
+              <small>Qué mediremos al cerrar</small>
+            </span>
+          </button>
+          {exitOn && (
+            <div
+              id="valor-m-exit-body"
+              className="gv-now is-on gv-rail-body"
+              style={{ '--gv-phase': '#0b7358' } as CSSProperties}
+            >
+              <ExitBody
+                shown={outShown}
+                active={outOn}
+                idPrefix="valor-om"
+                onPreview={previewOutcome}
+                onRelease={releaseOutcome}
+                onSelect={selectOutcome}
+              />
+            </div>
+          )}
+        </div>
       </div>
 
       </div>

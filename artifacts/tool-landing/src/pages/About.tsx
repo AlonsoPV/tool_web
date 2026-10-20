@@ -6,6 +6,7 @@ import Footer from "@/components/Footer";
 import SectionShell from "@/components/landing/SectionShell";
 import PageMeta from "@/components/PageMeta";
 import { DEMO_URL } from "@/lib/landing-theme";
+import { generatedResults } from "@/data/generated-results";
 import "@/styles/tool-redesign.css";
 import "@/styles/inner-pages.css";
 
@@ -70,6 +71,24 @@ export default function About() {
         </SectionShell>
 
         <Founders />
+
+        <SectionShell id="resultados" className="about-results">
+          <div className="tool-section-heading">
+            <span className="tool-eyebrow">Resultados</span>
+            <h2>Resultados que ya generamos en otras empresas</h2>
+            <p>La misma forma de trabajar —estrategia, sistema comercial e implementación— en contextos distintos.</p>
+          </div>
+          <ul className="about-results-grid">
+            {generatedResults.map((result) => (
+              <li key={result.company}>
+                <p className="about-results-industry">{result.industry}</p>
+                <h3>{result.company}</h3>
+                <p className="about-results-metric">{result.metric}<span>{result.metricLabel}</span></p>
+                <p>{result.copy}</p>
+              </li>
+            ))}
+          </ul>
+        </SectionShell>
 
         <section className="about-close">
           <div><span className="tool-eyebrow">La relación que queremos construir</span><h2>Un equipo cercano para decisiones que importan.</h2></div>

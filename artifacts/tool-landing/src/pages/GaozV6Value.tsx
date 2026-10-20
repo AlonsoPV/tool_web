@@ -45,6 +45,7 @@ export default function GaozV6Value() {
         <a className="gz-brand" href="/gaoz-v6">TOOL<span>GAOZ</span></a>
         <span>Diseño y Ejecución de Ecosistema Comercial - GAOZ · 21 semanas</span>
         <div className="gz-value-actions">
+          <a href="/gaoz-v6/equipo" className="gz-econ-open">Equipo</a>
           <button
             type="button"
             className="gz-econ-open"
@@ -55,9 +56,14 @@ export default function GaozV6Value() {
               }, 0);
             }}
           >
-            Detalle económico
+            <span className="gz-back-full">Detalle económico</span>
+            <span className="gz-back-short">Inversión</span>
           </button>
-          <a href="/gaoz-v6" className="gz-back-link"><ArrowLeft size={16} /> Volver a la propuesta</a>
+          <a href="/gaoz-v6" className="gz-back-link">
+            <ArrowLeft size={16} />
+            <span className="gz-back-full">Volver a la propuesta</span>
+            <span className="gz-back-short">Propuesta</span>
+          </a>
         </div>
       </footer>
       <dialog
